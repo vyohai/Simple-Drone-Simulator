@@ -9,7 +9,7 @@ This repo is responsible for:
 ## Example
 
 ## Docomentation
-Click [here](https://vyohai.github.io/Simple-Drone-Simulator/docs/html/index.html) to go to The documantation.
+Click [here](https://vyohai.github.io/Simple-Drone-Simulator/html/index.html) to go to The documantation.
 	
 ## List of Abbreviations
 
