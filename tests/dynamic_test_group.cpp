@@ -1,7 +1,12 @@
+#include <armadillo>
+#include "../src/dynamics/forcesAndMoments/forcesAndMoments.hpp"
+#include "../src/dynamics/framesConversion/framesConversion.hpp"
 #include "CppUTest/TestHarness.h"
-# include <string>
+
 #include <iostream>
-#include "../src/dynamics.hpp"
+// #include <armadillo>
+// #include "../src/dynamics/forcesAndMoments/forcesAndMoments.hpp"
+// #include "../src/dynamics/framesConversion/framesConversion.hpp"
 
 TEST_GROUP(dynamicTestGroup)
 {
@@ -17,9 +22,16 @@ TEST_GROUP(dynamicTestGroup)
 };
 
 
-TEST(dynamicTestGroup, SecondTest)
+TEST(dynamicTestGroup, ConversionTest)
 {
-    std::string Test=myFunctiond(0);
-    std::string True="dy";
-    CHECK(Test==True);
+
+    arma::mat b=singleAxisRotationMatrix(1,1.0);
+    CHECK(1==1);
+}
+
+TEST(dynamicTestGroup, ForcesTest)
+{
+    
+    CHECK(1.0==rottorThrust(1.0, 1.0));
+    //CHECK(1.0==1.0);
 }

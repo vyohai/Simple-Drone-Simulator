@@ -1,22 +1,25 @@
 cmake_minimum_required(VERSION 3.15)
 
 
-project(Simpl_Drone_Simulator CXX)
+project(Simple_Drone_Simulator CXX)
 
 find_package(CppUTest CONFIG REQUIRED)
+#find_package(Armadillo CONFIG REQUIRED)
+
+find_package(Armadillo REQUIRED)
+         
+
+
+
 
 set(CMAKE_CXX_STANDARD 20)
 
-# add_executable(myEXE helloworld.cpp ./HELLOWORLD/helper.cpp )
-add_executable(run_tests ./tests/tests_main.cpp ./tests/dynamic_test_group.cpp ./src/dynamics.cpp ./tests/controller_test_group.cpp ./src/controller.cpp)
+add_executable(App ./src/mainApp.cpp ./src/dynamics/forcesAndMoments/forcesAndMoments.cpp ./src/dynamics/framesConversion/framesConversion.cpp )
+add_executable(run_tests ./tests/tests_main.cpp ./tests/dynamic_test_group.cpp ./src/dynamics/forcesAndMoments/forcesAndMoments.cpp ./src/dynamics/framesConversion/framesConversion.cpp)
 
 
-# target_link_libraries(myEXE 
-# PRIVATE
-#   glfw
-#   implot::implot
-#   imgui::imgui
-# )
+target_include_directories(App PRIVATE ${ARMADILLO_INCLUDE_DIRS})
+target_include_directories(run_tests PRIVATE ${ARMADILLO_INCLUDE_DIRS})
 
 target_link_libraries(run_tests
   PRIVATE
