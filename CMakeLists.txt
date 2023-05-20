@@ -24,4 +24,9 @@ target_include_directories(run_tests PRIVATE ${ARMADILLO_INCLUDE_DIRS})
 target_link_libraries(run_tests
   PRIVATE
     CppUTest
-    CppUTestExt)
+    CppUTestExt
+    ${ARMADILLO_LIBRARIES})
+
+    target_link_libraries(App
+    PRIVATE
+      ${ARMADILLO_LIBRARIES})
