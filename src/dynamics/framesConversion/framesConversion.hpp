@@ -35,3 +35,25 @@ arma::mat rotationMatrix(arma::mat Rx, arma::mat Ry, arma::mat Rz);
 * @return a float represent angle in radians.
 */
 float deg2rad(float deg);
+
+/** 
+* This method will return the quaternion-mulriplication of 2 quaternions. 
+* @param Q1 (arma::vec4) quaternion1.
+* @param Q2 (arma::vec4) quaternion2.
+* @return a arma::vec4 represent resulted quaternion.
+*/
+arma::vec4 quaternionMultiplication(arma::vec4 Q1, arma::vec4 Q2);
+
+/** 
+* This method will convert rotation quaternion to eulwer angles in degrees. 
+* @param Q (arma::vec4) rotation-quaternion.
+* @return a arma::vec3 represent the euler sequence.
+*/
+arma::vec3 quaternionToEuler(arma::vec4 Q);
+
+/** 
+* This method will convert initial euler sequence to initial quaternion. 
+* @param Euler (arma::vec3) initial euler angles.
+* @return a arma::vec4 initial quaternion.
+*/
+arma::vec4 initialQuaternion(arma::vec3 Euler);

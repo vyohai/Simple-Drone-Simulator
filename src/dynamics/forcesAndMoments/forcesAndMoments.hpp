@@ -61,3 +61,4 @@ float MomentsZ(arma::mat rottor_vel, float km);
 * @return an arma::Mat<float> represents the [Fxb,Fyb,Fzw].
 */
 float Forces(arma::mat rottor_vel, float km);
+

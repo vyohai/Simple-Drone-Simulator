@@ -2,6 +2,8 @@
 #include <iostream>
 #include <armadillo>
 
+#include "../../config.hpp"
+
 
 float rottorThrust(float kf, float omega)
 {
@@ -44,3 +46,4 @@ float Forces(arma::mat rottor_vel, float km)
     std::cout<<a;
     return 1;
 }
+
