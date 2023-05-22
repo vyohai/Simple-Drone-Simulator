@@ -73,6 +73,18 @@ arma::vec4 quaternionMultiplication(arma::vec4 Q1, arma::vec4 Q2)
     return Q;
 }
 
+arma::vec3 quaternionVectorRotation(arma::vec4 Q1, arma::vec3 vec)
+{
+    arma::vec4 Q1_conj={-Q1(0), -Q1(1), -Q1(2),Q1(3)};
+
+    arma::vec4 vec_as_quaternion={vec(0), vec(1), vec(2), 0};
+
+    arma::vec4 vec_as_quaternion_rotated= quaternionMultiplication(quaternionMultiplication(Q1_conj,vec_as_quaternion),Q1);
+
+    arma::vec3 vec_rotated={vec_as_quaternion_rotated(0), vec_as_quaternion_rotated(1), vec_as_quaternion_rotated(2)};
+    return vec_rotated;
+}
+
 
 arma::vec3 quaternionToEuler(arma::vec4 Q)
 {

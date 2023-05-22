@@ -45,6 +45,14 @@ float deg2rad(float deg);
 arma::vec4 quaternionMultiplication(arma::vec4 Q1, arma::vec4 Q2);
 
 /** 
+* This method will rotate a vector from body frame to world frame. 
+* @param Q1 (arma::vec4) quaternion represent the body rotation with respect to earth.
+* @param vec (arma::vec3) vetor in body frame.
+* @return a arma::vec3 represent the vector in world frame.
+*/
+arma::vec3 quaternionVectorRotation(arma::vec4 Q1, arma::vec3 vec);
+
+/** 
 * This method will convert rotation quaternion to eulwer angles in degrees. 
 * @param Q (arma::vec4) rotation-quaternion.
 * @return a arma::vec3 represent the euler sequence.

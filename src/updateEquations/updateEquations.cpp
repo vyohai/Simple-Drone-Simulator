@@ -6,19 +6,20 @@
 
 #include "../config.hpp"
 #include "../dynamics/framesConversion/framesConversion.hpp"
+#include "../dynamics/forcesAndMoments/forcesAndMoments.hpp"
 
-// std::vector<float> singleTimeUpdate(std::vector<float> before, std::vector<float> rotors_velocity)
+// arma::vec singleTimeUpdate(arma::vec4 quat_before, arma::vec3 position_before, arma::vec3 velocty_before , arma::vec3 angular_velocty_before, arma::vec4 rotors_velocity)
 // {
-//     // each state-->X=[x,y,z,roll,pitch,yaw,x_dot,y_dot,z_dot,p,q,r]
-//     // each state-->X_dot=[x_dot,y_dot,z_dot,roll,pitch,yaw,x_dot,y_dot,z_dot,p,q,r]
-
+    
 
 //     // calculate linear acceleration
+//     arma::vec3 linear_acc=linearAcceleration(quat_before,rotors_velocity);
 
 //     // calculate angular acceleartion
+    
 
 //     // update quaternion
-
+        
 //     // update positions
 
 //     // update angular velocity
