@@ -60,10 +60,76 @@ std::array<float, 13> singleTimeUpdate(arma::vec4 quat_before, arma::vec3 positi
 
 
 
-// std::vector<std::vector<float>> droneSimulation(float T)
-// {
+std::vector<std::array<float,13>> droneSimulation(float T, std::function<arma::vec4(std::array<float,13>,std::array<float,13>)> controller)
+{
+  //define output
+  std::vector<std::array<float,13>> output;
+  
 
-// }
+  std::array<float,13> inp={0,0,0,0,0,0,0,0,0,0,0,0,0};
+  arma::vec4 rottors_speed=controller(inp,inp);
+  //define initial condition
+  arma::vec3 euler_angles_initial={0,0,0};
+  arma::vec4 quaternion_initial=initialQuaternion(euler_angles_initial);
+
+  arma::vec3 position_initial={0,0,0};
+  arma::vec3 velocity_initial={0,0,0};
+  arma::vec3 angular_velocity_initial={0,0,0};
+
+  arma::vec4 quaternion_previous=quaternion_initial;
+  arma::vec3 position_previous=position_initial;
+  arma::vec3 velocity_previous=velocity_initial;
+  arma::vec3 angular_velocity_previous=angular_velocity_initial;
+
+  
+
+  float t=0.0;
+  int it=0;
+  while (t<T)
+  {
+
+    
+    std::array<float,13> new_state=singleTimeUpdate(quaternion_previous,\
+                                      position_previous,\
+                                      velocity_previous,\
+                                      angular_velocity_previous,\
+                                      rottors_speed);
+    
+    quaternion_previous={new_state[0],new_state[1],new_state[2],new_state[3]};
+    position_previous={new_state[4],new_state[5],new_state[6]};
+    velocity_previous={new_state[7],new_state[8],new_state[9]};
+    angular_velocity_previous={new_state[10],new_state[11],new_state[12]};
+
+    output.push_back(new_state);
+  
+  std::cout<<"t="<<t;
+  std::cout<<" - pos={ ";
+  for (size_t i = 4; i < 7; i++)
+  {
+     std::cout<<output[it][i]<<",";
+  }
+
+  std::cout<<"}, vel={ ";
+  for (size_t i = 7; i < 10; i++)
+  {
+     std::cout<<output[it][i]<<",";
+  }
+
+  std::cout<<"}, ang_vel={ ";
+  for (size_t i = 10; i < 13; i++)
+  {
+     std::cout<<output[it][i]<<",";
+  }
+  std::cout<<"}"<<std::endl;
+  
+  t=t+DT;
+  it=it+1;
+  }
+  
+  
+
+  return output;
+}
 
 arma::vec4 updateOrientation(arma::vec4 quaternion_before, arma::vec3 angular_rate)
 {

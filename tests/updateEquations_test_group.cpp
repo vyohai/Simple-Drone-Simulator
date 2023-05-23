@@ -269,3 +269,28 @@ TEST(updateEquationsSingleTimeUpdateTestGroup, correctOutputAccelerateY)
     CHECK_TRUE(sum_difrences< 0.01);
     
 }
+
+TEST_GROUP(updateEquationsDroneSimulationTestGroup)
+{
+    
+};
+
+TEST(updateEquationsDroneSimulationTestGroup, correctOutput)
+{
+    // std::cout<<std::endl<<"-----------falling-----------"<<std::endl;
+    // arma::vec4 rottors_speed={0,0,0,0};
+    // std::vector<std::array<float,13>> result=droneSimulation(0.1,rottors_speed);
+
+    // std::cout<<std::endl<<"----------hovering-------------"<<std::endl;
+    // rottors_speed={1.58,1.58,1.58,1.58};
+    // result=droneSimulation(0.1,rottors_speed);
+
+    //std::cout<<std::endl<<"---------rotating in x body direction----------"<<std::endl;
+    // rottors_speed={2.236,0,0,2.236};
+    
+    //std::vector<std::array<float,13>> result=droneSimulation(0.1,controller);
+
+
+
+
+}

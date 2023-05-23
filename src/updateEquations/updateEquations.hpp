@@ -25,11 +25,11 @@ std::array<float, 13> singleTimeUpdate(arma::vec4 quat_before, arma::vec3 positi
 
 /** 
 * This method will accumulates the full simulation data. 
-* @param TBD.
-* @param TBD.
+* @param T(float).
+* @param controller(std::function<arma::vec4(std::array<float,13> current_step, std::array<float,13> previous_step)>) a function gets a states(current and previos) at some time and produces a control output(rottors_speeds).
 * @return TBD.
 */
-std::vector<std::vector<float>> droneSimulation(float T);
+std::vector<std::array<float,13>> droneSimulation(float T, std::function<arma::vec4(std::array<float,13>,std::array<float,13>)> controller);
 
 /** 
 * This method will update the oriantation quaternion. 

@@ -81,11 +81,11 @@ arma::vec2 MomentsXY(arma::vec4 rottorspeeds)
 float MomentZ(arma::vec4 rottor_vel)
 {
     float Mz=0;
-    for(int i=0; i<4;i=i+1)
-    {
-        float sign=pow(-1,i+2);
-        Mz=Mz+sign*rottorMoment(rottor_vel(i));
-    }
+    Mz=Mz+ROTTOR_DIR1*rottorMoment(rottor_vel(0));
+    Mz=Mz+ROTTOR_DIR2*rottorMoment(rottor_vel(1));
+    Mz=Mz+ROTTOR_DIR3*rottorMoment(rottor_vel(2));
+    Mz=Mz+ROTTOR_DIR4*rottorMoment(rottor_vel(3));
+    
     return Mz;
 }
 
