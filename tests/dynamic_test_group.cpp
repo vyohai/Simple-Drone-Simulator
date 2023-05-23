@@ -169,20 +169,12 @@ TEST(dynamicForcesAndMomentsMomentsXYTestGroup, correctOutput)
 {
     //craete x moment (2*2^2-2*1^2)*L, rottors: 1 and 4 faster
     arma::vec4 rottor_vel_for_Mx={2,1,1,2};
-    arma::vec4 Thrusts_for_Mx={rottorThrust(rottor_vel_for_Mx(0)),\
-                                rottorThrust(rottor_vel_for_Mx(1)),\
-                                rottorThrust(rottor_vel_for_Mx(2)),\
-                                rottorThrust(rottor_vel_for_Mx(3))};
-    arma::vec2 Mxyx=MomentsXY(Thrusts_for_Mx);
+    arma::vec2 Mxyx=MomentsXY(rottor_vel_for_Mx);
     arma::vec2 Mxyx_expected={6.0,0.0};
 
     //craete y moment (2*2^2-2*1^2)*L, rottors: 1 and 2 faster
     arma::vec4 rottor_vel_for_My={2,2,1,1};
-    arma::vec4 Thrusts_for_My={rottorThrust(rottor_vel_for_My(0)),\
-                                rottorThrust(rottor_vel_for_My(1)),\
-                                rottorThrust(rottor_vel_for_My(2)),\
-                                rottorThrust(rottor_vel_for_My(3))};
-    arma::vec2 Mxyy=MomentsXY(Thrusts_for_My);
+    arma::vec2 Mxyy=MomentsXY(rottor_vel_for_My);
     arma::vec2 Mxyy_expected={0.0,6.0};
 
     CHECK_TRUE(arma::approx_equal(Mxyx,Mxyx_expected,"absdiff",0.1));
@@ -200,11 +192,7 @@ TEST(dynamicForcesAndMomentsAngularAccelerationTestGroup, correctOutput)
 {
     //craete x moment (2*2^2-2*1^2)*L, rottors: 1 and 4 faster
     arma::vec4 rottor_vel_for_Mx={2,1,1,2};
-    arma::vec4 Thrusts_for_Mx={rottorThrust(rottor_vel_for_Mx(0)),\
-                                rottorThrust(rottor_vel_for_Mx(1)),\
-                                rottorThrust(rottor_vel_for_Mx(2)),\
-                                rottorThrust(rottor_vel_for_Mx(3))};
-    arma::vec2 Mxyx=MomentsXY(Thrusts_for_Mx);
+    arma::vec2 Mxyx=MomentsXY(rottor_vel_for_Mx);
     float Mzx=MomentZ(rottor_vel_for_Mx);
     arma::vec3 Mx={Mxyx(0), Mxyx(1),Mzx};
    

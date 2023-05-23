@@ -36,10 +36,10 @@ arma::vec3 angularAcceleration(arma::vec3 Moments, arma::vec3 ang_vel);
 
 /** 
 * This method will calculate the x_body and y_body moments. 
-* @param Thrusts (arma::mat) - vector size e of rottor rotations.
+* @param rottor_speeds (arma::vec4) - vector size e of rottor rotations.
 * @return an arma::vec2 represent [Mxb,Myb].
 */
-arma::vec2 MomentsXY(arma::vec4 Thrusts);
+arma::vec2 MomentsXY(arma::vec4 rottor_speeds);
 
 /** 
 * This method will calculate the x_body and y_body moments. 

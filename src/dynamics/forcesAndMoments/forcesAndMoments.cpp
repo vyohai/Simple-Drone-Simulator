@@ -44,10 +44,10 @@ arma::vec3 angularAcceleration(arma::vec3 Moments, arma::vec3 ang_vel)
     float dwx=Moments(0)/Ixx-(Iyy-Izz)*ang_vel(1)*ang_vel(2)/Ixx;
 
     //dwy=My/Iyy-(Izz-Ixx)*wx*wz/Iyy
-    float dwy=Moments(1)/Ixx-(Izz-Ixx)*ang_vel(0)*ang_vel(2)/Iyy;
+    float dwy=Moments(1)/Iyy-(Izz-Ixx)*ang_vel(0)*ang_vel(2)/Iyy;
 
     //dwz=Mz/Izz-(Ixx-Iyy)*wx*wy/Izz
-    float dwz=Moments(2)/Ixx-(Ixx-Iyy)*ang_vel(0)*ang_vel(1)/Izz; 
+    float dwz=Moments(2)/Izz-(Ixx-Iyy)*ang_vel(0)*ang_vel(1)/Izz; 
 
     // fill the angular acceleration vector
     angular_acceleration(0)=dwx;
@@ -57,9 +57,15 @@ arma::vec3 angularAcceleration(arma::vec3 Moments, arma::vec3 ang_vel)
     return angular_acceleration;
 }
 
-arma::vec2 MomentsXY(arma::vec4 Thrusts)
+arma::vec2 MomentsXY(arma::vec4 rottorspeeds)
 {
     arma::vec2 Mxy={0,0};
+
+    // calculate Thrusts
+    arma::vec4 Thrusts={rottorThrust(rottorspeeds(0)),\
+                        rottorThrust(rottorspeeds(1)),\
+                        rottorThrust(rottorspeeds(2)),\
+                        rottorThrust(rottorspeeds(3))};
 
     // for x configuration
     

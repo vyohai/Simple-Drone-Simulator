@@ -14,11 +14,14 @@
 
 /** 
 * This method will update the drone state based on the previous state. 
-* @param TBD.
-* @param TBD.
-* @return TBD.
+* @param quat_before(arma::vec4) - quatenion for the previous time.
+* @param position_before(arma::vec3) - position for the previos time for world frame.
+* @param velocity_before(arma::vec3) - position for the previos time for world frame.
+* @param angular_velocty_before(arma::vec3) - body angular rates.
+* @param rotors_velocity(arma::vec4) - the rottors speed command.
+* @return std::array<float, 13>, which include the updated: quaternion, position, velocity, angular velocity.
 */
-std::vector<float> singleTimeUpdate(std::vector<float> before, std::vector<float> rotors_velocity);
+std::array<float, 13> singleTimeUpdate(arma::vec4 quat_before, arma::vec3 position_before, arma::vec3 velocty_before , arma::vec3 angular_velocty_before, arma::vec4 rotors_velocity);
 
 /** 
 * This method will accumulates the full simulation data. 
