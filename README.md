@@ -27,6 +27,6 @@ Click [here](https://vyohai.github.io/Simple-Drone-Simulator/html/index.html) to
 <html>
 <body>
 
-** you could change the drone Mass/Inertia/Size and other parmaters with /src/config.hpp header file**
+**you could change the drone Mass/Inertia/Size and other parmaters with /src/config.hpp header file**
 
 
