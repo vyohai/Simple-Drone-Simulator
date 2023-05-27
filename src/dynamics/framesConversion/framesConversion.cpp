@@ -75,11 +75,13 @@ arma::vec4 quaternionMultiplication(arma::vec4 Q1, arma::vec4 Q2)
 
 arma::vec3 quaternionVectorRotation(arma::vec4 Q1, arma::vec3 vec)
 {
-    arma::vec4 Q1_conj={-Q1(0), -Q1(1), -Q1(2),Q1(3)};
+    Q1={Q1(2), -Q1(1), Q1(0), Q1(3)};
+    arma::vec4 Q1_conj={-Q1(0), -Q1(1), -Q1(2), Q1(3)};
 
     arma::vec4 vec_as_quaternion={vec(0), vec(1), vec(2), 0};
 
     arma::vec4 vec_as_quaternion_rotated= quaternionMultiplication(quaternionMultiplication(Q1_conj,vec_as_quaternion),Q1);
+    
 
     arma::vec3 vec_rotated={vec_as_quaternion_rotated(0), vec_as_quaternion_rotated(1), vec_as_quaternion_rotated(2)};
     return vec_rotated;
@@ -97,8 +99,8 @@ arma::vec3 quaternionToEuler(arma::vec4 Q)
                 {2*(qx*qy+qw*qz), 1-2*(qx*qx+qz*qz),2*(qy*qz-qw*qx)},
                 {2*(qx*qz-qw*qy),2*(qy*qz+qw*qx),1-2*(qx*qx+qy*qy)}};
 
-    float yaw=atan2(R(2,1),R(2,2));
-    float pitch=-asin(R(2,0));
+    float yaw=-atan2(R(2,1),R(2,2));
+    float pitch=asin(R(2,0));
     float roll=atan2(R(1,0)/cos(pitch),R(0,0)/cos(pitch));
 
     arma::vec3 angles={roll*57,pitch*57,57*yaw};

@@ -1,6 +1,7 @@
 # Yochai added
 .vscode/
 build/
+simulations/
 
 # Prerequisites
 *.d

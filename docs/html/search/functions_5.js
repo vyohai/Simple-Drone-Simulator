@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['singleaxisrotationmatrix_0',['singleAxisRotationMatrix',['../frames_conversion_8cpp.html#a4045cc9b942a2d6ca374ed7821442f66',1,'singleAxisRotationMatrix(int axis, float angle):&#160;framesConversion.cpp'],['../frames_conversion_8hpp.html#a4045cc9b942a2d6ca374ed7821442f66',1,'singleAxisRotationMatrix(int axis, float angle):&#160;framesConversion.cpp']]]
+  ['linearacceleration_0',['linearAcceleration',['../forces_and_moments_8cpp.html#ad00b30a4b60e2f27ddc36afa99f1ab4c',1,'linearAcceleration(arma::vec4 quaternion, arma::vec4 rotors_speed):&#160;forcesAndMoments.cpp'],['../forces_and_moments_8hpp.html#ad00b30a4b60e2f27ddc36afa99f1ab4c',1,'linearAcceleration(arma::vec4 quaternion, arma::vec4 rotors_speed):&#160;forcesAndMoments.cpp']]]
 ];

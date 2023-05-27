@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simple drone simulator: C:/Users/User/Desktop/GITHUB-REPOS/Simple-Drone-Simulator/src/dynamics/framesConversion/framesConversion.cpp File Reference</title>
+<title>Simple Drone Simulator: C:/Users/User/Desktop/GITHUB-REPOS/Simple-Drone-Simulator/src/dynamics/framesConversion/framesConversion.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple drone simulator<span id="projectnumber">&#160;1</span>
+   <div id="projectname">Simple Drone Simulator<span id="projectnumber">&#160;1</span>
    </div>
   </td>
  </tr>
@@ -80,7 +80,10 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;numbers&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;armadillo&gt;</code><br />
+<code>#include &quot;<a class="el" href="frames_conversion_8hpp_source.html">framesConversion.hpp</a>&quot;</code><br />
 </div>
 <p><a href="frames_conversion_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -88,12 +91,179 @@ $(function() {
 Functions</h2></td></tr>
 <tr class="memitem:a4045cc9b942a2d6ca374ed7821442f66"><td class="memItemLeft" align="right" valign="top">arma::mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="frames_conversion_8cpp.html#a4045cc9b942a2d6ca374ed7821442f66">singleAxisRotationMatrix</a> (int axis, float angle)</td></tr>
 <tr class="separator:a4045cc9b942a2d6ca374ed7821442f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c415fd002f2a5c80373393d659e3cb0"><td class="memItemLeft" align="right" valign="top">arma::mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="frames_conversion_8cpp.html#a5c415fd002f2a5c80373393d659e3cb0">rotationMatrix</a> (arma::Mat&lt; float &gt; Rx, arma::Mat&lt; float &gt; Ry, arma::Mat&lt; float &gt; Rz)</td></tr>
-<tr class="separator:a5c415fd002f2a5c80373393d659e3cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8d31c2a06c0f5837a6dc77bda243081"><td class="memItemLeft" align="right" valign="top">arma::mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="frames_conversion_8cpp.html#ad8d31c2a06c0f5837a6dc77bda243081">rotationMatrix</a> (arma::mat Rx, arma::mat Ry, arma::mat Rz)</td></tr>
+<tr class="separator:ad8d31c2a06c0f5837a6dc77bda243081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3e32657c50564111148c55eb12ebebd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="frames_conversion_8cpp.html#af3e32657c50564111148c55eb12ebebd">deg2rad</a> (float deg)</td></tr>
+<tr class="separator:af3e32657c50564111148c55eb12ebebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65428c3f21006e612025f23265474233"><td class="memItemLeft" align="right" valign="top">arma::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="frames_conversion_8cpp.html#a65428c3f21006e612025f23265474233">quaternionMultiplication</a> (arma::vec4 Q1, arma::vec4 Q2)</td></tr>
+<tr class="separator:a65428c3f21006e612025f23265474233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e0c06f5dc979e0f8d04b54120100a07"><td class="memItemLeft" align="right" valign="top">arma::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="frames_conversion_8cpp.html#a1e0c06f5dc979e0f8d04b54120100a07">quaternionVectorRotation</a> (arma::vec4 Q1, arma::vec3 vec)</td></tr>
+<tr class="separator:a1e0c06f5dc979e0f8d04b54120100a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a842193604e5e8cccec619f14e468ddf0"><td class="memItemLeft" align="right" valign="top">arma::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="frames_conversion_8cpp.html#a842193604e5e8cccec619f14e468ddf0">quaternionToEuler</a> (arma::vec4 Q)</td></tr>
+<tr class="separator:a842193604e5e8cccec619f14e468ddf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9042dbcbd303b9c3fa9ce8e807a790e5"><td class="memItemLeft" align="right" valign="top">arma::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="frames_conversion_8cpp.html#a9042dbcbd303b9c3fa9ce8e807a790e5">initialQuaternion</a> (arma::vec3 Euler)</td></tr>
+<tr class="separator:a9042dbcbd303b9c3fa9ce8e807a790e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a5c415fd002f2a5c80373393d659e3cb0" name="a5c415fd002f2a5c80373393d659e3cb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c415fd002f2a5c80373393d659e3cb0">&#9670;&#160;</a></span>rotationMatrix()</h2>
+<a id="af3e32657c50564111148c55eb12ebebd" name="af3e32657c50564111148c55eb12ebebd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3e32657c50564111148c55eb12ebebd">&#9670;&#160;</a></span>deg2rad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float deg2rad </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This method will convert angle from degrees to radian. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angled</td><td>(float) angle in degrees. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a float represent angle in radians. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="frames_conversion_8cpp_source.html#l00049">49</a> of file <a class="el" href="frames_conversion_8cpp_source.html">framesConversion.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9042dbcbd303b9c3fa9ce8e807a790e5" name="a9042dbcbd303b9c3fa9ce8e807a790e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9042dbcbd303b9c3fa9ce8e807a790e5">&#9670;&#160;</a></span>initialQuaternion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">arma::vec4 initialQuaternion </td>
+          <td>(</td>
+          <td class="paramtype">arma::vec3&#160;</td>
+          <td class="paramname"><em>Euler</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This method will convert initial euler sequence to initial quaternion - WONT PASS TESTS FOR NOW, DONT USE. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Euler</td><td>(arma::vec3) initial euler angles. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a arma::vec4 initial quaternion. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="frames_conversion_8cpp_source.html#l00112">112</a> of file <a class="el" href="frames_conversion_8cpp_source.html">framesConversion.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a65428c3f21006e612025f23265474233" name="a65428c3f21006e612025f23265474233"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65428c3f21006e612025f23265474233">&#9670;&#160;</a></span>quaternionMultiplication()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">arma::vec4 quaternionMultiplication </td>
+          <td>(</td>
+          <td class="paramtype">arma::vec4&#160;</td>
+          <td class="paramname"><em>Q1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">arma::vec4&#160;</td>
+          <td class="paramname"><em>Q2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This method will return the quaternion-mulriplication of 2 quaternions. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Q1</td><td>(arma::vec4) quaternion1. </td></tr>
+    <tr><td class="paramname">Q2</td><td>(arma::vec4) quaternion2. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a arma::vec4 represent resulted quaternion. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="frames_conversion_8cpp_source.html#l00055">55</a> of file <a class="el" href="frames_conversion_8cpp_source.html">framesConversion.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a842193604e5e8cccec619f14e468ddf0" name="a842193604e5e8cccec619f14e468ddf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a842193604e5e8cccec619f14e468ddf0">&#9670;&#160;</a></span>quaternionToEuler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">arma::vec3 quaternionToEuler </td>
+          <td>(</td>
+          <td class="paramtype">arma::vec4&#160;</td>
+          <td class="paramname"><em>Q</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This method will convert rotation quaternion to euler angles in degrees - WONT PASS TESTS FOR NOW, DONT USE. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Q</td><td>(arma::vec4) rotation-quaternion. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a arma::vec3 represent the euler sequence. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="frames_conversion_8cpp_source.html#l00091">91</a> of file <a class="el" href="frames_conversion_8cpp_source.html">framesConversion.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1e0c06f5dc979e0f8d04b54120100a07" name="a1e0c06f5dc979e0f8d04b54120100a07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e0c06f5dc979e0f8d04b54120100a07">&#9670;&#160;</a></span>quaternionVectorRotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">arma::vec3 quaternionVectorRotation </td>
+          <td>(</td>
+          <td class="paramtype">arma::vec4&#160;</td>
+          <td class="paramname"><em>Q1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">arma::vec3&#160;</td>
+          <td class="paramname"><em>vec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This method will rotate a vector from body frame to world frame. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Q1</td><td>(arma::vec4) quaternion represent the body rotation with respect to earth. </td></tr>
+    <tr><td class="paramname">vec</td><td>(arma::vec3) vetor in body frame. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a arma::vec3 represent the vector in world frame. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="frames_conversion_8cpp_source.html#l00076">76</a> of file <a class="el" href="frames_conversion_8cpp_source.html">framesConversion.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad8d31c2a06c0f5837a6dc77bda243081" name="ad8d31c2a06c0f5837a6dc77bda243081"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8d31c2a06c0f5837a6dc77bda243081">&#9670;&#160;</a></span>rotationMatrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -101,19 +271,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">arma::mat rotationMatrix </td>
           <td>(</td>
-          <td class="paramtype">arma::Mat&lt; float &gt;&#160;</td>
+          <td class="paramtype">arma::mat&#160;</td>
           <td class="paramname"><em>Rx</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">arma::Mat&lt; float &gt;&#160;</td>
+          <td class="paramtype">arma::mat&#160;</td>
           <td class="paramname"><em>Ry</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">arma::Mat&lt; float &gt;&#160;</td>
+          <td class="paramtype">arma::mat&#160;</td>
           <td class="paramname"><em>Rz</em>&#160;</td>
         </tr>
         <tr>
@@ -125,15 +295,21 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This method will implement matrix multiplication of all rotation matrixes. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Rx(arma::Mat&lt;float&gt;)</td><td>- the rotation axis. </td></tr>
-    <tr><td class="paramname">Ry(arma::Mat&lt;float&gt;)</td><td>- the amount of degress to rotate. </td></tr>
-    <tr><td class="paramname">Rz(arma::Mat&lt;float&gt;)</td><td>- the amount of degress to rotate. </td></tr>
+    <tr><td class="paramname">Rx(arma::mat)</td><td>- the rotation axis. </td></tr>
+    <tr><td class="paramname">Ry(arma::mat)</td><td>- the amount of degress to rotate. </td></tr>
+    <tr><td class="paramname">Rz(arma::mat)</td><td>- the amount of degress to rotate. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>an arma::Mat&lt;float&gt; which is the combined matrix . </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>an arma::mat which is the combined matrix . </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">axis is wrong!</td><td>exception massage if the axis is not 1/2/3. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="frames_conversion_8cpp_source.html#l00016">16</a> of file <a class="el" href="frames_conversion_8cpp_source.html">framesConversion.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frames_conversion_8cpp_source.html#l00043">43</a> of file <a class="el" href="frames_conversion_8cpp_source.html">framesConversion.cpp</a>.</p>
 
 </div>
 </div>
@@ -169,9 +345,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>an arma::Mat&lt;float&gt;, sized 3*3, which is the rotation matrix. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>an arma::mat, sized 3*3, which is the rotation matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="frames_conversion_8cpp_source.html#l00008">8</a> of file <a class="el" href="frames_conversion_8cpp_source.html">framesConversion.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frames_conversion_8cpp_source.html#l00011">11</a> of file <a class="el" href="frames_conversion_8cpp_source.html">framesConversion.cpp</a>.</p>
 
 </div>
 </div>

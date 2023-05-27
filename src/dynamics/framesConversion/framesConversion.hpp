@@ -4,7 +4,7 @@
 * 
 * @author Yochai Weissman 
 * 
-* @date 20/5/2023
+* @date 27/5/2023
 */
 
 
@@ -53,14 +53,14 @@ arma::vec4 quaternionMultiplication(arma::vec4 Q1, arma::vec4 Q2);
 arma::vec3 quaternionVectorRotation(arma::vec4 Q1, arma::vec3 vec);
 
 /** 
-* This method will convert rotation quaternion to eulwer angles in degrees. 
+* This method will convert rotation quaternion to euler angles in degrees - WONT PASS TESTS FOR NOW, DONT USE. 
 * @param Q (arma::vec4) rotation-quaternion.
 * @return a arma::vec3 represent the euler sequence.
 */
 arma::vec3 quaternionToEuler(arma::vec4 Q);
 
 /** 
-* This method will convert initial euler sequence to initial quaternion. 
+* This method will convert initial euler sequence to initial quaternion - WONT PASS TESTS FOR NOW, DONT USE.
 * @param Euler (arma::vec3) initial euler angles.
 * @return a arma::vec4 initial quaternion.
 */

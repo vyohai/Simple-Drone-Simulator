@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['angularacceleration_0',['angularAcceleration',['../forces_and_moments_8cpp.html#a04ccf25db65d05b3463dc03c88920f72',1,'angularAcceleration(arma::Mat&lt; float &gt; R, float Thrust, float m):&#160;forcesAndMoments.cpp'],['../forces_and_moments_8hpp.html#a5bf2109fe0b619c6f14a1f8625492d06',1,'angularAcceleration(arma::mat R, float Thrust, float m):&#160;forcesAndMoments.hpp']]]
+  ['angularacceleration_0',['angularAcceleration',['../forces_and_moments_8cpp.html#a31a94b6e6c4b0e370ae078ab950950ee',1,'angularAcceleration(arma::vec3 Moments, arma::vec3 ang_vel):&#160;forcesAndMoments.cpp'],['../forces_and_moments_8hpp.html#a31a94b6e6c4b0e370ae078ab950950ee',1,'angularAcceleration(arma::vec3 Moments, arma::vec3 ang_vel):&#160;forcesAndMoments.cpp']]]
 ];

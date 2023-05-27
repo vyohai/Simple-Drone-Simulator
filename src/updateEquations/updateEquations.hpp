@@ -1,6 +1,6 @@
 /** 
 * @file updateEquations.hpp 
-* @brief TBD. 
+* @brief This header deals with the high-level simulation producing procedure. 
 * 
 * @author Yochai Weissman 
 * 
@@ -23,13 +23,30 @@
 */
 std::array<float, 13> singleTimeUpdate(arma::vec4 quat_before, arma::vec3 position_before, arma::vec3 velocty_before , arma::vec3 angular_velocty_before, arma::vec4 rotors_velocity);
 
+
 /** 
 * This method will accumulates the full simulation data. 
 * @param T(float).
-* @param controller(std::function<arma::vec4(std::array<float,13> current_step, std::array<float,13> previous_step)>) a function gets a states(current and previos) at some time and produces a control output(rottors_speeds).
-* @return TBD.
+* @param rottors_speed_initial(arma::vec4) - the initial rottors speed for the simulation.
+* @param controller(std::function<arma::vec4(arma::vec3 referance,
+std::array<float,13> current_step,
+std::array<float,13> previous_step,
+std::array<std::array<float,3>,6> controllers_coefficients,
+float * altitude_error_integral)>)
+ a function gets states(current and previos), referance and controllers coefficiets at some time and relevant state error integral and produces a control output(rottors_speeds).
+* @param referanc(arma::vec3) - referance position.
+* @param controllers_coefficients(std::array<std::array<float,3>,6>) - PID coefficients for all 6 controllers, default to all 0.
+* @return std::vector<std::array<float,13>> represent 13 states(std::vector<float,13>) for each poit in time.
 */
-std::vector<std::array<float,13>> droneSimulation(float T, std::function<arma::vec4(std::array<float,13>,std::array<float,13>)> controller);
+std::vector<std::array<float,13>> droneSimulation(float T, arma::vec4 rottors_speed_initial, std::function<arma::vec4(arma::vec3,\
+ std::array<float,13>, std::array<float,13>, std::array<std::array<float,3>,6>, float *)> controller,\
+ arma::vec3 referance={0,0,0}, std::array<std::array<float,3>,6> controllers_coefficients={{{0,0,0},\
+                                                                    {0,0,0},\
+                                                                    {0,0,0},\
+                                                                    {0,0,0},\
+                                                                    {0,0,0},\
+                                                                    {0,0,0}}});
+
 
 /** 
 * This method will update the oriantation quaternion. 
@@ -38,3 +55,11 @@ std::vector<std::array<float,13>> droneSimulation(float T, std::function<arma::v
 * @return arma::vec4 which is the quaternion represent the new orientation.
 */
 arma::vec4 updateOrientation(arma::vec4 quaternion_before, arma::vec3 angular_rate);
+
+/** 
+* This method will convert the state from array to either: euler angles or position for the controllers. 
+* @param state_vector(std::array<float,13>)- full state vector for some point in time.
+* @param type(char)- 'e' or 'p'.
+* @return arma::vec3 with either euler angles or position.
+*/
+arma::vec3 convertStateVectorForController(std::array<float,13> state_vector, char type);

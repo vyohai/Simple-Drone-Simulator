@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['singleaxisrotationmatrix_0',['singleAxisRotationMatrix',['../frames_conversion_8cpp.html#a4045cc9b942a2d6ca374ed7821442f66',1,'singleAxisRotationMatrix(int axis, float angle):&#160;framesConversion.cpp'],['../frames_conversion_8hpp.html#a4045cc9b942a2d6ca374ed7821442f66',1,'singleAxisRotationMatrix(int axis, float angle):&#160;framesConversion.cpp']]],
+  ['singleplot_1',['singlePlot',['../visualization_8cpp.html#ad4524d49f72641463825ca7dbc81a5c2',1,'singlePlot(std::vector&lt; float &gt; vector, std::string path, std::string name):&#160;visualization.cpp'],['../visualization_8hpp.html#ad4524d49f72641463825ca7dbc81a5c2',1,'singlePlot(std::vector&lt; float &gt; vector, std::string path, std::string name):&#160;visualization.cpp']]],
+  ['singletimeupdate_2',['singleTimeUpdate',['../update_equations_8cpp.html#a76ccc7f07075920417f6268d16d34aff',1,'singleTimeUpdate(arma::vec4 quat_before, arma::vec3 position_before, arma::vec3 velocty_before, arma::vec3 angular_velocty_before, arma::vec4 rotors_velocity):&#160;updateEquations.cpp'],['../update_equations_8hpp.html#a76ccc7f07075920417f6268d16d34aff',1,'singleTimeUpdate(arma::vec4 quat_before, arma::vec3 position_before, arma::vec3 velocty_before, arma::vec3 angular_velocty_before, arma::vec4 rotors_velocity):&#160;updateEquations.cpp']]]
+];

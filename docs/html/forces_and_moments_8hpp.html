@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simple drone simulator: C:/Users/User/Desktop/GITHUB-REPOS/Simple-Drone-Simulator/src/dynamics/forcesAndMoments/forcesAndMoments.hpp File Reference</title>
+<title>Simple Drone Simulator: C:/Users/User/Desktop/GITHUB-REPOS/Simple-Drone-Simulator/src/dynamics/forcesAndMoments/forcesAndMoments.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple drone simulator<span id="projectnumber">&#160;1</span>
+   <div id="projectname">Simple Drone Simulator<span id="projectnumber">&#160;1</span>
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>this header deals with forces and noments calculations.  
+<p>this header deals with forces and moments calculations.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;armadillo&gt;</code><br />
@@ -88,49 +88,41 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a72020b4ff9f0707c7fabe4a08f1f548f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="forces_and_moments_8hpp.html#a72020b4ff9f0707c7fabe4a08f1f548f">rottorThrust</a> (float kf, float omega)</td></tr>
-<tr class="separator:a72020b4ff9f0707c7fabe4a08f1f548f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7363e57cc56d2cac7d033f7cb2b6b97b"><td class="memItemLeft" align="right" valign="top">arma::mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="forces_and_moments_8hpp.html#a7363e57cc56d2cac7d033f7cb2b6b97b">linearAcceleration</a> (arma::Mat&lt; float &gt; R, float Thrust, float m)</td></tr>
-<tr class="separator:a7363e57cc56d2cac7d033f7cb2b6b97b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bf2109fe0b619c6f14a1f8625492d06"><td class="memItemLeft" align="right" valign="top">arma::mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="forces_and_moments_8hpp.html#a5bf2109fe0b619c6f14a1f8625492d06">angularAcceleration</a> (arma::mat R, float Thrust, float m)</td></tr>
-<tr class="separator:a5bf2109fe0b619c6f14a1f8625492d06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf0035fa4dec0e47b319c2fdafc6507d"><td class="memItemLeft" align="right" valign="top">arma::mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="forces_and_moments_8hpp.html#adf0035fa4dec0e47b319c2fdafc6507d">MomentsXY</a> (arma::Mat&lt; float &gt; Thrusts, float L)</td></tr>
-<tr class="separator:adf0035fa4dec0e47b319c2fdafc6507d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51a1417a977d88e609aa10a8e59d5cdf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="forces_and_moments_8hpp.html#a51a1417a977d88e609aa10a8e59d5cdf">MomentsZ</a> (arma::mat rottor_vel, float km)</td></tr>
-<tr class="separator:a51a1417a977d88e609aa10a8e59d5cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63086c2d4b914ccf4d22d0f1dda2e209"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="forces_and_moments_8hpp.html#a63086c2d4b914ccf4d22d0f1dda2e209">Forces</a> (arma::mat rottor_vel, float km)</td></tr>
-<tr class="separator:a63086c2d4b914ccf4d22d0f1dda2e209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bfa2fc14b0ff8cb6aa1f7c3ab0c64aa"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="forces_and_moments_8hpp.html#a5bfa2fc14b0ff8cb6aa1f7c3ab0c64aa">rottorThrust</a> (float rottor_speed)</td></tr>
+<tr class="separator:a5bfa2fc14b0ff8cb6aa1f7c3ab0c64aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad00b30a4b60e2f27ddc36afa99f1ab4c"><td class="memItemLeft" align="right" valign="top">arma::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="forces_and_moments_8hpp.html#ad00b30a4b60e2f27ddc36afa99f1ab4c">linearAcceleration</a> (arma::vec4 quaternion, arma::vec4 rotors_speed)</td></tr>
+<tr class="separator:ad00b30a4b60e2f27ddc36afa99f1ab4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31a94b6e6c4b0e370ae078ab950950ee"><td class="memItemLeft" align="right" valign="top">arma::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="forces_and_moments_8hpp.html#a31a94b6e6c4b0e370ae078ab950950ee">angularAcceleration</a> (arma::vec3 Moments, arma::vec3 ang_vel)</td></tr>
+<tr class="separator:a31a94b6e6c4b0e370ae078ab950950ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c7f07b8dd350dac68f2838b3262585e"><td class="memItemLeft" align="right" valign="top">arma::vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="forces_and_moments_8hpp.html#a8c7f07b8dd350dac68f2838b3262585e">MomentsXY</a> (arma::vec4 rottor_speeds)</td></tr>
+<tr class="separator:a8c7f07b8dd350dac68f2838b3262585e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b5c69638e8c4708afe4badc4861819"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="forces_and_moments_8hpp.html#a59b5c69638e8c4708afe4badc4861819">MomentZ</a> (arma::vec4 rottor_vel)</td></tr>
+<tr class="separator:a59b5c69638e8c4708afe4badc4861819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>this header deals with forces and noments calculations. </p>
+<div class="textblock"><p>this header deals with forces and moments calculations. </p>
 <dl class="section author"><dt>Author</dt><dd>Yochai Weissman</dd></dl>
-<dl class="section date"><dt>Date</dt><dd>20/5/2023 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27/5/2023 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="forces_and_moments_8hpp_source.html">forcesAndMoments.hpp</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a5bf2109fe0b619c6f14a1f8625492d06" name="a5bf2109fe0b619c6f14a1f8625492d06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bf2109fe0b619c6f14a1f8625492d06">&#9670;&#160;</a></span>angularAcceleration()</h2>
+<a id="a31a94b6e6c4b0e370ae078ab950950ee" name="a31a94b6e6c4b0e370ae078ab950950ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31a94b6e6c4b0e370ae078ab950950ee">&#9670;&#160;</a></span>angularAcceleration()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">arma::mat angularAcceleration </td>
+          <td class="memname">arma::vec3 angularAcceleration </td>
           <td>(</td>
-          <td class="paramtype">arma::mat&#160;</td>
-          <td class="paramname"><em>R</em>, </td>
+          <td class="paramtype">arma::vec3&#160;</td>
+          <td class="paramname"><em>Moments</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>Thrust</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>m</em>&#160;</td>
+          <td class="paramtype">arma::vec3&#160;</td>
+          <td class="paramname"><em>ang_vel</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -141,78 +133,34 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This method will calculate the angular acceleration in the body frame. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ang_vel</td><td>(arma::Mat&lt;float&gt;) - vector size 3 of angular velocities. </td></tr>
-    <tr><td class="paramname">Moments(arma::Mat&lt;float&gt;)</td><td>- vector size 3 of moments. </td></tr>
-    <tr><td class="paramname">r(float)</td><td>- drone mass. </td></tr>
+    <tr><td class="paramname">ang_vel</td><td>(arma::vec3) - vector size 3 of angular velocities. </td></tr>
+    <tr><td class="paramname">Moments(arma::vec3)</td><td>- vector size 3 of moments. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>an arma::Mat&lt;float&gt; represent the angular accelerations. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>an arma::vec3 represent the angular accelerations. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="forces_and_moments_8cpp_source.html#l00038">38</a> of file <a class="el" href="forces_and_moments_8cpp_source.html">forcesAndMoments.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a63086c2d4b914ccf4d22d0f1dda2e209" name="a63086c2d4b914ccf4d22d0f1dda2e209"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63086c2d4b914ccf4d22d0f1dda2e209">&#9670;&#160;</a></span>Forces()</h2>
+<a id="ad00b30a4b60e2f27ddc36afa99f1ab4c" name="ad00b30a4b60e2f27ddc36afa99f1ab4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad00b30a4b60e2f27ddc36afa99f1ab4c">&#9670;&#160;</a></span>linearAcceleration()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Forces </td>
+          <td class="memname">arma::vec3 linearAcceleration </td>
           <td>(</td>
-          <td class="paramtype">arma::mat&#160;</td>
-          <td class="paramname"><em>rottor_vel</em>, </td>
+          <td class="paramtype">arma::vec4&#160;</td>
+          <td class="paramname"><em>quaternion</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>km</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>This method will calculate the forces generated by the thrust and the tilt angle. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">roll</td><td>(float) - all 4 rottor rotation velocity with direction. </td></tr>
-    <tr><td class="paramname">pitch</td><td>(float) - moment coefficient. </td></tr>
-    <tr><td class="paramname">Thrusts</td><td>(float) - sum of all thrust. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>an arma::Mat&lt;float&gt; represents the [Fxb,Fyb,Fzw]. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="forces_and_moments_8cpp_source.html#l00041">41</a> of file <a class="el" href="forces_and_moments_8cpp_source.html">forcesAndMoments.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a7363e57cc56d2cac7d033f7cb2b6b97b" name="a7363e57cc56d2cac7d033f7cb2b6b97b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7363e57cc56d2cac7d033f7cb2b6b97b">&#9670;&#160;</a></span>linearAcceleration()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">arma::mat linearAcceleration </td>
-          <td>(</td>
-          <td class="paramtype">arma::Mat&lt; float &gt;&#160;</td>
-          <td class="paramname"><em>R</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>Thrust</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>m</em>&#160;</td>
+          <td class="paramtype">arma::vec4&#160;</td>
+          <td class="paramname"><em>rotors_speed</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -223,94 +171,73 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This method will calculate the linear acceleration in the world frame. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">R</td><td>(arma::Mat&lt;float&gt;) - rotation matrix. </td></tr>
-    <tr><td class="paramname">Thrust(float)</td><td>- total drone thrust. </td></tr>
-    <tr><td class="paramname">m(float)</td><td>- drone mass. </td></tr>
+    <tr><td class="paramname">quaternion</td><td>(arma::vec4) - quaternion represent the world to body frame transformation. </td></tr>
+    <tr><td class="paramname">rottor_speed(arma::vec4)</td><td>- rottor speeds. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>an arma::Mat&lt;float&gt; represent the lineaar accelerations. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>an arma::vec3 represent the linear accelerations. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="forces_and_moments_8cpp_source.html#l00013">13</a> of file <a class="el" href="forces_and_moments_8cpp_source.html">forcesAndMoments.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="forces_and_moments_8cpp_source.html#l00019">19</a> of file <a class="el" href="forces_and_moments_8cpp_source.html">forcesAndMoments.cpp</a>.</p>
 
 </div>
 </div>
-<a id="adf0035fa4dec0e47b319c2fdafc6507d" name="adf0035fa4dec0e47b319c2fdafc6507d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf0035fa4dec0e47b319c2fdafc6507d">&#9670;&#160;</a></span>MomentsXY()</h2>
+<a id="a8c7f07b8dd350dac68f2838b3262585e" name="a8c7f07b8dd350dac68f2838b3262585e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c7f07b8dd350dac68f2838b3262585e">&#9670;&#160;</a></span>MomentsXY()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">arma::mat MomentsXY </td>
+          <td class="memname">arma::vec2 MomentsXY </td>
           <td>(</td>
-          <td class="paramtype">arma::Mat&lt; float &gt;&#160;</td>
-          <td class="paramname"><em>Thrusts</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">arma::vec4&#160;</td>
+          <td class="paramname"><em>rottor_speeds</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>L</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>This method will calculate the x_body and y_body moments. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Thrusts</td><td>(arma::Mat&lt;float&gt;) - vector size 3 of angular velocities. </td></tr>
-    <tr><td class="paramname">L</td><td>(float) - vector size 3 of moments. </td></tr>
+    <tr><td class="paramname">rottor_speeds</td><td>(arma::vec4) - vector size e of rottor rotations. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>an arma::Mat&lt;float&gt; represent [Mxb,Myb]. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>an arma::vec2 represent [Mxb,Myb]. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="forces_and_moments_8cpp_source.html#l00027">27</a> of file <a class="el" href="forces_and_moments_8cpp_source.html">forcesAndMoments.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="forces_and_moments_8cpp_source.html#l00059">59</a> of file <a class="el" href="forces_and_moments_8cpp_source.html">forcesAndMoments.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a51a1417a977d88e609aa10a8e59d5cdf" name="a51a1417a977d88e609aa10a8e59d5cdf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51a1417a977d88e609aa10a8e59d5cdf">&#9670;&#160;</a></span>MomentsZ()</h2>
+<a id="a59b5c69638e8c4708afe4badc4861819" name="a59b5c69638e8c4708afe4badc4861819"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b5c69638e8c4708afe4badc4861819">&#9670;&#160;</a></span>MomentZ()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float MomentsZ </td>
+          <td class="memname">float MomentZ </td>
           <td>(</td>
-          <td class="paramtype">arma::mat&#160;</td>
-          <td class="paramname"><em>rottor_vel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">arma::vec4&#160;</td>
+          <td class="paramname"><em>rottor_vel</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>km</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>This method will calculate the x_body and y_body moments. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">rottor_vel</td><td>(arma::Mat&lt;float&gt;) - all 4 rottor rotation velocity with direction. </td></tr>
-    <tr><td class="paramname">km</td><td>(float) - moment coefficient. </td></tr>
+    <tr><td class="paramname">rottor_vel</td><td>(arma::vec4&gt;) - all 4 rottor rotation velocity(only size and not direction). </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>an float represent Mz. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="forces_and_moments_8cpp_source.html#l00080">80</a> of file <a class="el" href="forces_and_moments_8cpp_source.html">forcesAndMoments.cpp</a>.</p>
+
 </div>
 </div>
-<a id="a72020b4ff9f0707c7fabe4a08f1f548f" name="a72020b4ff9f0707c7fabe4a08f1f548f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72020b4ff9f0707c7fabe4a08f1f548f">&#9670;&#160;</a></span>rottorThrust()</h2>
+<a id="a5bfa2fc14b0ff8cb6aa1f7c3ab0c64aa" name="a5bfa2fc14b0ff8cb6aa1f7c3ab0c64aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bfa2fc14b0ff8cb6aa1f7c3ab0c64aa">&#9670;&#160;</a></span>rottorThrust()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -319,31 +246,20 @@ Functions</h2></td></tr>
           <td class="memname">float rottorThrust </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>kf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>rottor_speed</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>omega</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>This method will calculate the thruset of a single rottor based on the rottor speed. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">kf</td><td>(float) - the rotor thrust coefficient. </td></tr>
-    <tr><td class="paramname">omega(float)</td><td>- the rottor anular speed. </td></tr>
+    <tr><td class="paramname">rottor_speed(float)</td><td>- the rottor anular speed. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>an float represent the rottor thrust. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a float represent the rottor thrust. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="forces_and_moments_8cpp_source.html#l00006">6</a> of file <a class="el" href="forces_and_moments_8cpp_source.html">forcesAndMoments.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="forces_and_moments_8cpp_source.html#l00009">9</a> of file <a class="el" href="forces_and_moments_8cpp_source.html">forcesAndMoments.cpp</a>.</p>
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['rotationmatrix_0',['rotationMatrix',['../frames_conversion_8cpp.html#a5c415fd002f2a5c80373393d659e3cb0',1,'rotationMatrix(arma::Mat&lt; float &gt; Rx, arma::Mat&lt; float &gt; Ry, arma::Mat&lt; float &gt; Rz):&#160;framesConversion.cpp'],['../frames_conversion_8hpp.html#a5c415fd002f2a5c80373393d659e3cb0',1,'rotationMatrix(arma::Mat&lt; float &gt; Rx, arma::Mat&lt; float &gt; Ry, arma::Mat&lt; float &gt; Rz):&#160;framesConversion.cpp']]],
-  ['rottorthrust_1',['rottorThrust',['../forces_and_moments_8cpp.html#a72020b4ff9f0707c7fabe4a08f1f548f',1,'rottorThrust(float kf, float omega):&#160;forcesAndMoments.cpp'],['../forces_and_moments_8hpp.html#a72020b4ff9f0707c7fabe4a08f1f548f',1,'rottorThrust(float kf, float omega):&#160;forcesAndMoments.cpp']]]
+  ['initialforcesandmoments_0',['initialForcesAndMoments',['../interface_8cpp.html#a66fe93f7f3d8024a0acd112dfc9d829c',1,'initialForcesAndMoments(arma::vec4 rottors_velocity, arma::vec4 quaternion_initial):&#160;interface.cpp'],['../interface_8hpp.html#a66fe93f7f3d8024a0acd112dfc9d829c',1,'initialForcesAndMoments(arma::vec4 rottors_velocity, arma::vec4 quaternion_initial):&#160;interface.cpp']]],
+  ['initialquaternion_1',['initialQuaternion',['../frames_conversion_8cpp.html#a9042dbcbd303b9c3fa9ce8e807a790e5',1,'initialQuaternion(arma::vec3 Euler):&#160;framesConversion.cpp'],['../frames_conversion_8hpp.html#a9042dbcbd303b9c3fa9ce8e807a790e5',1,'initialQuaternion(arma::vec3 Euler):&#160;framesConversion.cpp']]]
 ];

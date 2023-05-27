@@ -1,6 +1,7 @@
 {
   "dependencies": [
     "cpputest",
-    "armadillo"
+    "armadillo",
+    "sciplot"
   ]
 }

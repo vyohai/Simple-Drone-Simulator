@@ -59,15 +59,16 @@ std::array<float, 13> singleTimeUpdate(arma::vec4 quat_before, arma::vec3 positi
 }
 
 
-
-std::vector<std::array<float,13>> droneSimulation(float T, std::function<arma::vec4(std::array<float,13>,std::array<float,13>)> controller)
+std::vector<std::array<float,13>> droneSimulation(float T, arma::vec4 rottors_speed_initial, std::function<arma::vec4(arma::vec3,std::array<float,13>,std::array<float,13>,std::array<std::array<float,3>,6>, float *)> controller, arma::vec3 referance, std::array<std::array<float,3>,6> controllers_coefficients)
 {
   //define output
   std::vector<std::array<float,13>> output;
-  
 
-  std::array<float,13> inp={0,0,0,0,0,0,0,0,0,0,0,0,0};
-  arma::vec4 rottors_speed=controller(inp,inp);
+  //definer roll and pitch and yaw referanc shold be ereased
+  arma::vec3 euler_ref={0,0,0};
+  
+  arma::vec4 rottors_speed=rottors_speed_initial;
+  
   //define initial condition
   arma::vec3 euler_angles_initial={0,0,0};
   arma::vec4 quaternion_initial=initialQuaternion(euler_angles_initial);
@@ -82,18 +83,36 @@ std::vector<std::array<float,13>> droneSimulation(float T, std::function<arma::v
   arma::vec3 angular_velocity_previous=angular_velocity_initial;
 
   
+  float Integral_alt=0;
+  // float Integral_x=0;
+  // float Integral_y=0;
+  // float Integral_roll=0;
+  // float Integral_pitch=0;
+  // float Integral_yaw=0;
+
 
   float t=0.0;
   int it=0;
   while (t<T)
   {
 
-    
     std::array<float,13> new_state=singleTimeUpdate(quaternion_previous,\
                                       position_previous,\
                                       velocity_previous,\
                                       angular_velocity_previous,\
                                       rottors_speed);
+    if (it>0)
+    {
+      // error calculation:x,y,z,roll,pitch,yaw
+      arma::vec3 euler_error=convertStateVectorForController(new_state,'e')-euler_ref;
+      arma::vec3 pos_error=convertStateVectorForController(new_state,'p')-referance;
+      
+      //get contrrol command
+      rottors_speed=controller(referance,new_state,output[it-1],\
+                                controllers_coefficients,&Integral_alt);
+                       
+    }
+                                      
     
     quaternion_previous={new_state[0],new_state[1],new_state[2],new_state[3]};
     position_previous={new_state[4],new_state[5],new_state[6]};
@@ -101,31 +120,11 @@ std::vector<std::array<float,13>> droneSimulation(float T, std::function<arma::v
     angular_velocity_previous={new_state[10],new_state[11],new_state[12]};
 
     output.push_back(new_state);
-  
-  std::cout<<"t="<<t;
-  std::cout<<" - pos={ ";
-  for (size_t i = 4; i < 7; i++)
-  {
-     std::cout<<output[it][i]<<",";
-  }
-
-  std::cout<<"}, vel={ ";
-  for (size_t i = 7; i < 10; i++)
-  {
-     std::cout<<output[it][i]<<",";
-  }
-
-  std::cout<<"}, ang_vel={ ";
-  for (size_t i = 10; i < 13; i++)
-  {
-     std::cout<<output[it][i]<<",";
-  }
-  std::cout<<"}"<<std::endl;
+ 
   
   t=t+DT;
   it=it+1;
   }
-  
   
 
   return output;
@@ -133,11 +132,35 @@ std::vector<std::array<float,13>> droneSimulation(float T, std::function<arma::v
 
 arma::vec4 updateOrientation(arma::vec4 quaternion_before, arma::vec3 angular_rate)
 {
-    arma::vec4 S={0,angular_rate(0),angular_rate(1),angular_rate(2)};
+    arma::vec4 S={0, angular_rate(0),angular_rate(1),angular_rate(2)};
 
     arma::vec4 dQ=0.5*quaternionMultiplication(quaternion_before,S);
 
-    arma::vec4 Q_updated=quaternion_before+dQ*DT;
-    
+    arma::vec4 Q_updated=quaternion_before+dQ*DT; 
+ 
     return Q_updated;
+}
+
+
+arma::vec3 convertStateVectorForController(std::array<float,13> state_vector, char type)
+{
+  arma::vec3 output={-1,-1,-1};
+
+  if (type=='e')
+  {
+    arma::vec4 quat={state_vector[0], state_vector[1], state_vector[2], state_vector[3]};
+    output=quaternionToEuler(quat);  
+  }
+  else if (type=='p')
+  {
+    output={state_vector[4], state_vector[5],state_vector[6]};
+  }
+  else
+  {
+    std::cout<<"wrong char* in updateEquations.convertStateVectorForController"<<std::endl;
+    return {-1,-1,-1};
+  }
+  
+  return output;
+  
 }

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simple drone simulator: C:/Users/User/Desktop/GITHUB-REPOS/Simple-Drone-Simulator/src/dynamics/forcesAndMoments/forcesAndMoments.hpp Source File</title>
+<title>Simple Drone Simulator: C:/Users/User/Desktop/GITHUB-REPOS/Simple-Drone-Simulator/src/dynamics/forcesAndMoments/forcesAndMoments.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple drone simulator<span id="projectnumber">&#160;1</span>
+   <div id="projectname">Simple Drone Simulator<span id="projectnumber">&#160;1</span>
    </div>
   </td>
  </tr>
@@ -80,23 +80,23 @@ $(function() {
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;armadillo&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">float</span> <a class="code hl_function" href="forces_and_moments_8hpp.html#a72020b4ff9f0707c7fabe4a08f1f548f">rottorThrust</a>(<span class="keywordtype">float</span> kf, <span class="keywordtype">float</span> omega);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>arma::mat <a class="code hl_function" href="forces_and_moments_8hpp.html#a7363e57cc56d2cac7d033f7cb2b6b97b">linearAcceleration</a>(arma::Mat&lt;float&gt; R, <span class="keywordtype">float</span> Thrust, <span class="keywordtype">float</span> m);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="forces_and_moments_8hpp.html#a5bf2109fe0b619c6f14a1f8625492d06">   38</a></span>arma::mat <a class="code hl_function" href="forces_and_moments_8hpp.html#a5bf2109fe0b619c6f14a1f8625492d06">angularAcceleration</a>(arma::mat R, <span class="keywordtype">float</span> Thrust, <span class="keywordtype">float</span> m);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>arma::mat <a class="code hl_function" href="forces_and_moments_8hpp.html#adf0035fa4dec0e47b319c2fdafc6507d">MomentsXY</a>(arma::Mat&lt;float&gt; Thrusts, <span class="keywordtype">float</span> L);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="forces_and_moments_8hpp.html#a51a1417a977d88e609aa10a8e59d5cdf">   54</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="forces_and_moments_8hpp.html#a51a1417a977d88e609aa10a8e59d5cdf">MomentsZ</a>(arma::mat rottor_vel, <span class="keywordtype">float</span> km);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">float</span> <a class="code hl_function" href="forces_and_moments_8hpp.html#a63086c2d4b914ccf4d22d0f1dda2e209">Forces</a>(arma::mat rottor_vel, <span class="keywordtype">float</span> km);</div>
-<div class="ttc" id="aforces_and_moments_8hpp_html_a51a1417a977d88e609aa10a8e59d5cdf"><div class="ttname"><a href="forces_and_moments_8hpp.html#a51a1417a977d88e609aa10a8e59d5cdf">MomentsZ</a></div><div class="ttdeci">float MomentsZ(arma::mat rottor_vel, float km)</div></div>
-<div class="ttc" id="aforces_and_moments_8hpp_html_a5bf2109fe0b619c6f14a1f8625492d06"><div class="ttname"><a href="forces_and_moments_8hpp.html#a5bf2109fe0b619c6f14a1f8625492d06">angularAcceleration</a></div><div class="ttdeci">arma::mat angularAcceleration(arma::mat R, float Thrust, float m)</div></div>
-<div class="ttc" id="aforces_and_moments_8hpp_html_a63086c2d4b914ccf4d22d0f1dda2e209"><div class="ttname"><a href="forces_and_moments_8hpp.html#a63086c2d4b914ccf4d22d0f1dda2e209">Forces</a></div><div class="ttdeci">float Forces(arma::mat rottor_vel, float km)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00041">forcesAndMoments.cpp:41</a></div></div>
-<div class="ttc" id="aforces_and_moments_8hpp_html_a72020b4ff9f0707c7fabe4a08f1f548f"><div class="ttname"><a href="forces_and_moments_8hpp.html#a72020b4ff9f0707c7fabe4a08f1f548f">rottorThrust</a></div><div class="ttdeci">float rottorThrust(float kf, float omega)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00006">forcesAndMoments.cpp:6</a></div></div>
-<div class="ttc" id="aforces_and_moments_8hpp_html_a7363e57cc56d2cac7d033f7cb2b6b97b"><div class="ttname"><a href="forces_and_moments_8hpp.html#a7363e57cc56d2cac7d033f7cb2b6b97b">linearAcceleration</a></div><div class="ttdeci">arma::mat linearAcceleration(arma::Mat&lt; float &gt; R, float Thrust, float m)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00013">forcesAndMoments.cpp:13</a></div></div>
-<div class="ttc" id="aforces_and_moments_8hpp_html_adf0035fa4dec0e47b319c2fdafc6507d"><div class="ttname"><a href="forces_and_moments_8hpp.html#adf0035fa4dec0e47b319c2fdafc6507d">MomentsXY</a></div><div class="ttdeci">arma::mat MomentsXY(arma::Mat&lt; float &gt; Thrusts, float L)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00027">forcesAndMoments.cpp:27</a></div></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">float</span> <a class="code hl_function" href="forces_and_moments_8hpp.html#a5bfa2fc14b0ff8cb6aa1f7c3ab0c64aa">rottorThrust</a>( <span class="keywordtype">float</span> rottor_speed);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>arma::vec3 <a class="code hl_function" href="forces_and_moments_8hpp.html#ad00b30a4b60e2f27ddc36afa99f1ab4c">linearAcceleration</a>(arma::vec4 quaternion, arma::vec4 rotors_speed);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>arma::vec3 <a class="code hl_function" href="forces_and_moments_8hpp.html#a31a94b6e6c4b0e370ae078ab950950ee">angularAcceleration</a>(arma::vec3 Moments, arma::vec3 ang_vel);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>arma::vec2 <a class="code hl_function" href="forces_and_moments_8hpp.html#a8c7f07b8dd350dac68f2838b3262585e">MomentsXY</a>(arma::vec4 rottor_speeds);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">float</span> <a class="code hl_function" href="forces_and_moments_8hpp.html#a59b5c69638e8c4708afe4badc4861819">MomentZ</a>(arma::vec4 rottor_vel);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="ttc" id="aforces_and_moments_8hpp_html_a31a94b6e6c4b0e370ae078ab950950ee"><div class="ttname"><a href="forces_and_moments_8hpp.html#a31a94b6e6c4b0e370ae078ab950950ee">angularAcceleration</a></div><div class="ttdeci">arma::vec3 angularAcceleration(arma::vec3 Moments, arma::vec3 ang_vel)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00038">forcesAndMoments.cpp:38</a></div></div>
+<div class="ttc" id="aforces_and_moments_8hpp_html_a59b5c69638e8c4708afe4badc4861819"><div class="ttname"><a href="forces_and_moments_8hpp.html#a59b5c69638e8c4708afe4badc4861819">MomentZ</a></div><div class="ttdeci">float MomentZ(arma::vec4 rottor_vel)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00080">forcesAndMoments.cpp:80</a></div></div>
+<div class="ttc" id="aforces_and_moments_8hpp_html_a5bfa2fc14b0ff8cb6aa1f7c3ab0c64aa"><div class="ttname"><a href="forces_and_moments_8hpp.html#a5bfa2fc14b0ff8cb6aa1f7c3ab0c64aa">rottorThrust</a></div><div class="ttdeci">float rottorThrust(float rottor_speed)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00009">forcesAndMoments.cpp:9</a></div></div>
+<div class="ttc" id="aforces_and_moments_8hpp_html_a8c7f07b8dd350dac68f2838b3262585e"><div class="ttname"><a href="forces_and_moments_8hpp.html#a8c7f07b8dd350dac68f2838b3262585e">MomentsXY</a></div><div class="ttdeci">arma::vec2 MomentsXY(arma::vec4 rottor_speeds)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00059">forcesAndMoments.cpp:59</a></div></div>
+<div class="ttc" id="aforces_and_moments_8hpp_html_ad00b30a4b60e2f27ddc36afa99f1ab4c"><div class="ttname"><a href="forces_and_moments_8hpp.html#ad00b30a4b60e2f27ddc36afa99f1ab4c">linearAcceleration</a></div><div class="ttdeci">arma::vec3 linearAcceleration(arma::vec4 quaternion, arma::vec4 rotors_speed)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00019">forcesAndMoments.cpp:19</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,10 +1,10 @@
 /** 
 * @file forcesAndMoments.hpp 
-* @brief this header deals with forces and noments calculations. 
+* @brief this header deals with forces and moments calculations. 
 * 
 * @author Yochai Weissman 
 * 
-* @date 20/5/2023
+* @date 27/5/2023
 */
 
 
@@ -13,7 +13,7 @@
 
 /** 
 * This method will calculate the thruset of a single rottor based on the rottor speed. 
-* @param omega(float) - the rottor anular speed.
+* @param rottor_speed(float) - the rottor anular speed.
 * @return a float represent the rottor thrust.
 */
 float rottorThrust( float rottor_speed);
