@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;1</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;1.1</span>
    </div>
   </td>
  </tr>
@@ -93,7 +93,7 @@ $(function() {
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    std::string simulation_name=<span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;type your simulation name: &quot;</span>&lt;&lt;std::endl; <span class="comment">// Type a number and press enter</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    std::cin &gt;&gt; simulation_name; <span class="comment">// Get user input from the keyboard</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    std::string dirName = <span class="stringliteral">&quot;C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\simulations\\&quot;</span>; </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    std::string dirName = <a class="code hl_define" href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">SIMULATION_DIR</a>; </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::string simulation_dir=dirName+simulation_name+<span class="stringliteral">&quot;\\&quot;</span>;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> * c = simulation_dir.c_str();</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    _mkdir(c);</div>
@@ -168,6 +168,7 @@ $(function() {
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
 <div class="ttc" id="aconfig_8hpp_html_a21aab39198eea44ef3baf43bb79e9f1b"><div class="ttname"><a href="config_8hpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a></div><div class="ttdeci">#define HOVER_THRUST</div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00015">config.hpp:15</a></div></div>
+<div class="ttc" id="aconfig_8hpp_html_afa493d7a7a020e22fd4b84584b86063f"><div class="ttname"><a href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">SIMULATION_DIR</a></div><div class="ttdeci">#define SIMULATION_DIR</div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00022">config.hpp:22</a></div></div>
 <div class="ttc" id="aforces_and_moments_8cpp_html_a31a94b6e6c4b0e370ae078ab950950ee"><div class="ttname"><a href="forces_and_moments_8cpp.html#a31a94b6e6c4b0e370ae078ab950950ee">angularAcceleration</a></div><div class="ttdeci">arma::vec3 angularAcceleration(arma::vec3 Moments, arma::vec3 ang_vel)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00039">forcesAndMoments.cpp:39</a></div></div>
 <div class="ttc" id="aforces_and_moments_8cpp_html_a59b5c69638e8c4708afe4badc4861819"><div class="ttname"><a href="forces_and_moments_8cpp.html#a59b5c69638e8c4708afe4badc4861819">MomentZ</a></div><div class="ttdeci">float MomentZ(arma::vec4 rottor_vel)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00081">forcesAndMoments.cpp:81</a></div></div>
 <div class="ttc" id="aforces_and_moments_8cpp_html_ad00b30a4b60e2f27ddc36afa99f1ab4c"><div class="ttname"><a href="forces_and_moments_8cpp.html#ad00b30a4b60e2f27ddc36afa99f1ab4c">linearAcceleration</a></div><div class="ttdeci">arma::vec3 linearAcceleration(arma::vec4 quaternion, arma::vec4 rotors_speed)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00019">forcesAndMoments.cpp:19</a></div></div>
