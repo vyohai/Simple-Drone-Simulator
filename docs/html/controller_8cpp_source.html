@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simple Drone Simulator: C:/Users/User/Desktop/GITHUB-REPOS/Simple-Drone-Simulator/src/controller/controller.cpp Source File</title>
+<title>Simple-Drone-Simulator: C:/Users/User/Desktop/GITHUB-REPOS/Simple-Drone-Simulator/src/controller/controller.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple Drone Simulator<span id="projectnumber">&#160;1</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;1</span>
    </div>
   </td>
  </tr>
@@ -113,10 +113,10 @@ $(function() {
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    arma::vec4 output={0,0,0,0};</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    output(0)=<a class="code hl_define" href="controller_8cpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a>+thrust_cmd+yaw_cmd+pitch_cmd+roll_cmd;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    output(1)=<a class="code hl_define" href="controller_8cpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a>+thrust_cmd-yaw_cmd+pitch_cmd-roll_cmd;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    output(2)=<a class="code hl_define" href="controller_8cpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a>+thrust_cmd+yaw_cmd-pitch_cmd-roll_cmd;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    output(3)=<a class="code hl_define" href="controller_8cpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a>+thrust_cmd-yaw_cmd-pitch_cmd+roll_cmd;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    output(0)=<a class="code hl_define" href="config_8hpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a>+thrust_cmd+yaw_cmd+pitch_cmd+roll_cmd;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    output(1)=<a class="code hl_define" href="config_8hpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a>+thrust_cmd-yaw_cmd+pitch_cmd-roll_cmd;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    output(2)=<a class="code hl_define" href="config_8hpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a>+thrust_cmd+yaw_cmd-pitch_cmd-roll_cmd;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    output(3)=<a class="code hl_define" href="config_8hpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a>+thrust_cmd-yaw_cmd-pitch_cmd+roll_cmd;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">//this beacause the commands is responsible for absolute velocity and not for direction.(+/-) </span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; 4; i++)</div>
@@ -151,13 +151,13 @@ $(function() {
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">return</span> (P_term + I_term - D_term);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
-<div class="ttc" id="aconfig_8hpp_html_a943f07034774ef1261d62cd0d3d1fec9"><div class="ttname"><a href="config_8hpp.html#a943f07034774ef1261d62cd0d3d1fec9">DT</a></div><div class="ttdeci">#define DT</div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00001">config.hpp:1</a></div></div>
+<div class="ttc" id="aconfig_8hpp_html_a21aab39198eea44ef3baf43bb79e9f1b"><div class="ttname"><a href="config_8hpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a></div><div class="ttdeci">#define HOVER_THRUST</div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00015">config.hpp:15</a></div></div>
+<div class="ttc" id="aconfig_8hpp_html_a943f07034774ef1261d62cd0d3d1fec9"><div class="ttname"><a href="config_8hpp.html#a943f07034774ef1261d62cd0d3d1fec9">DT</a></div><div class="ttdeci">#define DT</div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00002">config.hpp:2</a></div></div>
 <div class="ttc" id="acontroller_8cpp_html_a19049591d3146b7a0521f63da7749da0"><div class="ttname"><a href="controller_8cpp.html#a19049591d3146b7a0521f63da7749da0">controller</a></div><div class="ttdeci">arma::vec4 controller(arma::vec3 referance, std::array&lt; float, 13 &gt; current_step, std::array&lt; float, 13 &gt; previous_step, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt; controllers_coefficients, float *Integral_altitude)</div><div class="ttdef"><b>Definition:</b> <a href="controller_8cpp_source.html#l00009">controller.cpp:9</a></div></div>
-<div class="ttc" id="acontroller_8cpp_html_a21aab39198eea44ef3baf43bb79e9f1b"><div class="ttname"><a href="controller_8cpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a></div><div class="ttdeci">#define HOVER_THRUST</div></div>
 <div class="ttc" id="acontroller_8cpp_html_a387ae94b4f1b02e21b7f0f43751ac126"><div class="ttname"><a href="controller_8cpp.html#a387ae94b4f1b02e21b7f0f43751ac126">PID</a></div><div class="ttdeci">float PID(float state_before, float state_current, float Integral, std::array&lt; float, 3 &gt; pid_coefficients, float referance)</div><div class="ttdef"><b>Definition:</b> <a href="controller_8cpp_source.html#l00055">controller.cpp:55</a></div></div>
 <div class="ttc" id="acontroller_8cpp_html_a4987e672651d215252d1de6b2b2fd097"><div class="ttname"><a href="controller_8cpp.html#a4987e672651d215252d1de6b2b2fd097">mixer</a></div><div class="ttdeci">arma::vec4 mixer(float thrust_cmd, float yaw_cmd, float pitch_cmd, float roll_cmd)</div><div class="ttdef"><b>Definition:</b> <a href="controller_8cpp_source.html#l00034">controller.cpp:34</a></div></div>
 <div class="ttc" id="acontroller_8hpp_html"><div class="ttname"><a href="controller_8hpp.html">controller.hpp</a></div><div class="ttdoc">This file contain the controller and all its helper functions.</div></div>
-<div class="ttc" id="aupdate_equations_8cpp_html_a6d543db9e0b52431d5f5f55d3980a1b2"><div class="ttname"><a href="update_equations_8cpp.html#a6d543db9e0b52431d5f5f55d3980a1b2">convertStateVectorForController</a></div><div class="ttdeci">arma::vec3 convertStateVectorForController(std::array&lt; float, 13 &gt; state_vector, char type)</div><div class="ttdef"><b>Definition:</b> <a href="update_equations_8cpp_source.html#l00145">updateEquations.cpp:145</a></div></div>
+<div class="ttc" id="aupdate_equations_8cpp_html_a6d543db9e0b52431d5f5f55d3980a1b2"><div class="ttname"><a href="update_equations_8cpp.html#a6d543db9e0b52431d5f5f55d3980a1b2">convertStateVectorForController</a></div><div class="ttdeci">arma::vec3 convertStateVectorForController(std::array&lt; float, 13 &gt; state_vector, char type)</div><div class="ttdef"><b>Definition:</b> <a href="update_equations_8cpp_source.html#l00144">updateEquations.cpp:144</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

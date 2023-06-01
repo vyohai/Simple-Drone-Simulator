@@ -1,6 +1,8 @@
 #include <iostream>
 #include <array>
+#include <string>
 #include <cmath>
+#include <filesystem>
 
 #include <armadillo>
 
@@ -13,28 +15,28 @@
 
 #include "CppUTest/TestHarness.h"
 
-// TEST_GROUP(updateEquationsUpdateOrientationTestGroup)
-// {
+TEST_GROUP(updateEquationsUpdateOrientationTestGroup)
+{
     
-// };
+};
 
-// TEST(updateEquationsUpdateOrientationTestGroup, correctOutput)
-// {
-//     arma::vec3 angles_initial={30.0,30.0,30.0};
-//     arma::vec3 angles_updated_expected={32.0,30.0,30.0};
+TEST(updateEquationsUpdateOrientationTestGroup, correctOutput)
+{
+    arma::vec3 angles_initial={30.0,30.0,30.0};
+    arma::vec3 angles_updated_expected={32.0,30.0,30.0};
 
-//     arma::vec4 Q_init=initialQuaternion(angles_initial);
+    arma::vec4 Q_init=initialQuaternion(angles_initial);
 
-//     arma::vec3 angular_rate={deg2rad(100),0,0};
+    arma::vec3 angular_rate={deg2rad(100),0,0};
 
-//     arma::vec4 Q_updated=updateOrientation(Q_init,angular_rate);
+    arma::vec4 Q_updated=updateOrientation(Q_init,angular_rate);
 
-//     Q_updated=updateOrientation(Q_updated,angular_rate);
+    Q_updated=updateOrientation(Q_updated,angular_rate);
 
-//     arma::vec3 angles_updated=quaternionToEuler(Q_updated);
+    arma::vec3 angles_updated=quaternionToEuler(Q_updated);
 
-//     CHECK_TRUE(arma::approx_equal(angles_updated,angles_updated_expected,"absdiff",0.3));
-// }
+    CHECK_TRUE(arma::approx_equal(angles_updated,angles_updated_expected,"absdiff",0.3));
+}
 
 TEST_GROUP(updateEquationsSingleTimeUpdateTestGroup)
 {
@@ -202,75 +204,75 @@ TEST(updateEquationsSingleTimeUpdateTestGroup, correctOutputRotateZ)
     CHECK_TRUE(sum_difrences< 0.01);
 }
 
-// TEST(updateEquationsSingleTimeUpdateTestGroup, correctOutputAccelerateX)
-// {
-//     // to accelerate in x_world:
-//     // initial orientation pitch =-45 (rottors tilted forward)
-//     // to cancel gravity: T*cos(45)=10-->4*w_rot^2=10/cos(45)--> w=1.88
-//     // ax=10-->vx=10*DT=0.0ץ1
+TEST(updateEquationsSingleTimeUpdateTestGroup, correctOutputAccelerateX)
+{
+    // to accelerate in x_world:
+    // initial orientation pitch =-45 (rottors tilted forward)
+    // to cancel gravity: T*cos(45)=10-->4*w_rot^2=10/cos(45)--> w=1.88
+    // ax=10-->vx=10*DT=0.0ץ1
     
-//     arma::vec4 rottor_speeds={1.88,1.88,1.88,1.88};
+    arma::vec4 rottor_speeds={1.88,1.88,1.88,1.88};
 
-//     arma::vec3 initial_euler_angles={0,-45,0};
-//     arma::vec4 quaternion=initialQuaternion(initial_euler_angles);
-//     arma::vec3 position={0,0,0};
-//     arma::vec3 velocity={0,0,0};
-//     arma::vec3 angular_velocity={0,0,0};
-//     std::array<float, 13> new_state=singleTimeUpdate(quaternion,\
-//                                                     position,\
-//                                                     velocity,\
-//                                                     angular_velocity,\
-//                                                     rottor_speeds);
+    arma::vec3 initial_euler_angles={0,-45,0};
+    arma::vec4 quaternion=initialQuaternion(initial_euler_angles);
+    arma::vec3 position={0,0,0};
+    arma::vec3 velocity={0,0,0};
+    arma::vec3 angular_velocity={0,0,0};
+    std::array<float, 13> new_state=singleTimeUpdate(quaternion,\
+                                                    position,\
+                                                    velocity,\
+                                                    angular_velocity,\
+                                                    rottor_speeds);
 
-//         // expected no movement
-//     std::array<float, 13> new_state_expected={0,-0.382683,0,0.92388,\
-//                                                 0,0,0,\
-//                                                 0.1,0,0,\
-//                                                 0,0,0};
-//     float sum_difrences=0.0;
-//     for (int i = 0; i < 13; i++)
-//     {
-//         sum_difrences=sum_difrences+abs(new_state[i]-new_state_expected[i]);
-//         std::cout<<i<<" , "<<new_state[i]<<std::endl;
-//     }
+        // expected no movement
+    std::array<float, 13> new_state_expected={0,-0.382683,0,0.92388,\
+                                                0,0,0,\
+                                                0.1,0,0,\
+                                                0,0,0};
+    float sum_difrences=0.0;
+    for (int i = 0; i < 13; i++)
+    {
+        sum_difrences=sum_difrences+abs(new_state[i]-new_state_expected[i]);
+    }
 
-//     CHECK_TRUE(sum_difrences< 0.01);
+    CHECK_TRUE(sum_difrences< 0.01);
     
-// }
+}
 
-// TEST(updateEquationsSingleTimeUpdateTestGroup, correctOutputAccelerateY)
-// {
-//     // to accelerate in x_world:
-//     // initial orientation roll =45 (rottors tilted right)
-//     // to cancel gravity: T*cos(45)=10-->4*w_rot^2=10/cos(45)--> w=1.88
-//     // ay=10-->vy=10*DT=0.0ץ1
+TEST(updateEquationsSingleTimeUpdateTestGroup, correctOutputAccelerateY)
+{
+    // to accelerate in y_world:
+    // initial orientation roll =45 (rottors tilted right)
+    // to cancel gravity: T*cos(45)=10-->4*w_rot^2=10/cos(45)--> w=1.88
+    // ay=10-->vy=10*DT=0.ץ1
 
-//     arma::vec4 rottor_speeds={1.88,1.88,1.88,1.88};
+    arma::vec4 rottor_speeds={1.88,1.88,1.88,1.88};
 
-//     arma::vec3 initial_euler_angles={0,0,45};
-//     arma::vec4 quaternion=initialQuaternion(initial_euler_angles);
-//     arma::vec3 position={0,0,0};
-//     arma::vec3 velocity={0,0,0};
-//     arma::vec3 angular_velocity={0,0,0};
-//     std::array<float, 13> new_state=singleTimeUpdate(quaternion,\
-//                                                     position,\
-//                                                     velocity,\
-//                                                     angular_velocity,\
-//                                                     rottor_speeds);
+    arma::vec3 initial_euler_angles={45,0,0};
+    arma::vec4 quaternion=initialQuaternion(initial_euler_angles);
+    arma::vec3 position={0,0,0};
+    arma::vec3 velocity={0,0,0};
+    arma::vec3 angular_velocity={0,0,0};
+    std::array<float, 13> new_state=singleTimeUpdate(quaternion,\
+                                                    position,\
+                                                    velocity,\
+                                                    angular_velocity,\
+                                                    rottor_speeds);
 
-//     // expected no movement
-//     std::array<float, 13> new_state_expected={0.3827,0,0,0.9239,\
-//                                                 0,0,0,\
-//                                                 0,0.01,0,\
-//                                                 0,0,0};
-//     float sum_difrences=0.0;
-//     for (int i = 0; i < 13; i++)
-//     {
-//         sum_difrences=sum_difrences+abs(new_state[i]-new_state_expected[i]);
-//     }
-//     CHECK_TRUE(sum_difrences< 0.01);
+    // expected no movement
+    std::array<float, 13> new_state_expected={0.3827,0,0,0.9239,\
+                                                0,0,0,\
+                                                0,0.1,0,\
+                                                0,0,0};
+    float sum_difrences=0.0;
+    for (int i = 0; i < 13; i++)
+    {
+        sum_difrences=sum_difrences+abs(new_state[i]-new_state_expected[i]);
+    }
+
+    CHECK_TRUE(sum_difrences< 0.01);
     
-// }
+}
 
 TEST_GROUP(updateEquationsDroneSimulationTestGroup)
 {
@@ -280,64 +282,72 @@ TEST_GROUP(updateEquationsDroneSimulationTestGroup)
 TEST(updateEquationsDroneSimulationTestGroup, correctOutput)
 {
     
-    std::array<std::string,7> directions={"up", "down", "hover", "right", "left", "forward", "backward" };
-    std::array<arma::vec4,7> thrusts={{{2,2,2,2},{1,1,1,1}, {HOVER_THRUST,HOVER_THRUST,HOVER_THRUST,HOVER_THRUST},\
-                                         {2,0,0,2}, {0,2,2,0}, {0,0,2,2}, {2,2,0,0} }};
-    // std::string simulation_dir="C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\tests\\checks";
-
-    for (size_t i = 0; i < 7; i++)
+    if (CREATE_TEST_CHECKS_GRAPHS)
     {
-       
-        std::string simulation_dir="C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\tests\\checks\\"+directions[i];
-
-        //simulation duration
-        float T=5.0;
+        std::cout<<"create new tests-checks graphs in "<<CHECKS_DIR<<std::endl;
+        // remove previous checks plots
+        std::filesystem::remove_all( std::string(CHECKS_DIR));
+        std::filesystem::create_directory(std::string(CHECKS_DIR));
         
-        //Thrusts
-        arma::vec4 rottors_velocity=thrusts[i];
+        std::array<std::string,7> directions={"up", "down", "hover", "right", "left", "forward", "backward" };
+        std::array<arma::vec4,7> thrusts={{{2,2,2,2},{1,1,1,1}, {HOVER_THRUST,HOVER_THRUST,HOVER_THRUST,HOVER_THRUST},\
+                                            {2,0,0,2}, {0,2,2,0}, {0,0,2,2}, {2,2,0,0} }};
 
-        //get acc and angular_acc
-        arma::vec3 euler_initial={0,0,0};
-        arma::vec4 quaternion_initial=initialQuaternion(euler_initial);
-          
-        // get controller coefficients
-        arma::vec3 K_altitude={0,0,0};
-
-        // the simulation
-        arma::vec3 position_referance={0,0,-5};
-        std::array<std::array<float,3>,6> pid_coeff={0,0, 0,\
-                                                        0.0f, 0.0f, 0.0f,\
-                                                        0.0f, 0.0f, 0.0f,\
-                                                        0.0f, 0.0f, 0.0f,\
-                                                        0.0f, 0.0f, 0.0f,\
-                                                        0.0f, 0.0f, 0.0f};
-        std::vector<std::array<float,13>> output=droneSimulation(T, rottors_velocity, controller,position_referance,pid_coeff);
+        for (size_t i = 0; i < 7; i++)
+        {
         
-        //create plots
+            std::string simulation_dir=std::string(CHECKS_DIR)+directions[i];
 
-        std::vector<float> altitude=getDataFromSimulation(output,'z');
-        std::string plot_name="alt";
-        singlePlot(altitude,simulation_dir,plot_name);
+            //simulation duration
+            float T=1;
+            
+            //Thrusts
+            arma::vec4 rottors_velocity=thrusts[i];
 
-        std::vector<float> x=getDataFromSimulation(output,'x');
-        plot_name="x";
-        singlePlot(x,simulation_dir,plot_name);
+            //get acc and angular_acc
+            arma::vec3 euler_initial={0,0,0};
+            arma::vec4 quaternion_initial=initialQuaternion(euler_initial);
+            
+            // get controller coefficients
+            arma::vec3 K_altitude={0,0,0};
 
-        std::vector<float> y=getDataFromSimulation(output,'y');
-        plot_name="y";
-        singlePlot(y,simulation_dir,plot_name);
-        std::vector<float> roll=getDataFromSimulation(output,'r');
-        plot_name="roll";
-        singlePlot(roll,simulation_dir,plot_name);
-        std::vector<float> pitch=getDataFromSimulation(output,'p');
-        plot_name="pitch";
-        singlePlot(pitch,simulation_dir,plot_name);
-        std::vector<float> yaw=getDataFromSimulation(output,'h');
-        plot_name="yaw";
-        singlePlot(yaw,simulation_dir,plot_name);
+            // the simulation
+            arma::vec3 position_referance={0,0,-5};
+            std::array<std::array<float,3>,6> pid_coeff={0,0, 0,\
+                                                            0.0f, 0.0f, 0.0f,\
+                                                            0.0f, 0.0f, 0.0f,\
+                                                            0.0f, 0.0f, 0.0f,\
+                                                            0.0f, 0.0f, 0.0f,\
+                                                            0.0f, 0.0f, 0.0f};
+            std::vector<std::array<float,13>> output=droneSimulation(T, rottors_velocity, controller,position_referance,pid_coeff);
+            
+            //create plots
 
-    
+            std::vector<float> altitude=getDataFromSimulation(output,'z');
+            std::string plot_name="alt";
+            singlePlot(altitude,simulation_dir,plot_name);
+
+            std::vector<float> x=getDataFromSimulation(output,'x');
+            plot_name="x";
+            singlePlot(x,simulation_dir,plot_name);
+
+            std::vector<float> y=getDataFromSimulation(output,'y');
+            plot_name="y";
+            singlePlot(y,simulation_dir,plot_name);
+            std::vector<float> roll=getDataFromSimulation(output,'r');
+            plot_name="roll";
+            singlePlot(roll,simulation_dir,plot_name);
+            std::vector<float> pitch=getDataFromSimulation(output,'p');
+            plot_name="pitch";
+            singlePlot(pitch,simulation_dir,plot_name);
+            std::vector<float> yaw=getDataFromSimulation(output,'h');
+            plot_name="yaw";
+            singlePlot(yaw,simulation_dir,plot_name);
+        
+        }
     }
+    
+    
     
    
 }

@@ -72,7 +72,7 @@ TEST(dynamicFramesConersionQuaternionMultiplicationTestGroup, correctOutput)
     arma::vec4 Q1={0.17677,0.30618,0.17677,0.91855};
     arma::vec4 Q2={0.0,1.75438,0,0};
     arma::vec4 Q3=quaternionMultiplication(Q1,Q2);
-    arma::vec4 Q_expected={-0.5371688, 0.31013455, 1.61150641, -0.31013455};
+    arma::vec4 Q_expected={-0.31012175, 1.61148575, 0.31012175, -0.53715607};
     CHECK_TRUE(arma::approx_equal(Q3,Q_expected,"absdiff",0.001));
 }
 

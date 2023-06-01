@@ -54,36 +54,42 @@ float deg2rad(float deg)
 
 arma::vec4 quaternionMultiplication(arma::vec4 Q1, arma::vec4 Q2)
 {
-    float a1=Q1[0];
-    float b1=Q1[1];
-    float c1=Q1[2];
-    float d1=Q1[3];
+    //Q=[qx,qy,qz,qw]
+    float qw1=Q1[3];
+    float qx1=Q1[0];
+    float qy1=Q1[1];
+    float qz1=Q1[2];
     
-    float a2=Q2[0];
-    float b2=Q2[1];
-    float c2=Q2[2];
-    float d2=Q2[3];
+    float qw2=Q2[3];
+    float qx2=Q2[0];
+    float qy2=Q2[1];
+    float qz2=Q2[2];
     
     arma::vec4 Q;
-    Q[0]=a1*a2-b1*b2-c1*c2-d1*d2;
-    Q[1]=a1*b2+b1*a2+c1*d2-d1*c2;
-    Q[2]=a1*c2-b1*d2+c1*a2+d1*b2;
-    Q[3]=a1*d2+b1*c2-c1*b2+d1*a2;
+
+    float qw=qw1*qw2-qx1*qx2-qy1*qy2-qz1*qz2;
+    float qx=qw1*qx2+qx1*qw2+qy1*qz2-qz1*qy2;
+    float qy=qw1*qy2-qx1*qz2+qy1*qw2+qz1*qx2;
+    float qz=qw1*qz2+qx1*qy2-qy1*qx2+qz1*qw2;
+
+    Q[3]=qw;
+    Q[0]=qx;
+    Q[1]=qy;
+    Q[2]=qz;
     
     return Q;
 }
 
 arma::vec3 quaternionVectorRotation(arma::vec4 Q1, arma::vec3 vec)
 {
-    Q1={Q1(2), -Q1(1), Q1(0), Q1(3)};
     arma::vec4 Q1_conj={-Q1(0), -Q1(1), -Q1(2), Q1(3)};
 
     arma::vec4 vec_as_quaternion={vec(0), vec(1), vec(2), 0};
 
-    arma::vec4 vec_as_quaternion_rotated= quaternionMultiplication(quaternionMultiplication(Q1_conj,vec_as_quaternion),Q1);
-    
+    arma::vec4 vec_as_quaternion_rotated= quaternionMultiplication(quaternionMultiplication(Q1,vec_as_quaternion),Q1_conj);
 
     arma::vec3 vec_rotated={vec_as_quaternion_rotated(0), vec_as_quaternion_rotated(1), vec_as_quaternion_rotated(2)};
+    
     return vec_rotated;
 }
 
@@ -95,13 +101,13 @@ arma::vec3 quaternionToEuler(arma::vec4 Q)
     float qz=Q[2];
     float qw=Q[3];
 
-   arma::mat R={{1-2*(qy*qy+qz*qz),2*(qx*qy-qw*qz),2*(qx*qz+qw*qy)},
-                {2*(qx*qy+qw*qz), 1-2*(qx*qx+qz*qz),2*(qy*qz-qw*qx)},
-                {2*(qx*qz-qw*qy),2*(qy*qz+qw*qx),1-2*(qx*qx+qy*qy)}};
+   arma::mat R={{pow(qw,2)+pow(qx,2)-pow(qy,2)-pow(qz,2),2*(qx*qy-qw*qz),2*(qx*qz+qw*qy)},
+                {2*(qx*qy+qw*qz), pow(qw,2)-pow(qx,2)+pow(qy,2)-pow(qz,2),2*(qy*qz-qw*qx)},
+                {2*(qx*qz-qw*qy),2*(qy*qz+qw*qx),pow(qw,2)-pow(qx,2)-pow(qy,2)+pow(qz,2)}};
 
-    float yaw=-atan2(R(2,1),R(2,2));
-    float pitch=asin(R(2,0));
-    float roll=atan2(R(1,0)/cos(pitch),R(0,0)/cos(pitch));
+    float pitch=-asin(R(2,0));
+    float roll=atan2(R(2,1)/cos(pitch),R(2,2)/cos(pitch));
+    float yaw=atan2(R(1,0)/cos(pitch),R(0,0)/cos(pitch));
 
     arma::vec3 angles={roll*57,pitch*57,57*yaw};
 

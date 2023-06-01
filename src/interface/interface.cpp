@@ -1,4 +1,5 @@
 #include <string>
+#include <array>
 #include <iostream>
 #include<filesystem>
 #include <direct.h>
@@ -14,7 +15,7 @@ std::string getSimulationName()
     std::string simulation_name="";
     std::cout << "type your simulation name: "<<std::endl; // Type a number and press enter
     std::cin >> simulation_name; // Get user input from the keyboard
-    std::string dirName = "C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\simulations\\"; 
+    std::string dirName = SIMULATION_DIR; 
     std::string simulation_dir=dirName+simulation_name+"\\";
     const char * c = simulation_dir.c_str();
     _mkdir(c);
@@ -64,13 +65,12 @@ void initialForcesAndMoments(arma::vec4 rottors_velocity, arma::vec4 quaternion_
 }
 
 
-arma::vec3 tuneAltitudeController()
+std::array<float,3> tuneAltitudeController()
 {
     
-    arma::vec3 altitude_controller_coeff={0.00000f,0.00000f,0.00000f};
-    float kp=0.00000f;
-    float ki=0.00000f;
-    float kd=0.00000f;
+    float kp=0;
+    float ki=0;
+    float kd=0;
     std::cout<<"if you want to tune the altitude controller: type numbers diffrent than 0"<<std::endl;
     std::cout<<"if you type all K's 0 the drone will get command of {1.5811, 1.5811, 1.5811, 1.5811} from the 2nd step."<<std::endl;
     std::cout <<std::endl<<"Type Kp: "; // Type a number and press enter
@@ -80,8 +80,10 @@ arma::vec3 tuneAltitudeController()
     std::cout <<std::endl<<"Type Kd: "; // Type a number and press enter
     std::cin >> kd; // Get user input from the keyboard
 
-    altitude_controller_coeff={kp, ki, kd};
-    std::cout << "altitude_controller_coefficients: " <<std::endl<< altitude_controller_coeff<<std::endl;; // Display the input value
+    std::array<float,3> altitude_controller_coeff={kp, ki, kd};
+    std::cout << "altitude_controller_coefficients: {" <<std::endl<<\
+             altitude_controller_coeff[0]<<", "<<altitude_controller_coeff[1]<<\
+             ", "<<altitude_controller_coeff[2]<<"} "<<std::endl;; // Display the input value
 
     
     return altitude_controller_coeff;

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simple Drone Simulator: C:/Users/User/Desktop/GITHUB-REPOS/Simple-Drone-Simulator/src/updateEquations/updateEquations.hpp Source File</title>
+<title>Simple-Drone-Simulator: C:/Users/User/Desktop/GITHUB-REPOS/Simple-Drone-Simulator/src/updateEquations/updateEquations.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple Drone Simulator<span id="projectnumber">&#160;1</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;1</span>
    </div>
   </td>
  </tr>
@@ -98,8 +98,8 @@ $(function() {
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>arma::vec3 <a class="code hl_function" href="update_equations_8hpp.html#a6d543db9e0b52431d5f5f55d3980a1b2">convertStateVectorForController</a>(std::array&lt;float,13&gt; state_vector, <span class="keywordtype">char</span> type);</div>
 <div class="ttc" id="acontroller_8cpp_html_a19049591d3146b7a0521f63da7749da0"><div class="ttname"><a href="controller_8cpp.html#a19049591d3146b7a0521f63da7749da0">controller</a></div><div class="ttdeci">arma::vec4 controller(arma::vec3 referance, std::array&lt; float, 13 &gt; current_step, std::array&lt; float, 13 &gt; previous_step, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt; controllers_coefficients, float *Integral_altitude)</div><div class="ttdef"><b>Definition:</b> <a href="controller_8cpp_source.html#l00009">controller.cpp:9</a></div></div>
-<div class="ttc" id="aupdate_equations_8hpp_html_a3794d02e6df1bb8d92b13c4024ab5bfd"><div class="ttname"><a href="update_equations_8hpp.html#a3794d02e6df1bb8d92b13c4024ab5bfd">updateOrientation</a></div><div class="ttdeci">arma::vec4 updateOrientation(arma::vec4 quaternion_before, arma::vec3 angular_rate)</div><div class="ttdef"><b>Definition:</b> <a href="update_equations_8cpp_source.html#l00133">updateEquations.cpp:133</a></div></div>
-<div class="ttc" id="aupdate_equations_8hpp_html_a6d543db9e0b52431d5f5f55d3980a1b2"><div class="ttname"><a href="update_equations_8hpp.html#a6d543db9e0b52431d5f5f55d3980a1b2">convertStateVectorForController</a></div><div class="ttdeci">arma::vec3 convertStateVectorForController(std::array&lt; float, 13 &gt; state_vector, char type)</div><div class="ttdef"><b>Definition:</b> <a href="update_equations_8cpp_source.html#l00145">updateEquations.cpp:145</a></div></div>
+<div class="ttc" id="aupdate_equations_8hpp_html_a3794d02e6df1bb8d92b13c4024ab5bfd"><div class="ttname"><a href="update_equations_8hpp.html#a3794d02e6df1bb8d92b13c4024ab5bfd">updateOrientation</a></div><div class="ttdeci">arma::vec4 updateOrientation(arma::vec4 quaternion_before, arma::vec3 angular_rate)</div><div class="ttdef"><b>Definition:</b> <a href="update_equations_8cpp_source.html#l00132">updateEquations.cpp:132</a></div></div>
+<div class="ttc" id="aupdate_equations_8hpp_html_a6d543db9e0b52431d5f5f55d3980a1b2"><div class="ttname"><a href="update_equations_8hpp.html#a6d543db9e0b52431d5f5f55d3980a1b2">convertStateVectorForController</a></div><div class="ttdeci">arma::vec3 convertStateVectorForController(std::array&lt; float, 13 &gt; state_vector, char type)</div><div class="ttdef"><b>Definition:</b> <a href="update_equations_8cpp_source.html#l00144">updateEquations.cpp:144</a></div></div>
 <div class="ttc" id="aupdate_equations_8hpp_html_a76ccc7f07075920417f6268d16d34aff"><div class="ttname"><a href="update_equations_8hpp.html#a76ccc7f07075920417f6268d16d34aff">singleTimeUpdate</a></div><div class="ttdeci">std::array&lt; float, 13 &gt; singleTimeUpdate(arma::vec4 quat_before, arma::vec3 position_before, arma::vec3 velocty_before, arma::vec3 angular_velocty_before, arma::vec4 rotors_velocity)</div><div class="ttdef"><b>Definition:</b> <a href="update_equations_8cpp_source.html#l00015">updateEquations.cpp:15</a></div></div>
 <div class="ttc" id="aupdate_equations_8hpp_html_a7eb4c6d923b4a0e759b2ed182af4a94c"><div class="ttname"><a href="update_equations_8hpp.html#a7eb4c6d923b4a0e759b2ed182af4a94c">droneSimulation</a></div><div class="ttdeci">std::vector&lt; std::array&lt; float, 13 &gt; &gt; droneSimulation(float T, arma::vec4 rottors_speed_initial, std::function&lt; arma::vec4(arma::vec3, std::array&lt; float, 13 &gt;, std::array&lt; float, 13 &gt;, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt;, float *)&gt; controller, arma::vec3 referance={0, 0, 0}, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt; controllers_coefficients={{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}})</div><div class="ttdef"><b>Definition:</b> <a href="update_equations_8cpp_source.html#l00062">updateEquations.cpp:62</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

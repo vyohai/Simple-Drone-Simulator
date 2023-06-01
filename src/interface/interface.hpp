@@ -39,6 +39,6 @@ void initialForcesAndMoments(arma::vec4 rottors_velocity, arma::vec4 quaternion_
 
 /** 
 * This method let the user pick the altitude controller PID coefficients. 
-* @return an arma::vec3 represent (Kp, Ki, Kd).
+* @return an std::array<float,3> represent (Kp, Ki, Kd).
 */
-arma::vec3 tuneAltitudeController();
+std::array<float,3> tuneAltitudeController();

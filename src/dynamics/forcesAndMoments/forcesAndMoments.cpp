@@ -28,6 +28,7 @@ arma::vec3 linearAcceleration(arma::vec4 quaternion, arma::vec4 rotors_speed)
     //calculate the linear acceleration in world frame
     arma::vec3 thrust_vector={0,0,-thrust/M};//body frame
     arma::vec3 thrust_vector_rotated=quaternionVectorRotation(quaternion,thrust_vector);
+   
     arma::vec3 gravity_vector={0,0,G};//world frame
 
     arma::vec3 a=gravity_vector+thrust_vector_rotated;

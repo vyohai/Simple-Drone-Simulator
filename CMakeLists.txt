@@ -25,7 +25,7 @@ add_executable(App
 
 add_executable(run_tests 
               ./tests/tests_main.cpp 
-              # ./tests/dynamic_test_group.cpp 
+              ./tests/dynamic_test_group.cpp 
               ./tests/updateEquations_test_group.cpp
               ./tests/controller_test_group.cpp 
               ./src/dynamics/forcesAndMoments/forcesAndMoments.cpp 

@@ -113,7 +113,6 @@ std::vector<std::array<float,13>> droneSimulation(float T, arma::vec4 rottors_sp
                        
     }
                                       
-    
     quaternion_previous={new_state[0],new_state[1],new_state[2],new_state[3]};
     position_previous={new_state[4],new_state[5],new_state[6]};
     velocity_previous={new_state[7],new_state[8],new_state[9]};
@@ -132,7 +131,7 @@ std::vector<std::array<float,13>> droneSimulation(float T, arma::vec4 rottors_sp
 
 arma::vec4 updateOrientation(arma::vec4 quaternion_before, arma::vec3 angular_rate)
 {
-    arma::vec4 S={0, angular_rate(0),angular_rate(1),angular_rate(2)};
+    arma::vec4 S={angular_rate(0),angular_rate(1),angular_rate(2),0};
 
     arma::vec4 dQ=0.5*quaternionMultiplication(quaternion_before,S);
 

@@ -1,3 +1,4 @@
+// FOR DRONE DYNAMICS
 #define DT 0.01 // sec 
 #define KF 1.0 //
 #define KM 1.0 //
@@ -12,3 +13,10 @@
 #define ROTTOR_DIR3 1
 #define ROTTOR_DIR4 -1
 #define HOVER_THRUST 1.5811
+
+// FOR TESTS
+#define CHECKS_DIR "C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\tests\\checks\\"
+#define CREATE_TEST_CHECKS_GRAPHS 0
+
+// FOR APP SIMULATIONS
+#define SIMULATION_DIR "C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\simulations\\"

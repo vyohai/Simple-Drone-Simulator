@@ -1,13 +1,13 @@
 #include <string>
 #include <iostream>
-
-
-#include <armadillo>
-#include "./dynamics/forcesAndMoments/forcesAndMoments.hpp"
-#include "./dynamics/framesConversion/framesConversion.hpp"
 #include <vector>
 #include <array>
+#include <filesystem>
 
+#include <armadillo>
+
+#include "./dynamics/forcesAndMoments/forcesAndMoments.hpp"
+#include "./dynamics/framesConversion/framesConversion.hpp"
 #include "./updateEquations/updateEquations.hpp"
 #include "./controller/controller.hpp"
 #include "./visualization/visualization.hpp"
@@ -18,6 +18,10 @@
 
 int main()
 {
+    
+    // remove previous checks plots
+    std::filesystem::remove_all( std::string(SIMULATION_DIR));
+    std::filesystem::create_directory(std::string(SIMULATION_DIR));
     bool finished=0;
     while (finished!=1)
     {
@@ -37,11 +41,11 @@ int main()
     initialForcesAndMoments(rottors_velocity, quaternion_initial);  
 
     // get controller coefficients
-    arma::vec3 K_altitude=tuneAltitudeController();
+    std::array<float,3> K_altitude=tuneAltitudeController();
 
     // **the simulation**
     arma::vec3 position_referance={0,0,-5};
-    std::array<std::array<float,3>,6> pid_coeff={K_altitude(0), K_altitude(1), K_altitude(2),\
+    std::array<std::array<float,3>,6> pid_coeff={K_altitude[0], K_altitude[1], K_altitude[2],\
                                                     0.0f, 0.0f, 0.0f,\
                                                     0.0f, 0.0f, 0.0f,\
                                                     0.0f, 0.0f, 0.0f,\
