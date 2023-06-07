@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;1.1</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;2.0</span>
    </div>
   </td>
  </tr>
@@ -97,8 +97,8 @@ Functions</h2></td></tr>
 <tr class="separator:ab2092576cc425398db689236d9f98255"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66fe93f7f3d8024a0acd112dfc9d829c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8hpp.html#a66fe93f7f3d8024a0acd112dfc9d829c">initialForcesAndMoments</a> (arma::vec4 rottors_velocity, arma::vec4 quaternion_initial)</td></tr>
 <tr class="separator:a66fe93f7f3d8024a0acd112dfc9d829c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae12f5a30578972246ed85c78a9e22fa8"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8hpp.html#ae12f5a30578972246ed85c78a9e22fa8">tuneAltitudeController</a> ()</td></tr>
-<tr class="separator:ae12f5a30578972246ed85c78a9e22fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6a59845de4b8c473e52f08938c46cb2"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8hpp.html#aa6a59845de4b8c473e52f08938c46cb2">tuneAltitudeController</a> (float referance)</td></tr>
+<tr class="separator:aa6a59845de4b8c473e52f08938c46cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>this header deals with the command line interface that helps the user create the simulation. </p>
@@ -123,7 +123,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This method get a wanted duration for the simulation from the user. </p><dl class="section return"><dt>Returns</dt><dd>an float represent the simulation duration in seconds. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00026">26</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00027">27</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
 
 </div>
 </div>
@@ -143,7 +143,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This method get a name for the simulation from the user, and creates a directory in /simulations/ with that name. </p><dl class="section return"><dt>Returns</dt><dd>an std::string with the simulation name. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00013">13</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00014">14</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
 
 </div>
 </div>
@@ -163,7 +163,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This method gets the wanted initial rottors-speed-velocity. </p><dl class="section return"><dt>Returns</dt><dd>an arma::vec4 represent the initial rottors-speed-velocity. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00036">36</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00037">37</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
 
 </div>
 </div>
@@ -200,12 +200,12 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00054">54</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00055">55</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ae12f5a30578972246ed85c78a9e22fa8" name="ae12f5a30578972246ed85c78a9e22fa8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae12f5a30578972246ed85c78a9e22fa8">&#9670;&#160;</a></span>tuneAltitudeController()</h2>
+<a id="aa6a59845de4b8c473e52f08938c46cb2" name="aa6a59845de4b8c473e52f08938c46cb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6a59845de4b8c473e52f08938c46cb2">&#9670;&#160;</a></span>tuneAltitudeController()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -213,14 +213,21 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">std::array&lt; float, 3 &gt; tuneAltitudeController </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>referance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This method let the user pick the altitude controller PID coefficients. </p><dl class="section return"><dt>Returns</dt><dd>an std::array&lt;float,3&gt; represent (Kp, Ki, Kd). </dd></dl>
+<p>This method let the user pick the altitude controller PID coefficients. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">referance(float)</td><td>- wanted altitude. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an std::array&lt;float,3&gt; represent (Kp, Ki, Kd). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00068">68</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00069">69</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
 
 </div>
 </div>

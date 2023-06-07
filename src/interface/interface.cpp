@@ -9,6 +9,7 @@
 #include "../config.hpp"
 #include "../dynamics/framesConversion/framesConversion.hpp"
 #include "../dynamics/forcesAndMoments/forcesAndMoments.hpp"
+#include "../controllerTuner/controllerTuner.hpp"
 
 std::string getSimulationName()
 {
@@ -65,20 +66,49 @@ void initialForcesAndMoments(arma::vec4 rottors_velocity, arma::vec4 quaternion_
 }
 
 
-std::array<float,3> tuneAltitudeController()
+std::array<float,3> tuneAltitudeController(float referance)
 {
     
     float kp=0;
     float ki=0;
     float kd=0;
-    std::cout<<"if you want to tune the altitude controller: type numbers diffrent than 0"<<std::endl;
-    std::cout<<"if you type all K's 0 the drone will get command of {1.5811, 1.5811, 1.5811, 1.5811} from the 2nd step."<<std::endl;
-    std::cout <<std::endl<<"Type Kp: "; // Type a number and press enter
-    std::cin >> kp; // Get user input from the keyboard
-    std::cout <<std::endl<<"Type Ki: "; // Type a number and press enter
-    std::cin >> ki; // Get user input from the keyboard
-    std::cout <<std::endl<<"Type Kd: "; // Type a number and press enter
-    std::cin >> kd; // Get user input from the keyboard
+    bool autotune=false;
+    std::cout<<"if you want automatitic tuning type 1 , for manually tuning type 0"<<std::endl;
+    std::cin >> autotune; // Get user input from the keyboard
+    if (autotune)
+    {
+        std::array<float,6> coefficient_boundaries;
+        int grid_size;
+        std::cout <<std::endl<<"Type nomber of triplets(p,i,d) to evaluate: "; // Type a number and press enter
+        std::cin >> grid_size; // Get user input from the keyboard
+        std::cout <<std::endl<<"Type minimum for Kp: "; // Type a number and press enter
+        std::cin >> coefficient_boundaries[0]; // Get user input from the keyboard
+        std::cout <<std::endl<<"Type maximum for Kp: "; // Type a number and press enter
+        std::cin >> coefficient_boundaries[1]; // Get user input from the keyboard
+        std::cout <<std::endl<<"Type maximum for Ki: "; // Type a number and press enter
+        std::cin >> coefficient_boundaries[2]; // Get user input from the keyboard
+        std::cout <<std::endl<<"Type minimum for Ki: "; // Type a number and press enter
+        std::cin >> coefficient_boundaries[3]; // Get user input from the keyboard
+        std::cout <<std::endl<<"Type minimum for Kd: "; // Type a number and press enter
+        std::cin >> coefficient_boundaries[4]; // Get user input from the keyboard
+        std::cout <<std::endl<<"Type maximum for Kd: "; // Type a number and press enter
+        std::cin >> coefficient_boundaries[5]; // Get user input from the keyboard
+        std::array<float,3> PID_array=search_controller_parameters(coefficient_boundaries, grid_size, referance);
+        kp=PID_array[0];
+        ki=PID_array[1];
+        kd=PID_array[2];
+    }
+    else
+    {
+        std::cout<<"if you want to tune the altitude controller manually : type numbers diffrent than 0"<<std::endl;
+        std::cout<<"if you type all K's 0 the drone will get command of {1.5811, 1.5811, 1.5811, 1.5811} from the 2nd step."<<std::endl;
+        std::cout <<std::endl<<"Type Kp: "; // Type a number and press enter
+        std::cin >> kp; // Get user input from the keyboard
+        std::cout <<std::endl<<"Type Ki: "; // Type a number and press enter
+        std::cin >> ki; // Get user input from the keyboard
+        std::cout <<std::endl<<"Type Kd: "; // Type a number and press enter
+        std::cin >> kd; // Get user input from the keyboard
+    }
 
     std::array<float,3> altitude_controller_coeff={kp, ki, kd};
     std::cout << "altitude_controller_coefficients: {" <<std::endl<<\

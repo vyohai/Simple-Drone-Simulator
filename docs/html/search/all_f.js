@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['updateequations_2ecpp_0',['updateEquations.cpp',['../update_equations_8cpp.html',1,'']]],
-  ['updateequations_2ehpp_1',['updateEquations.hpp',['../update_equations_8hpp.html',1,'']]],
-  ['updateorientation_2',['updateOrientation',['../update_equations_8cpp.html#a3794d02e6df1bb8d92b13c4024ab5bfd',1,'updateOrientation(arma::vec4 quaternion_before, arma::vec3 angular_rate):&#160;updateEquations.cpp'],['../update_equations_8hpp.html#a3794d02e6df1bb8d92b13c4024ab5bfd',1,'updateOrientation(arma::vec4 quaternion_before, arma::vec3 angular_rate):&#160;updateEquations.cpp']]]
+  ['tunealtitudecontroller_0',['tuneAltitudeController',['../interface_8cpp.html#aa6a59845de4b8c473e52f08938c46cb2',1,'tuneAltitudeController(float referance):&#160;interface.cpp'],['../interface_8hpp.html#aa6a59845de4b8c473e52f08938c46cb2',1,'tuneAltitudeController(float referance):&#160;interface.cpp']]],
+  ['tuning_5fsimulation_5fduration_1',['TUNING_SIMULATION_DURATION',['../config_8hpp.html#affebe3d30449e1652558dbf6196f04a5',1,'TUNING_SIMULATION_DURATION():&#160;config.hpp'],['../controller_8cpp.html#affebe3d30449e1652558dbf6196f04a5',1,'TUNING_SIMULATION_DURATION():&#160;controller.cpp']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['l_0',['L',['../config_8hpp.html#aa73214aa5f2f94f63d90bb4e3d99fe53',1,'config.hpp']]],
-  ['linearacceleration_1',['linearAcceleration',['../forces_and_moments_8cpp.html#ad00b30a4b60e2f27ddc36afa99f1ab4c',1,'linearAcceleration(arma::vec4 quaternion, arma::vec4 rotors_speed):&#160;forcesAndMoments.cpp'],['../forces_and_moments_8hpp.html#ad00b30a4b60e2f27ddc36afa99f1ab4c',1,'linearAcceleration(arma::vec4 quaternion, arma::vec4 rotors_speed):&#160;forcesAndMoments.cpp']]]
+  ['kf_0',['KF',['../config_8hpp.html#a88d70c2c026b9cb514de366a7b20ef8e',1,'config.hpp']]],
+  ['km_1',['KM',['../config_8hpp.html#a54ffc94d9dad38df5c361c3d10dd7d15',1,'config.hpp']]]
 ];

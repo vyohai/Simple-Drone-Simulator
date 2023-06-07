@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;1.1</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;2.0</span>
    </div>
   </td>
  </tr>
@@ -87,97 +87,128 @@ $(function() {
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;../config.hpp&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../dynamics/framesConversion/framesConversion.hpp&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;../dynamics/forcesAndMoments/forcesAndMoments.hpp&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="interface_8cpp.html#a2cd5f52cf441334a7f0edda85eef9bd7">   13</a></span>std::string <a class="code hl_function" href="interface_8cpp.html#a2cd5f52cf441334a7f0edda85eef9bd7">getSimulationName</a>()</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    std::string simulation_name=<span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;type your simulation name: &quot;</span>&lt;&lt;std::endl; <span class="comment">// Type a number and press enter</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    std::cin &gt;&gt; simulation_name; <span class="comment">// Get user input from the keyboard</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    std::string dirName = <a class="code hl_define" href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">SIMULATION_DIR</a>; </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::string simulation_dir=dirName+simulation_name+<span class="stringliteral">&quot;\\&quot;</span>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> * c = simulation_dir.c_str();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    _mkdir(c);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">return</span> simulation_dir;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="interface_8cpp.html#ae9612b275826b964cb5b3e53e2d52a8f">   26</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="interface_8cpp.html#ae9612b275826b964cb5b3e53e2d52a8f">getSimulationDuration</a>()</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">float</span> T; </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Type a duration: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    std::cin &gt;&gt; T; <span class="comment">// Get user input from the keyboard</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span> T;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;../controllerTuner/controllerTuner.hpp&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="interface_8cpp.html#a2cd5f52cf441334a7f0edda85eef9bd7">   14</a></span>std::string <a class="code hl_function" href="interface_8cpp.html#a2cd5f52cf441334a7f0edda85eef9bd7">getSimulationName</a>()</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    std::string simulation_name=<span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;type your simulation name: &quot;</span>&lt;&lt;std::endl; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    std::cin &gt;&gt; simulation_name; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    std::string dirName = <a class="code hl_define" href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">SIMULATION_DIR</a>; </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    std::string simulation_dir=dirName+simulation_name+<span class="stringliteral">&quot;\\&quot;</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> * c = simulation_dir.c_str();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    _mkdir(c);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">return</span> simulation_dir;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="interface_8cpp.html#ae9612b275826b964cb5b3e53e2d52a8f">   27</a></span><span class="keywordtype">float</span> <a class="code hl_function" href="interface_8cpp.html#ae9612b275826b964cb5b3e53e2d52a8f">getSimulationDuration</a>()</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">float</span> T; </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Type a duration: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    std::cin &gt;&gt; T; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">return</span> T;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="interface_8cpp.html#ab2092576cc425398db689236d9f98255">   36</a></span>arma::vec4 <a class="code hl_function" href="interface_8cpp.html#ab2092576cc425398db689236d9f98255">getSimulationRottorsVelocity</a>()</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    arma::vec4 rottors_velocity={0,0,0,0};</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    std::cout&lt;&lt;<span class="stringliteral">&quot;the Hover-thrust is &quot;</span>&lt;&lt;<a class="code hl_define" href="config_8hpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a>&lt;&lt;std::endl;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type thrust for thruster1(forward-left): &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    std::cin &gt;&gt; rottors_velocity(0); <span class="comment">// Get user input from the keyboard</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type thrust for thruster2(forward-right): &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::cin &gt;&gt; rottors_velocity(1); <span class="comment">// Get user input from the keyboard</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type thrust for thruster3(backward-right): &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    std::cin &gt;&gt; rottors_velocity(2); <span class="comment">// Get user input from the keyboard</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type thrust for thruster4(backward-left): &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    std::cin &gt;&gt; rottors_velocity(3); <span class="comment">// Get user input from the keyboard</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;rottors_velocity: &quot;</span> &lt;&lt;std::endl&lt;&lt; rottors_velocity&lt;&lt;std::endl;; <span class="comment">// Display the input value</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">return</span> rottors_velocity;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="interface_8cpp.html#ab2092576cc425398db689236d9f98255">   37</a></span>arma::vec4 <a class="code hl_function" href="interface_8cpp.html#ab2092576cc425398db689236d9f98255">getSimulationRottorsVelocity</a>()</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    arma::vec4 rottors_velocity={0,0,0,0};</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::cout&lt;&lt;<span class="stringliteral">&quot;the Hover-thrust is &quot;</span>&lt;&lt;<a class="code hl_define" href="config_8hpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a>&lt;&lt;std::endl;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type thrust for thruster1(forward-left): &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    std::cin &gt;&gt; rottors_velocity(0); <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type thrust for thruster2(forward-right): &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    std::cin &gt;&gt; rottors_velocity(1); <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type thrust for thruster3(backward-right): &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    std::cin &gt;&gt; rottors_velocity(2); <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type thrust for thruster4(backward-left): &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    std::cin &gt;&gt; rottors_velocity(3); <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;rottors_velocity: &quot;</span> &lt;&lt;std::endl&lt;&lt; rottors_velocity&lt;&lt;std::endl;; <span class="comment">// Display the input value</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">return</span> rottors_velocity;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="interface_8cpp.html#a66fe93f7f3d8024a0acd112dfc9d829c">   54</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="interface_8cpp.html#a66fe93f7f3d8024a0acd112dfc9d829c">initialForcesAndMoments</a>(arma::vec4 rottors_velocity, arma::vec4 quaternion_initial)</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>{</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    arma::vec3 acc=<a class="code hl_function" href="forces_and_moments_8cpp.html#ad00b30a4b60e2f27ddc36afa99f1ab4c">linearAcceleration</a>(quaternion_initial,rottors_velocity);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    arma::vec2 Mxy=<a class="code hl_function" href="forces_and_moments_8cpp.html#aef09cae163d198b4cdade4e6bb55fe95">MomentsXY</a>(rottors_velocity);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">float</span> Mz=<a class="code hl_function" href="forces_and_moments_8cpp.html#a59b5c69638e8c4708afe4badc4861819">MomentZ</a>(rottors_velocity);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    arma::vec3 Moments={Mxy(0), Mxy(1),Mz};</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    arma::vec ang_acc=<a class="code hl_function" href="forces_and_moments_8cpp.html#a31a94b6e6c4b0e370ae078ab950950ee">angularAcceleration</a>(Moments,{0,0,0});</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    std::cout&lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;acc={&quot;</span>&lt;&lt;acc(0)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;acc(1)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;acc(2)&lt;&lt;<span class="stringliteral">&quot;}, &quot;</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    std::cout&lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Moments={&quot;</span>&lt;&lt;Moments(0)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;Moments(1)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;Moments(2)&lt;&lt;<span class="stringliteral">&quot;}, &quot;</span>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    std::cout&lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;angular_acc={&quot;</span>&lt;&lt;ang_acc(0)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;ang_acc(1)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;ang_acc(2)&lt;&lt;<span class="stringliteral">&quot;}&quot;</span>&lt;&lt;std::endl;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="interface_8cpp.html#a66fe93f7f3d8024a0acd112dfc9d829c">   55</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="interface_8cpp.html#a66fe93f7f3d8024a0acd112dfc9d829c">initialForcesAndMoments</a>(arma::vec4 rottors_velocity, arma::vec4 quaternion_initial)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    arma::vec3 acc=<a class="code hl_function" href="forces_and_moments_8cpp.html#ad00b30a4b60e2f27ddc36afa99f1ab4c">linearAcceleration</a>(quaternion_initial,rottors_velocity);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    arma::vec2 Mxy=<a class="code hl_function" href="forces_and_moments_8cpp.html#aef09cae163d198b4cdade4e6bb55fe95">MomentsXY</a>(rottors_velocity);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">float</span> Mz=<a class="code hl_function" href="forces_and_moments_8cpp.html#a59b5c69638e8c4708afe4badc4861819">MomentZ</a>(rottors_velocity);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    arma::vec3 Moments={Mxy(0), Mxy(1),Mz};</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    arma::vec ang_acc=<a class="code hl_function" href="forces_and_moments_8cpp.html#a31a94b6e6c4b0e370ae078ab950950ee">angularAcceleration</a>(Moments,{0,0,0});</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    std::cout&lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;acc={&quot;</span>&lt;&lt;acc(0)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;acc(1)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;acc(2)&lt;&lt;<span class="stringliteral">&quot;}, &quot;</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    std::cout&lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Moments={&quot;</span>&lt;&lt;Moments(0)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;Moments(1)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;Moments(2)&lt;&lt;<span class="stringliteral">&quot;}, &quot;</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    std::cout&lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;angular_acc={&quot;</span>&lt;&lt;ang_acc(0)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;ang_acc(1)&lt;&lt;<span class="stringliteral">&quot;,&quot;</span>&lt;&lt;ang_acc(2)&lt;&lt;<span class="stringliteral">&quot;}&quot;</span>&lt;&lt;std::endl;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="interface_8cpp.html#ae12f5a30578972246ed85c78a9e22fa8">   68</a></span>std::array&lt;float,3&gt; <a class="code hl_function" href="interface_8cpp.html#ae12f5a30578972246ed85c78a9e22fa8">tuneAltitudeController</a>()</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>{</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">float</span> kp=0;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">float</span> ki=0;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">float</span> kd=0;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    std::cout&lt;&lt;<span class="stringliteral">&quot;if you want to tune the altitude controller: type numbers diffrent than 0&quot;</span>&lt;&lt;std::endl;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    std::cout&lt;&lt;<span class="stringliteral">&quot;if you type all K&#39;s 0 the drone will get command of {1.5811, 1.5811, 1.5811, 1.5811} from the 2nd step.&quot;</span>&lt;&lt;std::endl;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type Kp: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    std::cin &gt;&gt; kp; <span class="comment">// Get user input from the keyboard</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type Ki: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    std::cin &gt;&gt; ki; <span class="comment">// Get user input from the keyboard</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type Kd: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    std::cin &gt;&gt; kd; <span class="comment">// Get user input from the keyboard</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    std::array&lt;float,3&gt; altitude_controller_coeff={kp, ki, kd};</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;altitude_controller_coefficients: {&quot;</span> &lt;&lt;std::endl&lt;&lt;\</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>             altitude_controller_coeff[0]&lt;&lt;<span class="stringliteral">&quot;, &quot;</span>&lt;&lt;altitude_controller_coeff[1]&lt;&lt;\</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>             <span class="stringliteral">&quot;, &quot;</span>&lt;&lt;altitude_controller_coeff[2]&lt;&lt;<span class="stringliteral">&quot;} &quot;</span>&lt;&lt;std::endl;; <span class="comment">// Display the input value</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">return</span> altitude_controller_coeff;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="interface_8cpp.html#aa6a59845de4b8c473e52f08938c46cb2">   69</a></span>std::array&lt;float,3&gt; <a class="code hl_function" href="interface_8cpp.html#aa6a59845de4b8c473e52f08938c46cb2">tuneAltitudeController</a>(<span class="keywordtype">float</span> referance)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">float</span> kp=0;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">float</span> ki=0;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">float</span> kd=0;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">bool</span> autotune=<span class="keyword">false</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    std::cout&lt;&lt;<span class="stringliteral">&quot;if you want automatitic tuning type 1 , for manually tuning type 0&quot;</span>&lt;&lt;std::endl;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    std::cin &gt;&gt; autotune; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordflow">if</span> (autotune)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        std::array&lt;float,6&gt; coefficient_boundaries;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordtype">int</span> grid_size;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type nomber of triplets(p,i,d) to evaluate: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        std::cin &gt;&gt; grid_size; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type minimum for Kp: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        std::cin &gt;&gt; coefficient_boundaries[0]; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type maximum for Kp: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        std::cin &gt;&gt; coefficient_boundaries[1]; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type maximum for Ki: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        std::cin &gt;&gt; coefficient_boundaries[2]; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type minimum for Ki: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        std::cin &gt;&gt; coefficient_boundaries[3]; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type minimum for Kd: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        std::cin &gt;&gt; coefficient_boundaries[4]; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type maximum for Kd: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        std::cin &gt;&gt; coefficient_boundaries[5]; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        std::array&lt;float,3&gt; PID_array=<a class="code hl_function" href="controller_tuner_8cpp.html#a713779ef3716e71a2a48b3595f7b9461">search_controller_parameters</a>(coefficient_boundaries, grid_size, referance);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        kp=PID_array[0];</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        ki=PID_array[1];</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        kd=PID_array[2];</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        std::cout&lt;&lt;<span class="stringliteral">&quot;if you want to tune the altitude controller manually : type numbers diffrent than 0&quot;</span>&lt;&lt;std::endl;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        std::cout&lt;&lt;<span class="stringliteral">&quot;if you type all K&#39;s 0 the drone will get command of {1.5811, 1.5811, 1.5811, 1.5811} from the 2nd step.&quot;</span>&lt;&lt;std::endl;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type Kp: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        std::cin &gt;&gt; kp; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type Ki: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        std::cin &gt;&gt; ki; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        std::cout &lt;&lt;std::endl&lt;&lt;<span class="stringliteral">&quot;Type Kd: &quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        std::cin &gt;&gt; kd; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    std::array&lt;float,3&gt; altitude_controller_coeff={kp, ki, kd};</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;altitude_controller_coefficients: {&quot;</span> &lt;&lt;std::endl&lt;&lt;\</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>             altitude_controller_coeff[0]&lt;&lt;<span class="stringliteral">&quot;, &quot;</span>&lt;&lt;altitude_controller_coeff[1]&lt;&lt;\</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>             <span class="stringliteral">&quot;, &quot;</span>&lt;&lt;altitude_controller_coeff[2]&lt;&lt;<span class="stringliteral">&quot;} &quot;</span>&lt;&lt;std::endl;; <span class="comment">// Display the input value</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">return</span> altitude_controller_coeff;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
 <div class="ttc" id="aconfig_8hpp_html_a21aab39198eea44ef3baf43bb79e9f1b"><div class="ttname"><a href="config_8hpp.html#a21aab39198eea44ef3baf43bb79e9f1b">HOVER_THRUST</a></div><div class="ttdeci">#define HOVER_THRUST</div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00015">config.hpp:15</a></div></div>
 <div class="ttc" id="aconfig_8hpp_html_afa493d7a7a020e22fd4b84584b86063f"><div class="ttname"><a href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">SIMULATION_DIR</a></div><div class="ttdeci">#define SIMULATION_DIR</div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00022">config.hpp:22</a></div></div>
+<div class="ttc" id="acontroller_tuner_8cpp_html_a713779ef3716e71a2a48b3595f7b9461"><div class="ttname"><a href="controller_tuner_8cpp.html#a713779ef3716e71a2a48b3595f7b9461">search_controller_parameters</a></div><div class="ttdeci">std::array&lt; float, 3 &gt; search_controller_parameters(std::array&lt; float, 6 &gt; coefficient_boundaries, int grid_size, float referance)</div><div class="ttdef"><b>Definition:</b> <a href="controller_tuner_8cpp_source.html#l00078">controllerTuner.cpp:78</a></div></div>
 <div class="ttc" id="aforces_and_moments_8cpp_html_a31a94b6e6c4b0e370ae078ab950950ee"><div class="ttname"><a href="forces_and_moments_8cpp.html#a31a94b6e6c4b0e370ae078ab950950ee">angularAcceleration</a></div><div class="ttdeci">arma::vec3 angularAcceleration(arma::vec3 Moments, arma::vec3 ang_vel)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00039">forcesAndMoments.cpp:39</a></div></div>
 <div class="ttc" id="aforces_and_moments_8cpp_html_a59b5c69638e8c4708afe4badc4861819"><div class="ttname"><a href="forces_and_moments_8cpp.html#a59b5c69638e8c4708afe4badc4861819">MomentZ</a></div><div class="ttdeci">float MomentZ(arma::vec4 rottor_vel)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00081">forcesAndMoments.cpp:81</a></div></div>
 <div class="ttc" id="aforces_and_moments_8cpp_html_ad00b30a4b60e2f27ddc36afa99f1ab4c"><div class="ttname"><a href="forces_and_moments_8cpp.html#ad00b30a4b60e2f27ddc36afa99f1ab4c">linearAcceleration</a></div><div class="ttdeci">arma::vec3 linearAcceleration(arma::vec4 quaternion, arma::vec4 rotors_speed)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00019">forcesAndMoments.cpp:19</a></div></div>
 <div class="ttc" id="aforces_and_moments_8cpp_html_aef09cae163d198b4cdade4e6bb55fe95"><div class="ttname"><a href="forces_and_moments_8cpp.html#aef09cae163d198b4cdade4e6bb55fe95">MomentsXY</a></div><div class="ttdeci">arma::vec2 MomentsXY(arma::vec4 rottorspeeds)</div><div class="ttdef"><b>Definition:</b> <a href="forces_and_moments_8cpp_source.html#l00060">forcesAndMoments.cpp:60</a></div></div>
-<div class="ttc" id="ainterface_8cpp_html_a2cd5f52cf441334a7f0edda85eef9bd7"><div class="ttname"><a href="interface_8cpp.html#a2cd5f52cf441334a7f0edda85eef9bd7">getSimulationName</a></div><div class="ttdeci">std::string getSimulationName()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00013">interface.cpp:13</a></div></div>
-<div class="ttc" id="ainterface_8cpp_html_a66fe93f7f3d8024a0acd112dfc9d829c"><div class="ttname"><a href="interface_8cpp.html#a66fe93f7f3d8024a0acd112dfc9d829c">initialForcesAndMoments</a></div><div class="ttdeci">void initialForcesAndMoments(arma::vec4 rottors_velocity, arma::vec4 quaternion_initial)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00054">interface.cpp:54</a></div></div>
-<div class="ttc" id="ainterface_8cpp_html_ab2092576cc425398db689236d9f98255"><div class="ttname"><a href="interface_8cpp.html#ab2092576cc425398db689236d9f98255">getSimulationRottorsVelocity</a></div><div class="ttdeci">arma::vec4 getSimulationRottorsVelocity()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00036">interface.cpp:36</a></div></div>
-<div class="ttc" id="ainterface_8cpp_html_ae12f5a30578972246ed85c78a9e22fa8"><div class="ttname"><a href="interface_8cpp.html#ae12f5a30578972246ed85c78a9e22fa8">tuneAltitudeController</a></div><div class="ttdeci">std::array&lt; float, 3 &gt; tuneAltitudeController()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00068">interface.cpp:68</a></div></div>
-<div class="ttc" id="ainterface_8cpp_html_ae9612b275826b964cb5b3e53e2d52a8f"><div class="ttname"><a href="interface_8cpp.html#ae9612b275826b964cb5b3e53e2d52a8f">getSimulationDuration</a></div><div class="ttdeci">float getSimulationDuration()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00026">interface.cpp:26</a></div></div>
+<div class="ttc" id="ainterface_8cpp_html_a2cd5f52cf441334a7f0edda85eef9bd7"><div class="ttname"><a href="interface_8cpp.html#a2cd5f52cf441334a7f0edda85eef9bd7">getSimulationName</a></div><div class="ttdeci">std::string getSimulationName()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00014">interface.cpp:14</a></div></div>
+<div class="ttc" id="ainterface_8cpp_html_a66fe93f7f3d8024a0acd112dfc9d829c"><div class="ttname"><a href="interface_8cpp.html#a66fe93f7f3d8024a0acd112dfc9d829c">initialForcesAndMoments</a></div><div class="ttdeci">void initialForcesAndMoments(arma::vec4 rottors_velocity, arma::vec4 quaternion_initial)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00055">interface.cpp:55</a></div></div>
+<div class="ttc" id="ainterface_8cpp_html_aa6a59845de4b8c473e52f08938c46cb2"><div class="ttname"><a href="interface_8cpp.html#aa6a59845de4b8c473e52f08938c46cb2">tuneAltitudeController</a></div><div class="ttdeci">std::array&lt; float, 3 &gt; tuneAltitudeController(float referance)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00069">interface.cpp:69</a></div></div>
+<div class="ttc" id="ainterface_8cpp_html_ab2092576cc425398db689236d9f98255"><div class="ttname"><a href="interface_8cpp.html#ab2092576cc425398db689236d9f98255">getSimulationRottorsVelocity</a></div><div class="ttdeci">arma::vec4 getSimulationRottorsVelocity()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00037">interface.cpp:37</a></div></div>
+<div class="ttc" id="ainterface_8cpp_html_ae9612b275826b964cb5b3e53e2d52a8f"><div class="ttname"><a href="interface_8cpp.html#ae9612b275826b964cb5b3e53e2d52a8f">getSimulationDuration</a></div><div class="ttdeci">float getSimulationDuration()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00027">interface.cpp:27</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

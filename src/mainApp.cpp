@@ -41,10 +41,10 @@ int main()
     initialForcesAndMoments(rottors_velocity, quaternion_initial);  
 
     // get controller coefficients
-    std::array<float,3> K_altitude=tuneAltitudeController();
+    arma::vec3 position_referance={0,0,-5};
+    std::array<float,3> K_altitude=tuneAltitudeController(position_referance(2));
 
     // **the simulation**
-    arma::vec3 position_referance={0,0,-5};
     std::array<std::array<float,3>,6> pid_coeff={K_altitude[0], K_altitude[1], K_altitude[2],\
                                                     0.0f, 0.0f, 0.0f,\
                                                     0.0f, 0.0f, 0.0f,\

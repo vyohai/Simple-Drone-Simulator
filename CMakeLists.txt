@@ -21,17 +21,20 @@ add_executable(App
               ./src/updateEquations/updateEquations.cpp
               ./src/controller/controller.cpp
               ./src/visualization/visualization.cpp
-              ./src/interface/interface.cpp)
+              ./src/interface/interface.cpp
+              ./src/controllerTuner/controllerTuner.cpp)
 
 add_executable(run_tests 
               ./tests/tests_main.cpp 
               ./tests/dynamic_test_group.cpp 
               ./tests/updateEquations_test_group.cpp
               ./tests/controller_test_group.cpp 
+              ./tests/controllerTuner_test_group.cpp
               ./src/dynamics/forcesAndMoments/forcesAndMoments.cpp 
               ./src/dynamics/framesConversion/framesConversion.cpp 
               ./src/updateEquations/updateEquations.cpp
               ./src/controller/controller.cpp
+              ./src/controllerTuner/controllerTuner.cpp
               ./src/visualization/visualization.cpp)
 
 
@@ -45,7 +48,7 @@ target_link_libraries(run_tests
     CppUTestExt
     ${ARMADILLO_LIBRARIES})
 
-    target_link_libraries(App
-    PRIVATE
-      sciplot::sciplot 
-      ${ARMADILLO_LIBRARIES})
+target_link_libraries(App
+  PRIVATE
+  sciplot::sciplot 
+  ${ARMADILLO_LIBRARIES})

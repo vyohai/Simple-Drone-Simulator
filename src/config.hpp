@@ -20,3 +20,6 @@
 
 // FOR APP SIMULATIONS
 #define SIMULATION_DIR "C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\simulations\\"
+
+// TUNING CONTROLLERS
+#define TUNING_SIMULATION_DURATION 50.0
