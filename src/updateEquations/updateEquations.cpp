@@ -11,6 +11,7 @@
 #include "../config.hpp"
 #include "../dynamics/framesConversion/framesConversion.hpp"
 #include "../dynamics/forcesAndMoments/forcesAndMoments.hpp"
+#include "../sensors/sensors.hpp"
 
 std::array<float, 13> singleTimeUpdate(arma::vec4 quat_before, arma::vec3 position_before, arma::vec3 velocty_before , arma::vec3 angular_velocty_before, arma::vec4 rotors_velocity)
 {
