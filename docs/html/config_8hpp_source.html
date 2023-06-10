@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;2.0</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;3.0</span>
    </div>
   </td>
  </tr>
@@ -76,31 +76,44 @@ $(function() {
   <div class="headertitle"><div class="title">config.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="config_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// FOR DRONE DYNAMICS</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno"><a class="line" href="config_8hpp.html#a943f07034774ef1261d62cd0d3d1fec9">    2</a></span><span class="preprocessor">#define DT 0.01 </span><span class="comment">// sec </span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="config_8hpp.html#a88d70c2c026b9cb514de366a7b20ef8e">    3</a></span><span class="preprocessor">#define KF 1.0 </span><span class="comment">//</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="config_8hpp.html#a54ffc94d9dad38df5c361c3d10dd7d15">    4</a></span><span class="preprocessor">#define KM 1.0 </span><span class="comment">//</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="config_8hpp.html#a52037c938e3c1b126c6277da5ca689d0">    5</a></span><span class="preprocessor">#define M 1.0 </span><span class="comment">// kg </span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="config_8hpp.html#ad4ed3fbb0313b3c82c200c062cf1e7cc">    6</a></span><span class="preprocessor">#define Ixx 1.0 </span><span class="comment">// kg*m^2</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="config_8hpp.html#afae2e39dab13517d79f52bbe34e07b38">    7</a></span><span class="preprocessor">#define Iyy 1.0 </span><span class="comment">// kg*m^2</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="config_8hpp.html#a97260463ace380d7ceac391b2f381c78">    8</a></span><span class="preprocessor">#define Izz 2.0 </span><span class="comment">// kg*m^2 </span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="config_8hpp.html#aed9ea78689ecce0b7264c02c7f8a9a54">    9</a></span><span class="preprocessor">#define G 10.0 </span><span class="comment">// m/s^2</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="config_8hpp.html#aa73214aa5f2f94f63d90bb4e3d99fe53">   10</a></span><span class="preprocessor">#define L 1.0 </span><span class="comment">// m</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="config_8hpp.html#a854f01fde452d74830f610d1f0d73e71">   11</a></span><span class="preprocessor">#define ROTTOR_DIR1 1</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="config_8hpp.html#a5846693f393f60fe798c90aa5a760b50">   12</a></span><span class="preprocessor">#define ROTTOR_DIR2 -1</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="config_8hpp.html#a7501c7ed7660d385a2e82a3fe9618d6b">   13</a></span><span class="preprocessor">#define ROTTOR_DIR3 1</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="config_8hpp.html#a8d93b8aecf78da7f369b9436de9767a8">   14</a></span><span class="preprocessor">#define ROTTOR_DIR4 -1</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="config_8hpp.html#a21aab39198eea44ef3baf43bb79e9f1b">   15</a></span><span class="preprocessor">#define HOVER_THRUST 1.5811</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// FOR TESTS</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="config_8hpp.html#aa209a80cafd9f2c07fdd93884c60f251">   18</a></span><span class="preprocessor">#define CHECKS_DIR &quot;C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\tests\\checks\\&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="config_8hpp.html#aa3896089ed0695cd42b49f02b7c8c129">   19</a></span><span class="preprocessor">#define CREATE_TEST_CHECKS_GRAPHS 0</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">// FOR APP SIMULATIONS</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">   22</a></span><span class="preprocessor">#define SIMULATION_DIR &quot;C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\simulations\\&quot;</span></div>
+<a href="config_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef CONFIG</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define CONFIG</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// GENARAL</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="config_8hpp.html#a38924f6fe0f180d3aa50ffec672daee5">    6</a></span><span class="preprocessor">#define PI_YOH 3.14</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// FOR DRONE DYNAMICS</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="config_8hpp.html#a943f07034774ef1261d62cd0d3d1fec9">    9</a></span><span class="preprocessor">#define DT 0.01 </span><span class="comment">// sec </span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="config_8hpp.html#a88d70c2c026b9cb514de366a7b20ef8e">   10</a></span><span class="preprocessor">#define KF 1.0 </span><span class="comment">//</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="config_8hpp.html#a54ffc94d9dad38df5c361c3d10dd7d15">   11</a></span><span class="preprocessor">#define KM 1.0 </span><span class="comment">//</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="config_8hpp.html#a52037c938e3c1b126c6277da5ca689d0">   12</a></span><span class="preprocessor">#define M 1.0 </span><span class="comment">// kg </span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="config_8hpp.html#ad4ed3fbb0313b3c82c200c062cf1e7cc">   13</a></span><span class="preprocessor">#define Ixx 1.0 </span><span class="comment">// kg*m^2</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="config_8hpp.html#afae2e39dab13517d79f52bbe34e07b38">   14</a></span><span class="preprocessor">#define Iyy 1.0 </span><span class="comment">// kg*m^2</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="config_8hpp.html#a97260463ace380d7ceac391b2f381c78">   15</a></span><span class="preprocessor">#define Izz 2.0 </span><span class="comment">// kg*m^2 </span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="config_8hpp.html#aed9ea78689ecce0b7264c02c7f8a9a54">   16</a></span><span class="preprocessor">#define G 10.0 </span><span class="comment">// m/s^2</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="config_8hpp.html#aa73214aa5f2f94f63d90bb4e3d99fe53">   17</a></span><span class="preprocessor">#define L 1.0 </span><span class="comment">// m</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="config_8hpp.html#a854f01fde452d74830f610d1f0d73e71">   18</a></span><span class="preprocessor">#define ROTTOR_DIR1 1</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="config_8hpp.html#a5846693f393f60fe798c90aa5a760b50">   19</a></span><span class="preprocessor">#define ROTTOR_DIR2 -1</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="config_8hpp.html#a7501c7ed7660d385a2e82a3fe9618d6b">   20</a></span><span class="preprocessor">#define ROTTOR_DIR3 1</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="config_8hpp.html#a8d93b8aecf78da7f369b9436de9767a8">   21</a></span><span class="preprocessor">#define ROTTOR_DIR4 -1</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="config_8hpp.html#a21aab39198eea44ef3baf43bb79e9f1b">   22</a></span><span class="preprocessor">#define HOVER_THRUST 1.5811</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">// TUNING CONTROLLERS</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="config_8hpp.html#affebe3d30449e1652558dbf6196f04a5">   25</a></span><span class="preprocessor">#define TUNING_SIMULATION_DURATION 50.0</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">// FOR TESTS</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="config_8hpp.html#a905b3590cf474738343c516a9632e20f">   25</a></span><span class="preprocessor">#define CHECKS_DIR_FULL &quot;C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\tests\\checks\\&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="config_8hpp.html#aa209a80cafd9f2c07fdd93884c60f251">   26</a></span><span class="preprocessor">#define CHECKS_DIR &quot;tests/checks/&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="config_8hpp.html#aa3896089ed0695cd42b49f02b7c8c129">   27</a></span><span class="preprocessor">#define CREATE_TEST_CHECKS_GRAPHS 1</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">// FOR APP SIMULATIONS</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">   30</a></span><span class="preprocessor">#define SIMULATION_DIR &quot;simulations/&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">// TUNING CONTROLLERS</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="config_8hpp.html#affebe3d30449e1652558dbf6196f04a5">   33</a></span><span class="preprocessor">#define TUNING_SIMULATION_DURATION 50.0</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// SENSORS NOISES VARIANCES</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="config_8hpp.html#aef4e96fc8649ac6b7bd12e231cc70cff">   36</a></span><span class="preprocessor">#define ALTITUDE_SENSOR_VARIANCE 1.5</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

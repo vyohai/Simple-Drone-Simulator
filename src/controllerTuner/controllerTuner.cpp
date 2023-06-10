@@ -1,19 +1,4 @@
-#include <algorithm>
-#include <cmath>
-#include <iostream>
-#include <vector>
-#include <array>
-#include <random>
-
-#include <armadillo>
-
-#include "../dynamics/forcesAndMoments/forcesAndMoments.hpp"
-#include "../dynamics/framesConversion/framesConversion.hpp"
-#include "../updateEquations/updateEquations.hpp"
-#include "../controller/controller.hpp"
-#include "../visualization/visualization.hpp"
-#include "../interface/interface.hpp"
-#include "../config.hpp"
+#include "controllerTuner.hpp"
 
 
 float evaluate_resaults(float referance, std::vector<float> system_output, float max_boundery,float min_boundery)

@@ -11,7 +11,7 @@ This repo is responsible for:
 We used the following libraries with **vcpkg**:
 * cpputest
 * armadillo
-* sciplot
+* matplotplusplus
 
 ## Docomentation
 Click [here](https://vyohai.github.io/Simple-Drone-Simulator/html/index.html) to go to The documantation.
@@ -30,4 +30,5 @@ Click [here](https://vyohai.github.io/Simple-Drone-Simulator/html/index.html) to
 
 **you could change the drone Mass/Inertia/Size and other parmaters with /src/config.hpp header file**
 
-
+## TBD
+* memory leak in "updateEquations_test_group.cpp"

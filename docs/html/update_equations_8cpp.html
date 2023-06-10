@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;2.0</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;3.0</span>
    </div>
   </td>
  </tr>
@@ -78,15 +78,7 @@ $(function() {
   <div class="headertitle"><div class="title">updateEquations.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;string&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;cmath&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;array&gt;</code><br />
-<code>#include &quot;<a class="el" href="update_equations_8hpp_source.html">updateEquations.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="config_8hpp_source.html">../config.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="frames_conversion_8hpp_source.html">../dynamics/framesConversion/framesConversion.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="forces_and_moments_8hpp_source.html">../dynamics/forcesAndMoments/forcesAndMoments.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="update_equations_8hpp_source.html">updateEquations.hpp</a>&quot;</code><br />
 </div>
 <p><a href="update_equations_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -94,8 +86,8 @@ $(function() {
 Functions</h2></td></tr>
 <tr class="memitem:a76ccc7f07075920417f6268d16d34aff"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, 13 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="update_equations_8cpp.html#a76ccc7f07075920417f6268d16d34aff">singleTimeUpdate</a> (arma::vec4 quat_before, arma::vec3 position_before, arma::vec3 velocty_before, arma::vec3 angular_velocty_before, arma::vec4 rotors_velocity)</td></tr>
 <tr class="separator:a76ccc7f07075920417f6268d16d34aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9890395a0a72ca955370be56c13c9953"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; float, 13 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="update_equations_8cpp.html#a9890395a0a72ca955370be56c13c9953">droneSimulation</a> (float T, arma::vec4 rottors_speed_initial, std::function&lt; arma::vec4(arma::vec3, std::array&lt; float, 13 &gt;, std::array&lt; float, 13 &gt;, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt;, float *)&gt; <a class="el" href="controller_8cpp.html#a19049591d3146b7a0521f63da7749da0">controller</a>, arma::vec3 referance, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt; controllers_coefficients)</td></tr>
-<tr class="separator:a9890395a0a72ca955370be56c13c9953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae73a0de34b5ff6ca50e2c4424ae53cf2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::array&lt; float, 13 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="update_equations_8cpp.html#ae73a0de34b5ff6ca50e2c4424ae53cf2">droneSimulation</a> (float T, arma::vec4 rottors_speed_initial, std::function&lt; arma::vec4(arma::vec3, std::array&lt; float, 13 &gt;, std::array&lt; float, 13 &gt;, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt;, float *)&gt; <a class="el" href="controller_8cpp.html#a19049591d3146b7a0521f63da7749da0">controller</a>, arma::vec3 referance, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt; controllers_coefficients, int tuning_controller)</td></tr>
+<tr class="separator:ae73a0de34b5ff6ca50e2c4424ae53cf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3794d02e6df1bb8d92b13c4024ab5bfd"><td class="memItemLeft" align="right" valign="top">arma::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="update_equations_8cpp.html#a3794d02e6df1bb8d92b13c4024ab5bfd">updateOrientation</a> (arma::vec4 quaternion_before, arma::vec3 angular_rate)</td></tr>
 <tr class="separator:a3794d02e6df1bb8d92b13c4024ab5bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d543db9e0b52431d5f5f55d3980a1b2"><td class="memItemLeft" align="right" valign="top">arma::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="update_equations_8cpp.html#a6d543db9e0b52431d5f5f55d3980a1b2">convertStateVectorForController</a> (std::array&lt; float, 13 &gt; state_vector, char type)</td></tr>
@@ -136,12 +128,12 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>arma::vec3 with either euler angles or position. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="update_equations_8cpp_source.html#l00144">144</a> of file <a class="el" href="update_equations_8cpp_source.html">updateEquations.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="update_equations_8cpp_source.html#l00152">152</a> of file <a class="el" href="update_equations_8cpp_source.html">updateEquations.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a9890395a0a72ca955370be56c13c9953" name="a9890395a0a72ca955370be56c13c9953"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9890395a0a72ca955370be56c13c9953">&#9670;&#160;</a></span>droneSimulation()</h2>
+<a id="ae73a0de34b5ff6ca50e2c4424ae53cf2" name="ae73a0de34b5ff6ca50e2c4424ae53cf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae73a0de34b5ff6ca50e2c4424ae53cf2">&#9670;&#160;</a></span>droneSimulation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,7 +166,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt;&#160;</td>
-          <td class="paramname"><em>controllers_coefficients</em> = <code>{{{0,&#160;0,&#160;0},&#160;{0,&#160;0,&#160;0},&#160;{0,&#160;0,&#160;0},&#160;{0,&#160;0,&#160;0},&#160;{0,&#160;0,&#160;0},&#160;{0,&#160;0,&#160;0}}}</code>&#160;</td>
+          <td class="paramname"><em>controllers_coefficients</em> = <code>{{{0,&#160;0,&#160;0},&#160;{0,&#160;0,&#160;0},&#160;{0,&#160;0,&#160;0},&#160;{0,&#160;0,&#160;0},&#160;{0,&#160;0,&#160;0},&#160;{0,&#160;0,&#160;0}}}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tuning_controller</em> = <code>1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -190,12 +188,13 @@ Functions</h2></td></tr>
     <tr><td class="paramname">controller(std::function&lt;arma::vec4(arma::vec3</td><td>referance, std::array&lt;float,13&gt; current_step, std::array&lt;float,13&gt; previous_step, std::array&lt;std::array&lt;float,3&gt;,6&gt; controllers_coefficients, float * altitude_error_integral)&gt;) a function gets states(current and previos), referance and controllers coefficiets at some time and relevant state error integral and produces a control output(rottors_speeds). </td></tr>
     <tr><td class="paramname">referanc(arma::vec3)</td><td>- referance position. </td></tr>
     <tr><td class="paramname">controllers_coefficients(std::array&lt;std::array&lt;float,3&gt;,6&gt;)</td><td>- PID coefficients for all 6 controllers, default to all 0. </td></tr>
+    <tr><td class="paramname">tuning_controller(int)</td><td>- detrmine if the call is a part of a automatic controller tuning. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::array&lt;float,13&gt;&gt; represent 13 states(std::vector&lt;float,13&gt;) for each poit in time. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="update_equations_8cpp_source.html#l00062">62</a> of file <a class="el" href="update_equations_8cpp_source.html">updateEquations.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="update_equations_8cpp_source.html#l00052">52</a> of file <a class="el" href="update_equations_8cpp_source.html">updateEquations.cpp</a>.</p>
 
 </div>
 </div>
@@ -254,7 +253,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::array&lt;float, 13&gt;, which include the updated: quaternion, position, velocity, angular velocity. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="update_equations_8cpp_source.html#l00015">15</a> of file <a class="el" href="update_equations_8cpp_source.html">updateEquations.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="update_equations_8cpp_source.html#l00005">5</a> of file <a class="el" href="update_equations_8cpp_source.html">updateEquations.cpp</a>.</p>
 
 </div>
 </div>
@@ -292,7 +291,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>arma::vec4 which is the quaternion represent the new orientation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="update_equations_8cpp_source.html#l00132">132</a> of file <a class="el" href="update_equations_8cpp_source.html">updateEquations.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="update_equations_8cpp_source.html#l00140">140</a> of file <a class="el" href="update_equations_8cpp_source.html">updateEquations.cpp</a>.</p>
 
 </div>
 </div>

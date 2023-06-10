@@ -7,9 +7,13 @@
 * @date 27/5/2023
 */
 
+#ifndef FORCES_AND_MOMENTS
+#define FORCES_AND_MOMENTS
 
-#include <string>
 #include <armadillo>
+
+#include "../../config.hpp"
+#include "../../dynamics/framesConversion/framesConversion.hpp"
 
 /** 
 * This method will calculate the thruset of a single rottor based on the rottor speed. 
@@ -48,5 +52,5 @@ arma::vec2 MomentsXY(arma::vec4 rottor_speeds);
 */
 float MomentZ(arma::vec4 rottor_vel);
 
-
+#endif
 

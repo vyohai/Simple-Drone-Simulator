@@ -8,9 +8,26 @@
 */
 
 
-#include <string>
+
+
+#include <algorithm>
+#include <cmath>
+#include <iostream>
 #include <vector>
+#include <array>
+#include <random>
+
 #include <armadillo>
+
+#ifndef CONTROLLER_TUNER
+#define CONTROLLER_TUNER
+
+// #include "../dynamics/forcesAndMoments/forcesAndMoments.hpp"
+// #include "../dynamics/framesConversion/framesConversion.hpp"
+#include "../updateEquations/updateEquations.hpp"
+#include "../controller/controller.hpp"
+#include "../interface/interface.hpp"
+#include "../config.hpp"
 
 
 /** 
@@ -46,4 +63,4 @@ std::vector<std::array<float,3>> create_parameter_grid(std::array<float,6> coeff
 */
 std::array<float,3> search_controller_parameters(std::array<float,6> coefficient_boundaries, int grid_size, float referance);
 
-
+#endif

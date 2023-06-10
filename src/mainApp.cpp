@@ -1,19 +1,4 @@
-#include <string>
-#include <iostream>
-#include <vector>
-#include <array>
-#include <filesystem>
-
-#include <armadillo>
-
-#include "./dynamics/forcesAndMoments/forcesAndMoments.hpp"
-#include "./dynamics/framesConversion/framesConversion.hpp"
-#include "./updateEquations/updateEquations.hpp"
-#include "./controller/controller.hpp"
-#include "./visualization/visualization.hpp"
 #include "./interface/interface.hpp"
-#include "./config.hpp"
-
 
 
 int main()
@@ -51,7 +36,7 @@ int main()
                                                     0.0f, 0.0f, 0.0f,\
                                                     0.0f, 0.0f, 0.0f,\
                                                     0.0f, 0.0f, 0.0f};
-    std::vector<std::array<float,13>> output=droneSimulation(T, rottors_velocity, controller,position_referance,pid_coeff);
+    std::vector<std::array<float,13>> output=droneSimulation(T, rottors_velocity, controller,position_referance,pid_coeff, 0);
     
     //**create plots**
     std::vector<float> altitude=getDataFromSimulation(output,'z');
@@ -65,12 +50,15 @@ int main()
     std::vector<float> y=getDataFromSimulation(output,'y');
     plot_name="y";
     singlePlot(y,simulation_dir,plot_name);
+
     std::vector<float> roll=getDataFromSimulation(output,'r');
     plot_name="roll";
     singlePlot(roll,simulation_dir,plot_name);
+    
     std::vector<float> pitch=getDataFromSimulation(output,'p');
     plot_name="pitch";
     singlePlot(pitch,simulation_dir,plot_name);
+    
     std::vector<float> yaw=getDataFromSimulation(output,'h');
     plot_name="yaw";
     singlePlot(yaw,simulation_dir,plot_name);

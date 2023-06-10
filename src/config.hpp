@@ -1,3 +1,10 @@
+
+#ifndef CONFIG
+#define CONFIG
+
+// GENARAL
+#define PI_YOH 3.14
+
 // FOR DRONE DYNAMICS
 #define DT 0.01 // sec 
 #define KF 1.0 //
@@ -15,11 +22,17 @@
 #define HOVER_THRUST 1.5811
 
 // FOR TESTS
-#define CHECKS_DIR "C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\tests\\checks\\"
-#define CREATE_TEST_CHECKS_GRAPHS 0
+#define CHECKS_DIR_FULL "C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\tests\\checks\\"
+#define CHECKS_DIR "tests/checks/"
+#define CREATE_TEST_CHECKS_GRAPHS 1
 
 // FOR APP SIMULATIONS
-#define SIMULATION_DIR "C:\\Users\\User\\Desktop\\GITHUB-REPOS\\Simple-Drone-Simulator\\simulations\\"
+#define SIMULATION_DIR "simulations/"
 
 // TUNING CONTROLLERS
 #define TUNING_SIMULATION_DURATION 50.0
+
+// SENSORS NOISES VARIANCES
+#define ALTITUDE_SENSOR_VARIANCE 1.5
+
+#endif

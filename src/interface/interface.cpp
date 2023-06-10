@@ -1,15 +1,4 @@
-#include <string>
-#include <array>
-#include <iostream>
-#include<filesystem>
-#include <direct.h>
-
-#include <armadillo>
-
-#include "../config.hpp"
-#include "../dynamics/framesConversion/framesConversion.hpp"
-#include "../dynamics/forcesAndMoments/forcesAndMoments.hpp"
-#include "../controllerTuner/controllerTuner.hpp"
+#include "interface.hpp"
 
 std::string getSimulationName()
 {
@@ -17,7 +6,7 @@ std::string getSimulationName()
     std::cout << "type your simulation name: "<<std::endl; // Type a number and press enter
     std::cin >> simulation_name; // Get user input from the keyboard
     std::string dirName = SIMULATION_DIR; 
-    std::string simulation_dir=dirName+simulation_name+"\\";
+    std::string simulation_dir=dirName+simulation_name+"/";
     const char * c = simulation_dir.c_str();
     _mkdir(c);
 
@@ -85,9 +74,9 @@ std::array<float,3> tuneAltitudeController(float referance)
         std::cin >> coefficient_boundaries[0]; // Get user input from the keyboard
         std::cout <<std::endl<<"Type maximum for Kp: "; // Type a number and press enter
         std::cin >> coefficient_boundaries[1]; // Get user input from the keyboard
-        std::cout <<std::endl<<"Type maximum for Ki: "; // Type a number and press enter
-        std::cin >> coefficient_boundaries[2]; // Get user input from the keyboard
         std::cout <<std::endl<<"Type minimum for Ki: "; // Type a number and press enter
+        std::cin >> coefficient_boundaries[2]; // Get user input from the keyboard
+        std::cout <<std::endl<<"Type maximum for Ki: "; // Type a number and press enter
         std::cin >> coefficient_boundaries[3]; // Get user input from the keyboard
         std::cout <<std::endl<<"Type minimum for Kd: "; // Type a number and press enter
         std::cin >> coefficient_boundaries[4]; // Get user input from the keyboard
@@ -118,4 +107,62 @@ std::array<float,3> tuneAltitudeController(float referance)
     
     return altitude_controller_coeff;
 
+}
+
+std::vector<float> getDataFromSimulation(std::vector<std::array<float,13>> fullVector, char myType)
+{
+    std::vector<float> dataVector;
+    int array_index=-1;
+    bool position=0;
+    if (myType=='z')
+    {
+        array_index=6;
+        position=1;
+    }
+    if (myType=='x')
+    {
+        array_index=4;
+        position=1;
+    }
+    if (myType=='y')
+    {
+        array_index=5;
+        position=1;
+    }
+    if (myType=='r')
+    {
+        array_index=0;
+    }
+    if (myType=='p')
+    {
+        array_index=1;
+    }
+    if (myType=='h')
+    {
+        array_index=2;
+    }
+
+    if (position)
+    {
+        for (size_t i = 0; i < fullVector.size(); i++)
+        {
+            std::array singleTimeArray=fullVector[i];
+            dataVector.push_back(singleTimeArray[array_index]);
+        }
+    }
+    else
+    {
+        for (size_t i = 0; i < fullVector.size(); i++)
+        {
+            std::array singleTimeArray=fullVector[i];
+            arma::vec4 quaternion= {singleTimeArray[0],\
+                                     singleTimeArray[1],\
+                                     singleTimeArray[2],\
+                                     singleTimeArray[3]};
+            arma::vec3 euler=quaternionToEuler(quaternion);
+            dataVector.push_back(euler(array_index));
+        }
+    }
+       
+    return dataVector;
 }

@@ -1,9 +1,5 @@
-#include <array>
-#include <armadillo>
-
 #include "controller.hpp"
-#include "../config.hpp"
-#include "../updateEquations/updateEquations.hpp"
+
 
 
 arma::vec4 controller(arma::vec3 referance,std::array<float,13> current_step,std::array<float,13> previous_step, std::array<std::array<float,3>,6> controllers_coefficients, float *Integral_altitude)

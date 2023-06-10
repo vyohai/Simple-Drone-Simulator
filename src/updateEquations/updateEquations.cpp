@@ -1,17 +1,6 @@
-#include <string>
-#include <iostream>
-#include <cmath>
-#include <vector>
-#include <array>
-
-// #include <armadillo>
-
 #include "updateEquations.hpp"
 
-#include "../config.hpp"
-#include "../dynamics/framesConversion/framesConversion.hpp"
-#include "../dynamics/forcesAndMoments/forcesAndMoments.hpp"
-#include "../sensors/sensors.hpp"
+
 
 std::array<float, 13> singleTimeUpdate(arma::vec4 quat_before, arma::vec3 position_before, arma::vec3 velocty_before , arma::vec3 angular_velocty_before, arma::vec4 rotors_velocity)
 {
@@ -60,10 +49,11 @@ std::array<float, 13> singleTimeUpdate(arma::vec4 quat_before, arma::vec3 positi
 }
 
 
-std::vector<std::array<float,13>> droneSimulation(float T, arma::vec4 rottors_speed_initial, std::function<arma::vec4(arma::vec3,std::array<float,13>,std::array<float,13>,std::array<std::array<float,3>,6>, float *)> controller, arma::vec3 referance, std::array<std::array<float,3>,6> controllers_coefficients)
+std::vector<std::array<float,13>> droneSimulation(float T, arma::vec4 rottors_speed_initial, std::function<arma::vec4(arma::vec3,std::array<float,13>,std::array<float,13>,std::array<std::array<float,3>,6>, float *)> controller, arma::vec3 referance, std::array<std::array<float,3>,6> controllers_coefficients, int tuning_controller)
 {
   //define output
   std::vector<std::array<float,13>> output;
+  std::vector<std::array<float,13>> output_noise;
 
   //definer roll and pitch and yaw referanc shold be ereased
   arma::vec3 euler_ref={0,0,0};
@@ -102,8 +92,14 @@ std::vector<std::array<float,13>> droneSimulation(float T, arma::vec4 rottors_sp
                                       velocity_previous,\
                                       angular_velocity_previous,\
                                       rottors_speed);
+    
+    // CALCULATE SENSORS OUTPUT
+    std::array<float,13> state_measured= sensorModel(new_state);
+
+    
     if (it>0)
     {
+        
       // error calculation:x,y,z,roll,pitch,yaw
       arma::vec3 euler_error=convertStateVectorForController(new_state,'e')-euler_ref;
       arma::vec3 pos_error=convertStateVectorForController(new_state,'p')-referance;
@@ -120,13 +116,24 @@ std::vector<std::array<float,13>> droneSimulation(float T, arma::vec4 rottors_sp
     angular_velocity_previous={new_state[10],new_state[11],new_state[12]};
 
     output.push_back(new_state);
+    output_noise.push_back(state_measured);
  
   
   t=t+DT;
   it=it+1;
   }
   
+ 
 
+  if (tuning_controller==0)
+  {
+    std::string dirName = SIMULATION_DIR; 
+    std::string simulation_dir=dirName+"check noise/";
+    std::vector<float> altitude=getDataFromSimulation(output_noise,'z');
+    std::string plot_name="alt_noisy";
+    singlePlot(altitude,simulation_dir,plot_name);
+  }
+  
   return output;
 }
 

@@ -3,14 +3,13 @@
 #include <cmath>
 
 #include <armadillo>
-#include <sciplot/sciplot.hpp>
 
-#include "../src/dynamics/forcesAndMoments/forcesAndMoments.hpp"
-#include "../src/dynamics/framesConversion/framesConversion.hpp"
-#include "../src/updateEquations/updateEquations.hpp"
+// #include "../src/dynamics/forcesAndMoments/forcesAndMoments.hpp"
+// #include "../src/dynamics/framesConversion/framesConversion.hpp"
+// #include "../src/updateEquations/updateEquations.hpp"
 #include "../src/controller/controller.hpp"
 #include "../src/controllerTuner/controllerTuner.hpp"
-#include "../src/visualization/visualization.hpp"
+// #include "../src/visualization/visualization.hpp"
 #include "../src/config.hpp"
 
 #include "CppUTest/TestHarness.h"

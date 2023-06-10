@@ -7,10 +7,17 @@
 * @date 27/5/2023
 */
 
+#ifndef CONTROLLER
+#define CONTROLLER
 
-#include <string>
+
 #include <vector>
+#include <array>
+
 #include <armadillo>
+
+#include "../config.hpp"
+#include "../updateEquations/updateEquations.hpp"
 
 /** 
 * This method will return the control command(rottors_speeds) based on the
@@ -51,3 +58,5 @@ arma::vec4 mixer(float thrust_cmd, float yaw_cmd, float pitch_cmd,float roll_cmd
 * @return arma::vec4, the needed rottors speeds( remember that 1.5811 is the HOVER horizontal speed).
 */
 float PID(float state_before,float state_current, float Integral, std::array<float,3> pid_coefficients,float referance);
+
+#endif

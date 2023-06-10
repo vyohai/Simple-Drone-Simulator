@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;2.0</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;3.0</span>
    </div>
   </td>
  </tr>
@@ -77,29 +77,38 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="frames_conversion_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;armadillo&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef FRAMES_CONVERSION</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define FRAMES_CONVERSION</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>arma::mat <a class="code hl_function" href="frames_conversion_8hpp.html#a4045cc9b942a2d6ca374ed7821442f66">singleAxisRotationMatrix</a>(<span class="keywordtype">int</span> axis,<span class="keywordtype">float</span> angle);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>arma::mat <a class="code hl_function" href="frames_conversion_8hpp.html#ad8d31c2a06c0f5837a6dc77bda243081">rotationMatrix</a>(arma::mat Rx, arma::mat Ry, arma::mat Rz);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">float</span> <a class="code hl_function" href="frames_conversion_8hpp.html#af3e32657c50564111148c55eb12ebebd">deg2rad</a>(<span class="keywordtype">float</span> deg);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;armadillo&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;../../config.hpp&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>arma::mat <a class="code hl_function" href="frames_conversion_8hpp.html#a4045cc9b942a2d6ca374ed7821442f66">singleAxisRotationMatrix</a>(<span class="keywordtype">int</span> axis,<span class="keywordtype">float</span> angle);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>arma::mat <a class="code hl_function" href="frames_conversion_8hpp.html#ad8d31c2a06c0f5837a6dc77bda243081">rotationMatrix</a>(arma::mat Rx, arma::mat Ry, arma::mat Rz);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>arma::vec4 <a class="code hl_function" href="frames_conversion_8hpp.html#a65428c3f21006e612025f23265474233">quaternionMultiplication</a>(arma::vec4 Q1, arma::vec4 Q2);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>arma::vec3 <a class="code hl_function" href="frames_conversion_8hpp.html#a1e0c06f5dc979e0f8d04b54120100a07">quaternionVectorRotation</a>(arma::vec4 Q1, arma::vec3 vec);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>arma::vec3 <a class="code hl_function" href="frames_conversion_8hpp.html#a842193604e5e8cccec619f14e468ddf0">quaternionToEuler</a>(arma::vec4 Q);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">float</span> <a class="code hl_function" href="frames_conversion_8hpp.html#af3e32657c50564111148c55eb12ebebd">deg2rad</a>(<span class="keywordtype">float</span> deg);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>arma::vec4 <a class="code hl_function" href="frames_conversion_8hpp.html#a65428c3f21006e612025f23265474233">quaternionMultiplication</a>(arma::vec4 Q1, arma::vec4 Q2);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>arma::vec3 <a class="code hl_function" href="frames_conversion_8hpp.html#a1e0c06f5dc979e0f8d04b54120100a07">quaternionVectorRotation</a>(arma::vec4 Q1, arma::vec3 vec);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>arma::vec4 <a class="code hl_function" href="frames_conversion_8hpp.html#a9042dbcbd303b9c3fa9ce8e807a790e5">initialQuaternion</a>(arma::vec3 Euler);</div>
-<div class="ttc" id="aframes_conversion_8hpp_html_a1e0c06f5dc979e0f8d04b54120100a07"><div class="ttname"><a href="frames_conversion_8hpp.html#a1e0c06f5dc979e0f8d04b54120100a07">quaternionVectorRotation</a></div><div class="ttdeci">arma::vec3 quaternionVectorRotation(arma::vec4 Q1, arma::vec3 vec)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00083">framesConversion.cpp:83</a></div></div>
-<div class="ttc" id="aframes_conversion_8hpp_html_a4045cc9b942a2d6ca374ed7821442f66"><div class="ttname"><a href="frames_conversion_8hpp.html#a4045cc9b942a2d6ca374ed7821442f66">singleAxisRotationMatrix</a></div><div class="ttdeci">arma::mat singleAxisRotationMatrix(int axis, float angle)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00011">framesConversion.cpp:11</a></div></div>
-<div class="ttc" id="aframes_conversion_8hpp_html_a65428c3f21006e612025f23265474233"><div class="ttname"><a href="frames_conversion_8hpp.html#a65428c3f21006e612025f23265474233">quaternionMultiplication</a></div><div class="ttdeci">arma::vec4 quaternionMultiplication(arma::vec4 Q1, arma::vec4 Q2)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00055">framesConversion.cpp:55</a></div></div>
-<div class="ttc" id="aframes_conversion_8hpp_html_a842193604e5e8cccec619f14e468ddf0"><div class="ttname"><a href="frames_conversion_8hpp.html#a842193604e5e8cccec619f14e468ddf0">quaternionToEuler</a></div><div class="ttdeci">arma::vec3 quaternionToEuler(arma::vec4 Q)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00097">framesConversion.cpp:97</a></div></div>
-<div class="ttc" id="aframes_conversion_8hpp_html_a9042dbcbd303b9c3fa9ce8e807a790e5"><div class="ttname"><a href="frames_conversion_8hpp.html#a9042dbcbd303b9c3fa9ce8e807a790e5">initialQuaternion</a></div><div class="ttdeci">arma::vec4 initialQuaternion(arma::vec3 Euler)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00118">framesConversion.cpp:118</a></div></div>
-<div class="ttc" id="aframes_conversion_8hpp_html_ad8d31c2a06c0f5837a6dc77bda243081"><div class="ttname"><a href="frames_conversion_8hpp.html#ad8d31c2a06c0f5837a6dc77bda243081">rotationMatrix</a></div><div class="ttdeci">arma::mat rotationMatrix(arma::mat Rx, arma::mat Ry, arma::mat Rz)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00043">framesConversion.cpp:43</a></div></div>
-<div class="ttc" id="aframes_conversion_8hpp_html_af3e32657c50564111148c55eb12ebebd"><div class="ttname"><a href="frames_conversion_8hpp.html#af3e32657c50564111148c55eb12ebebd">deg2rad</a></div><div class="ttdeci">float deg2rad(float deg)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00049">framesConversion.cpp:49</a></div></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>arma::vec3 <a class="code hl_function" href="frames_conversion_8hpp.html#a842193604e5e8cccec619f14e468ddf0">quaternionToEuler</a>(arma::vec4 Q);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>arma::vec4 <a class="code hl_function" href="frames_conversion_8hpp.html#a9042dbcbd303b9c3fa9ce8e807a790e5">initialQuaternion</a>(arma::vec3 Euler);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aframes_conversion_8hpp_html_a1e0c06f5dc979e0f8d04b54120100a07"><div class="ttname"><a href="frames_conversion_8hpp.html#a1e0c06f5dc979e0f8d04b54120100a07">quaternionVectorRotation</a></div><div class="ttdeci">arma::vec3 quaternionVectorRotation(arma::vec4 Q1, arma::vec3 vec)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00076">framesConversion.cpp:76</a></div></div>
+<div class="ttc" id="aframes_conversion_8hpp_html_a4045cc9b942a2d6ca374ed7821442f66"><div class="ttname"><a href="frames_conversion_8hpp.html#a4045cc9b942a2d6ca374ed7821442f66">singleAxisRotationMatrix</a></div><div class="ttdeci">arma::mat singleAxisRotationMatrix(int axis, float angle)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00004">framesConversion.cpp:4</a></div></div>
+<div class="ttc" id="aframes_conversion_8hpp_html_a65428c3f21006e612025f23265474233"><div class="ttname"><a href="frames_conversion_8hpp.html#a65428c3f21006e612025f23265474233">quaternionMultiplication</a></div><div class="ttdeci">arma::vec4 quaternionMultiplication(arma::vec4 Q1, arma::vec4 Q2)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00048">framesConversion.cpp:48</a></div></div>
+<div class="ttc" id="aframes_conversion_8hpp_html_a842193604e5e8cccec619f14e468ddf0"><div class="ttname"><a href="frames_conversion_8hpp.html#a842193604e5e8cccec619f14e468ddf0">quaternionToEuler</a></div><div class="ttdeci">arma::vec3 quaternionToEuler(arma::vec4 Q)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00090">framesConversion.cpp:90</a></div></div>
+<div class="ttc" id="aframes_conversion_8hpp_html_a9042dbcbd303b9c3fa9ce8e807a790e5"><div class="ttname"><a href="frames_conversion_8hpp.html#a9042dbcbd303b9c3fa9ce8e807a790e5">initialQuaternion</a></div><div class="ttdeci">arma::vec4 initialQuaternion(arma::vec3 Euler)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00111">framesConversion.cpp:111</a></div></div>
+<div class="ttc" id="aframes_conversion_8hpp_html_ad8d31c2a06c0f5837a6dc77bda243081"><div class="ttname"><a href="frames_conversion_8hpp.html#ad8d31c2a06c0f5837a6dc77bda243081">rotationMatrix</a></div><div class="ttdeci">arma::mat rotationMatrix(arma::mat Rx, arma::mat Ry, arma::mat Rz)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00036">framesConversion.cpp:36</a></div></div>
+<div class="ttc" id="aframes_conversion_8hpp_html_af3e32657c50564111148c55eb12ebebd"><div class="ttname"><a href="frames_conversion_8hpp.html#af3e32657c50564111148c55eb12ebebd">deg2rad</a></div><div class="ttdeci">float deg2rad(float deg)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00042">framesConversion.cpp:42</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

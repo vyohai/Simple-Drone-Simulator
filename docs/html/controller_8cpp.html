@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;2.0</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;3.0</span>
    </div>
   </td>
  </tr>
@@ -74,24 +74,14 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">controller.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;array&gt;</code><br />
-<code>#include &lt;armadillo&gt;</code><br />
-<code>#include &quot;<a class="el" href="controller_8hpp_source.html">controller.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="config_8hpp_source.html">../config.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="update_equations_8hpp_source.html">../updateEquations/updateEquations.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="controller_8hpp_source.html">controller.hpp</a>&quot;</code><br />
 </div>
 <p><a href="controller_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:affebe3d30449e1652558dbf6196f04a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="controller_8cpp.html#affebe3d30449e1652558dbf6196f04a5">TUNING_SIMULATION_DURATION</a>&#160;&#160;&#160;50.0</td></tr>
-<tr class="separator:affebe3d30449e1652558dbf6196f04a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a19049591d3146b7a0521f63da7749da0"><td class="memItemLeft" align="right" valign="top">arma::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="controller_8cpp.html#a19049591d3146b7a0521f63da7749da0">controller</a> (arma::vec3 referance, std::array&lt; float, 13 &gt; current_step, std::array&lt; float, 13 &gt; previous_step, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt; controllers_coefficients, float *Integral_altitude)</td></tr>
@@ -101,21 +91,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a387ae94b4f1b02e21b7f0f43751ac126"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="controller_8cpp.html#a387ae94b4f1b02e21b7f0f43751ac126">PID</a> (float state_before, float state_current, float Integral, std::array&lt; float, 3 &gt; pid_coefficients, float referance)</td></tr>
 <tr class="separator:a387ae94b4f1b02e21b7f0f43751ac126"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="affebe3d30449e1652558dbf6196f04a5" name="affebe3d30449e1652558dbf6196f04a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affebe3d30449e1652558dbf6196f04a5">&#9670;&#160;</a></span>TUNING_SIMULATION_DURATION</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TUNING_SIMULATION_DURATION&#160;&#160;&#160;50.0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a19049591d3146b7a0521f63da7749da0" name="a19049591d3146b7a0521f63da7749da0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19049591d3146b7a0521f63da7749da0">&#9670;&#160;</a></span>controller()</h2>
@@ -172,7 +147,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>arma::vec4, control output(rottors_speeds). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="controller_8cpp_source.html#l00009">9</a> of file <a class="el" href="controller_8cpp_source.html">controller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller_8cpp_source.html#l00005">5</a> of file <a class="el" href="controller_8cpp_source.html">controller.cpp</a>.</p>
 
 </div>
 </div>
@@ -224,7 +199,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>arma::vec4, the needed rottors speeds. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="controller_8cpp_source.html#l00034">34</a> of file <a class="el" href="controller_8cpp_source.html">controller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller_8cpp_source.html#l00030">30</a> of file <a class="el" href="controller_8cpp_source.html">controller.cpp</a>.</p>
 
 </div>
 </div>
@@ -283,7 +258,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>arma::vec4, the needed rottors speeds( remember that 1.5811 is the HOVER horizontal speed). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="controller_8cpp_source.html#l00055">55</a> of file <a class="el" href="controller_8cpp_source.html">controller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller_8cpp_source.html#l00051">51</a> of file <a class="el" href="controller_8cpp_source.html">controller.cpp</a>.</p>
 
 </div>
 </div>

@@ -11,6 +11,7 @@
 #include "../src/updateEquations/updateEquations.hpp"
 #include "../src/visualization/visualization.hpp"
 #include "../src/controller/controller.hpp"
+#include "../src/interface/interface.hpp"
 #include "../src/config.hpp"
 
 #include "CppUTest/TestHarness.h"
@@ -284,10 +285,10 @@ TEST(updateEquationsDroneSimulationTestGroup, correctOutput)
     
     if (CREATE_TEST_CHECKS_GRAPHS)
     {
-        std::cout<<"create new tests-checks graphs in "<<CHECKS_DIR<<std::endl;
+        std::cout<<"create new tests-checks graphs in "<<CHECKS_DIR_FULL<<std::endl;
         // remove previous checks plots
-        std::filesystem::remove_all( std::string(CHECKS_DIR));
-        std::filesystem::create_directory(std::string(CHECKS_DIR));
+        std::filesystem::remove_all( std::string(CHECKS_DIR_FULL));
+        std::filesystem::create_directory(std::string(CHECKS_DIR_FULL));
         
         std::array<std::string,7> directions={"up", "down", "hover", "right", "left", "forward", "backward" };
         std::array<arma::vec4,7> thrusts={{{2,2,2,2},{1,1,1,1}, {HOVER_THRUST,HOVER_THRUST,HOVER_THRUST,HOVER_THRUST},\
@@ -297,9 +298,12 @@ TEST(updateEquationsDroneSimulationTestGroup, correctOutput)
         {
         
             std::string simulation_dir=std::string(CHECKS_DIR)+directions[i];
+            std::string simulation_dir_full=std::string(CHECKS_DIR_FULL)+directions[i];
+            std::cout<<simulation_dir_full<<std::endl;
+            std::filesystem::create_directory(simulation_dir_full);
 
             //simulation duration
-            float T=1;
+            float T=.2;
             
             //Thrusts
             arma::vec4 rottors_velocity=thrusts[i];
@@ -324,24 +328,24 @@ TEST(updateEquationsDroneSimulationTestGroup, correctOutput)
             //create plots
 
             std::vector<float> altitude=getDataFromSimulation(output,'z');
-            std::string plot_name="alt";
+            std::string plot_name="/alt";
             singlePlot(altitude,simulation_dir,plot_name);
 
             std::vector<float> x=getDataFromSimulation(output,'x');
-            plot_name="x";
+            plot_name="/x";
             singlePlot(x,simulation_dir,plot_name);
 
             std::vector<float> y=getDataFromSimulation(output,'y');
-            plot_name="y";
+            plot_name="/y";
             singlePlot(y,simulation_dir,plot_name);
             std::vector<float> roll=getDataFromSimulation(output,'r');
-            plot_name="roll";
+            plot_name="/roll";
             singlePlot(roll,simulation_dir,plot_name);
             std::vector<float> pitch=getDataFromSimulation(output,'p');
-            plot_name="pitch";
+            plot_name="/pitch";
             singlePlot(pitch,simulation_dir,plot_name);
             std::vector<float> yaw=getDataFromSimulation(output,'h');
-            plot_name="yaw";
+            plot_name="/yaw";
             singlePlot(yaw,simulation_dir,plot_name);
         
         }

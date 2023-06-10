@@ -1,10 +1,3 @@
-#include <string>
-#include <iostream>
-#include <numbers>
-#include <cmath>
-
-#include <armadillo>
-
 #include "framesConversion.hpp"
 
 
@@ -48,7 +41,7 @@ arma::mat rotationMatrix(arma::mat Rx, arma::mat Ry, arma::mat Rz)
 
 float deg2rad(float deg)
 {
-    float output=deg*std::numbers::pi/180.0;
+    float output=deg*PI_YOH/180.0;
     return output;
 }
 
