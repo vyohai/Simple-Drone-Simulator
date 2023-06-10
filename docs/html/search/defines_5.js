@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['kf_0',['KF',['../config_8hpp.html#a88d70c2c026b9cb514de366a7b20ef8e',1,'config.hpp']]],
-  ['km_1',['KM',['../config_8hpp.html#a54ffc94d9dad38df5c361c3d10dd7d15',1,'config.hpp']]]
+  ['ixx_0',['Ixx',['../config_8hpp.html#ad4ed3fbb0313b3c82c200c062cf1e7cc',1,'config.hpp']]],
+  ['iyy_1',['Iyy',['../config_8hpp.html#afae2e39dab13517d79f52bbe34e07b38',1,'config.hpp']]],
+  ['izz_2',['Izz',['../config_8hpp.html#a97260463ace380d7ceac391b2f381c78',1,'config.hpp']]]
 ];

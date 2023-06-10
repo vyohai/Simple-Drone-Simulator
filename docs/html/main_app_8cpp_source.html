@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;2.0</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;3.0</span>
    </div>
   </td>
  </tr>
@@ -76,111 +76,93 @@ $(function() {
   <div class="headertitle"><div class="title">mainApp.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="main_app_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;array&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;armadillo&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="forces_and_moments_8hpp.html">./dynamics/forcesAndMoments/forcesAndMoments.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="frames_conversion_8hpp.html">./dynamics/framesConversion/framesConversion.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="update_equations_8hpp.html">./updateEquations/updateEquations.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="controller_8hpp.html">./controller/controller.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="visualization_8hpp.html">./visualization/visualization.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="interface_8hpp.html">./interface/interface.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="config_8hpp.html">./config.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="main_app_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   19</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="main_app_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// remove previous checks plots</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    std::filesystem::remove_all( std::string(<a class="code hl_define" href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">SIMULATION_DIR</a>));</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    std::filesystem::create_directory(std::string(<a class="code hl_define" href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">SIMULATION_DIR</a>));</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">bool</span> finished=0;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">while</span> (finished!=1)</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// **get user input**</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// get simulation name and create a dir</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    std::string simulation_dir=<a class="code hl_function" href="interface_8cpp.html#a2cd5f52cf441334a7f0edda85eef9bd7">getSimulationName</a>();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">//simulation duration</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">float</span> T=<a class="code hl_function" href="interface_8cpp.html#ae9612b275826b964cb5b3e53e2d52a8f">getSimulationDuration</a>();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">//Thrusts</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    arma::vec4 rottors_velocity=<a class="code hl_function" href="interface_8cpp.html#ab2092576cc425398db689236d9f98255">getSimulationRottorsVelocity</a>();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">//get acc and angular_acc</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    arma::vec3 euler_initial={0,0,0};</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    arma::vec4 quaternion_initial=<a class="code hl_function" href="frames_conversion_8cpp.html#a9042dbcbd303b9c3fa9ce8e807a790e5">initialQuaternion</a>(euler_initial);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_function" href="interface_8cpp.html#a66fe93f7f3d8024a0acd112dfc9d829c">initialForcesAndMoments</a>(rottors_velocity, quaternion_initial);  </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// get controller coefficients</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    arma::vec3 position_referance={0,0,-5};</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    std::array&lt;float,3&gt; K_altitude=<a class="code hl_function" href="interface_8cpp.html#aa6a59845de4b8c473e52f08938c46cb2">tuneAltitudeController</a>(position_referance(2));</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">// **the simulation**</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    std::array&lt;std::array&lt;float,3&gt;,6&gt; pid_coeff={K_altitude[0], K_altitude[1], K_altitude[2],\</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                                                    0.0f, 0.0f, 0.0f,\</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                                                    0.0f, 0.0f, 0.0f,\</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                                                    0.0f, 0.0f, 0.0f,\</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                                                    0.0f, 0.0f, 0.0f,\</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                                                    0.0f, 0.0f, 0.0f};</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    std::vector&lt;std::array&lt;float,13&gt;&gt; output=<a class="code hl_function" href="update_equations_8cpp.html#a9890395a0a72ca955370be56c13c9953">droneSimulation</a>(T, rottors_velocity, <a class="code hl_function" href="controller_8cpp.html#a19049591d3146b7a0521f63da7749da0">controller</a>,position_referance,pid_coeff);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">//**create plots**</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    std::vector&lt;float&gt; altitude=<a class="code hl_function" href="visualization_8cpp.html#adb5170ffe30dd0fa0da37a5f38ed0080">getDataFromSimulation</a>(output,<span class="charliteral">&#39;z&#39;</span>);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    std::string plot_name=<span class="stringliteral">&quot;alt&quot;</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_function" href="visualization_8cpp.html#ad4524d49f72641463825ca7dbc81a5c2">singlePlot</a>(altitude,simulation_dir,plot_name);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    std::vector&lt;float&gt; x=<a class="code hl_function" href="visualization_8cpp.html#adb5170ffe30dd0fa0da37a5f38ed0080">getDataFromSimulation</a>(output,<span class="charliteral">&#39;x&#39;</span>);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    plot_name=<span class="stringliteral">&quot;x&quot;</span>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_function" href="visualization_8cpp.html#ad4524d49f72641463825ca7dbc81a5c2">singlePlot</a>(x,simulation_dir,plot_name);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    std::vector&lt;float&gt; y=<a class="code hl_function" href="visualization_8cpp.html#adb5170ffe30dd0fa0da37a5f38ed0080">getDataFromSimulation</a>(output,<span class="charliteral">&#39;y&#39;</span>);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    plot_name=<span class="stringliteral">&quot;y&quot;</span>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_function" href="visualization_8cpp.html#ad4524d49f72641463825ca7dbc81a5c2">singlePlot</a>(y,simulation_dir,plot_name);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    std::vector&lt;float&gt; roll=<a class="code hl_function" href="visualization_8cpp.html#adb5170ffe30dd0fa0da37a5f38ed0080">getDataFromSimulation</a>(output,<span class="charliteral">&#39;r&#39;</span>);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    plot_name=<span class="stringliteral">&quot;roll&quot;</span>;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_function" href="visualization_8cpp.html#ad4524d49f72641463825ca7dbc81a5c2">singlePlot</a>(roll,simulation_dir,plot_name);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    std::vector&lt;float&gt; pitch=<a class="code hl_function" href="visualization_8cpp.html#adb5170ffe30dd0fa0da37a5f38ed0080">getDataFromSimulation</a>(output,<span class="charliteral">&#39;p&#39;</span>);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    plot_name=<span class="stringliteral">&quot;pitch&quot;</span>;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_function" href="visualization_8cpp.html#ad4524d49f72641463825ca7dbc81a5c2">singlePlot</a>(pitch,simulation_dir,plot_name);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    std::vector&lt;float&gt; yaw=<a class="code hl_function" href="visualization_8cpp.html#adb5170ffe30dd0fa0da37a5f38ed0080">getDataFromSimulation</a>(output,<span class="charliteral">&#39;h&#39;</span>);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    plot_name=<span class="stringliteral">&quot;yaw&quot;</span>;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_function" href="visualization_8cpp.html#ad4524d49f72641463825ca7dbc81a5c2">singlePlot</a>(yaw,simulation_dir,plot_name);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">//check if finished</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;if you want another simulation type 0&quot;</span>; <span class="comment">// Type a number and press enter</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    std::cin &gt;&gt; finished; <span class="comment">// Get user input from the keyboard</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
-<div class="ttc" id="aconfig_8hpp_html"><div class="ttname"><a href="config_8hpp.html">config.hpp</a></div></div>
-<div class="ttc" id="aconfig_8hpp_html_afa493d7a7a020e22fd4b84584b86063f"><div class="ttname"><a href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">SIMULATION_DIR</a></div><div class="ttdeci">#define SIMULATION_DIR</div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00022">config.hpp:22</a></div></div>
-<div class="ttc" id="acontroller_8cpp_html_a19049591d3146b7a0521f63da7749da0"><div class="ttname"><a href="controller_8cpp.html#a19049591d3146b7a0521f63da7749da0">controller</a></div><div class="ttdeci">arma::vec4 controller(arma::vec3 referance, std::array&lt; float, 13 &gt; current_step, std::array&lt; float, 13 &gt; previous_step, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt; controllers_coefficients, float *Integral_altitude)</div><div class="ttdef"><b>Definition:</b> <a href="controller_8cpp_source.html#l00009">controller.cpp:9</a></div></div>
-<div class="ttc" id="acontroller_8hpp_html"><div class="ttname"><a href="controller_8hpp.html">controller.hpp</a></div><div class="ttdoc">This file contain the controller and all its helper functions.</div></div>
-<div class="ttc" id="aforces_and_moments_8hpp_html"><div class="ttname"><a href="forces_and_moments_8hpp.html">forcesAndMoments.hpp</a></div><div class="ttdoc">this header deals with forces and moments calculations.</div></div>
-<div class="ttc" id="aframes_conversion_8cpp_html_a9042dbcbd303b9c3fa9ce8e807a790e5"><div class="ttname"><a href="frames_conversion_8cpp.html#a9042dbcbd303b9c3fa9ce8e807a790e5">initialQuaternion</a></div><div class="ttdeci">arma::vec4 initialQuaternion(arma::vec3 Euler)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00118">framesConversion.cpp:118</a></div></div>
-<div class="ttc" id="aframes_conversion_8hpp_html"><div class="ttname"><a href="frames_conversion_8hpp.html">framesConversion.hpp</a></div><div class="ttdoc">this header deals with the world and body frames transformation.</div></div>
-<div class="ttc" id="ainterface_8cpp_html_a2cd5f52cf441334a7f0edda85eef9bd7"><div class="ttname"><a href="interface_8cpp.html#a2cd5f52cf441334a7f0edda85eef9bd7">getSimulationName</a></div><div class="ttdeci">std::string getSimulationName()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00014">interface.cpp:14</a></div></div>
-<div class="ttc" id="ainterface_8cpp_html_a66fe93f7f3d8024a0acd112dfc9d829c"><div class="ttname"><a href="interface_8cpp.html#a66fe93f7f3d8024a0acd112dfc9d829c">initialForcesAndMoments</a></div><div class="ttdeci">void initialForcesAndMoments(arma::vec4 rottors_velocity, arma::vec4 quaternion_initial)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00055">interface.cpp:55</a></div></div>
-<div class="ttc" id="ainterface_8cpp_html_aa6a59845de4b8c473e52f08938c46cb2"><div class="ttname"><a href="interface_8cpp.html#aa6a59845de4b8c473e52f08938c46cb2">tuneAltitudeController</a></div><div class="ttdeci">std::array&lt; float, 3 &gt; tuneAltitudeController(float referance)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00069">interface.cpp:69</a></div></div>
-<div class="ttc" id="ainterface_8cpp_html_ab2092576cc425398db689236d9f98255"><div class="ttname"><a href="interface_8cpp.html#ab2092576cc425398db689236d9f98255">getSimulationRottorsVelocity</a></div><div class="ttdeci">arma::vec4 getSimulationRottorsVelocity()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00037">interface.cpp:37</a></div></div>
-<div class="ttc" id="ainterface_8cpp_html_ae9612b275826b964cb5b3e53e2d52a8f"><div class="ttname"><a href="interface_8cpp.html#ae9612b275826b964cb5b3e53e2d52a8f">getSimulationDuration</a></div><div class="ttdeci">float getSimulationDuration()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00027">interface.cpp:27</a></div></div>
+<a href="main_app_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="interface_8hpp.html">./interface/interface.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="main_app_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">    4</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="main_app_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="comment">// remove previous checks plots</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    std::filesystem::remove_all( std::string(<a class="code hl_define" href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">SIMULATION_DIR</a>));</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    std::filesystem::create_directory(std::string(<a class="code hl_define" href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">SIMULATION_DIR</a>));</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordtype">bool</span> finished=0;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">while</span> (finished!=1)</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">// **get user input**</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">// get simulation name and create a dir</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    std::string simulation_dir=<a class="code hl_function" href="interface_8cpp.html#a2cd5f52cf441334a7f0edda85eef9bd7">getSimulationName</a>();</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">//simulation duration</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">float</span> T=<a class="code hl_function" href="interface_8cpp.html#ae9612b275826b964cb5b3e53e2d52a8f">getSimulationDuration</a>();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">//Thrusts</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    arma::vec4 rottors_velocity=<a class="code hl_function" href="interface_8cpp.html#ab2092576cc425398db689236d9f98255">getSimulationRottorsVelocity</a>();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">//get acc and angular_acc</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    arma::vec3 euler_initial={0,0,0};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    arma::vec4 quaternion_initial=<a class="code hl_function" href="frames_conversion_8cpp.html#a9042dbcbd303b9c3fa9ce8e807a790e5">initialQuaternion</a>(euler_initial);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_function" href="interface_8cpp.html#a66fe93f7f3d8024a0acd112dfc9d829c">initialForcesAndMoments</a>(rottors_velocity, quaternion_initial);  </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// get controller coefficients</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    arma::vec3 position_referance={0,0,-5};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    std::array&lt;float,3&gt; K_altitude=<a class="code hl_function" href="interface_8cpp.html#aa6a59845de4b8c473e52f08938c46cb2">tuneAltitudeController</a>(position_referance(2));</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// **the simulation**</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    std::array&lt;std::array&lt;float,3&gt;,6&gt; pid_coeff={K_altitude[0], K_altitude[1], K_altitude[2],\</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                                                    0.0f, 0.0f, 0.0f,\</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                                                    0.0f, 0.0f, 0.0f,\</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                                                    0.0f, 0.0f, 0.0f,\</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                                                    0.0f, 0.0f, 0.0f,\</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                                                    0.0f, 0.0f, 0.0f};</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    std::vector&lt;std::array&lt;float,13&gt;&gt; output=<a class="code hl_function" href="update_equations_8cpp.html#ae73a0de34b5ff6ca50e2c4424ae53cf2">droneSimulation</a>(T, rottors_velocity, <a class="code hl_function" href="controller_8cpp.html#a19049591d3146b7a0521f63da7749da0">controller</a>,position_referance,pid_coeff, 0);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">//**create plots**</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    std::vector&lt;float&gt; altitude=<a class="code hl_function" href="interface_8cpp.html#ac34a2a18df97a4a6d1e5a90b20680149">getDataFromSimulation</a>(output,<span class="charliteral">&#39;z&#39;</span>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::string plot_name=<span class="stringliteral">&quot;alt&quot;</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_function" href="visualization_8cpp.html#ab535ce2ab35ef69e24b7c22b191e6ccf">singlePlot</a>(altitude,simulation_dir,plot_name);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    std::vector&lt;float&gt; x=<a class="code hl_function" href="interface_8cpp.html#ac34a2a18df97a4a6d1e5a90b20680149">getDataFromSimulation</a>(output,<span class="charliteral">&#39;x&#39;</span>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    plot_name=<span class="stringliteral">&quot;x&quot;</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_function" href="visualization_8cpp.html#ab535ce2ab35ef69e24b7c22b191e6ccf">singlePlot</a>(x,simulation_dir,plot_name);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    std::vector&lt;float&gt; y=<a class="code hl_function" href="interface_8cpp.html#ac34a2a18df97a4a6d1e5a90b20680149">getDataFromSimulation</a>(output,<span class="charliteral">&#39;y&#39;</span>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    plot_name=<span class="stringliteral">&quot;y&quot;</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_function" href="visualization_8cpp.html#ab535ce2ab35ef69e24b7c22b191e6ccf">singlePlot</a>(y,simulation_dir,plot_name);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    std::vector&lt;float&gt; roll=<a class="code hl_function" href="interface_8cpp.html#ac34a2a18df97a4a6d1e5a90b20680149">getDataFromSimulation</a>(output,<span class="charliteral">&#39;r&#39;</span>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    plot_name=<span class="stringliteral">&quot;roll&quot;</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_function" href="visualization_8cpp.html#ab535ce2ab35ef69e24b7c22b191e6ccf">singlePlot</a>(roll,simulation_dir,plot_name);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    std::vector&lt;float&gt; pitch=<a class="code hl_function" href="interface_8cpp.html#ac34a2a18df97a4a6d1e5a90b20680149">getDataFromSimulation</a>(output,<span class="charliteral">&#39;p&#39;</span>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    plot_name=<span class="stringliteral">&quot;pitch&quot;</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_function" href="visualization_8cpp.html#ab535ce2ab35ef69e24b7c22b191e6ccf">singlePlot</a>(pitch,simulation_dir,plot_name);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    std::vector&lt;float&gt; yaw=<a class="code hl_function" href="interface_8cpp.html#ac34a2a18df97a4a6d1e5a90b20680149">getDataFromSimulation</a>(output,<span class="charliteral">&#39;h&#39;</span>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    plot_name=<span class="stringliteral">&quot;yaw&quot;</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_function" href="visualization_8cpp.html#ab535ce2ab35ef69e24b7c22b191e6ccf">singlePlot</a>(yaw,simulation_dir,plot_name);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">//check if finished</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;if you want another simulation type 0&quot;</span>; <span class="comment">// Type a number and press enter</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    std::cin &gt;&gt; finished; <span class="comment">// Get user input from the keyboard</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="ttc" id="aconfig_8hpp_html_afa493d7a7a020e22fd4b84584b86063f"><div class="ttname"><a href="config_8hpp.html#afa493d7a7a020e22fd4b84584b86063f">SIMULATION_DIR</a></div><div class="ttdeci">#define SIMULATION_DIR</div><div class="ttdef"><b>Definition:</b> <a href="config_8hpp_source.html#l00030">config.hpp:30</a></div></div>
+<div class="ttc" id="acontroller_8cpp_html_a19049591d3146b7a0521f63da7749da0"><div class="ttname"><a href="controller_8cpp.html#a19049591d3146b7a0521f63da7749da0">controller</a></div><div class="ttdeci">arma::vec4 controller(arma::vec3 referance, std::array&lt; float, 13 &gt; current_step, std::array&lt; float, 13 &gt; previous_step, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt; controllers_coefficients, float *Integral_altitude)</div><div class="ttdef"><b>Definition:</b> <a href="controller_8cpp_source.html#l00005">controller.cpp:5</a></div></div>
+<div class="ttc" id="aframes_conversion_8cpp_html_a9042dbcbd303b9c3fa9ce8e807a790e5"><div class="ttname"><a href="frames_conversion_8cpp.html#a9042dbcbd303b9c3fa9ce8e807a790e5">initialQuaternion</a></div><div class="ttdeci">arma::vec4 initialQuaternion(arma::vec3 Euler)</div><div class="ttdef"><b>Definition:</b> <a href="frames_conversion_8cpp_source.html#l00111">framesConversion.cpp:111</a></div></div>
+<div class="ttc" id="ainterface_8cpp_html_a2cd5f52cf441334a7f0edda85eef9bd7"><div class="ttname"><a href="interface_8cpp.html#a2cd5f52cf441334a7f0edda85eef9bd7">getSimulationName</a></div><div class="ttdeci">std::string getSimulationName()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00003">interface.cpp:3</a></div></div>
+<div class="ttc" id="ainterface_8cpp_html_a66fe93f7f3d8024a0acd112dfc9d829c"><div class="ttname"><a href="interface_8cpp.html#a66fe93f7f3d8024a0acd112dfc9d829c">initialForcesAndMoments</a></div><div class="ttdeci">void initialForcesAndMoments(arma::vec4 rottors_velocity, arma::vec4 quaternion_initial)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00044">interface.cpp:44</a></div></div>
+<div class="ttc" id="ainterface_8cpp_html_aa6a59845de4b8c473e52f08938c46cb2"><div class="ttname"><a href="interface_8cpp.html#aa6a59845de4b8c473e52f08938c46cb2">tuneAltitudeController</a></div><div class="ttdeci">std::array&lt; float, 3 &gt; tuneAltitudeController(float referance)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00058">interface.cpp:58</a></div></div>
+<div class="ttc" id="ainterface_8cpp_html_ab2092576cc425398db689236d9f98255"><div class="ttname"><a href="interface_8cpp.html#ab2092576cc425398db689236d9f98255">getSimulationRottorsVelocity</a></div><div class="ttdeci">arma::vec4 getSimulationRottorsVelocity()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00026">interface.cpp:26</a></div></div>
+<div class="ttc" id="ainterface_8cpp_html_ac34a2a18df97a4a6d1e5a90b20680149"><div class="ttname"><a href="interface_8cpp.html#ac34a2a18df97a4a6d1e5a90b20680149">getDataFromSimulation</a></div><div class="ttdeci">std::vector&lt; float &gt; getDataFromSimulation(std::vector&lt; std::array&lt; float, 13 &gt; &gt; fullVector, char myType)</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00112">interface.cpp:112</a></div></div>
+<div class="ttc" id="ainterface_8cpp_html_ae9612b275826b964cb5b3e53e2d52a8f"><div class="ttname"><a href="interface_8cpp.html#ae9612b275826b964cb5b3e53e2d52a8f">getSimulationDuration</a></div><div class="ttdeci">float getSimulationDuration()</div><div class="ttdef"><b>Definition:</b> <a href="interface_8cpp_source.html#l00016">interface.cpp:16</a></div></div>
 <div class="ttc" id="ainterface_8hpp_html"><div class="ttname"><a href="interface_8hpp.html">interface.hpp</a></div><div class="ttdoc">this header deals with the command line interface that helps the user create the simulation.</div></div>
-<div class="ttc" id="amain_app_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="main_app_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="main_app_8cpp_source.html#l00019">mainApp.cpp:19</a></div></div>
-<div class="ttc" id="aupdate_equations_8cpp_html_a9890395a0a72ca955370be56c13c9953"><div class="ttname"><a href="update_equations_8cpp.html#a9890395a0a72ca955370be56c13c9953">droneSimulation</a></div><div class="ttdeci">std::vector&lt; std::array&lt; float, 13 &gt; &gt; droneSimulation(float T, arma::vec4 rottors_speed_initial, std::function&lt; arma::vec4(arma::vec3, std::array&lt; float, 13 &gt;, std::array&lt; float, 13 &gt;, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt;, float *)&gt; controller, arma::vec3 referance, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt; controllers_coefficients)</div><div class="ttdef"><b>Definition:</b> <a href="update_equations_8cpp_source.html#l00062">updateEquations.cpp:62</a></div></div>
-<div class="ttc" id="aupdate_equations_8hpp_html"><div class="ttname"><a href="update_equations_8hpp.html">updateEquations.hpp</a></div><div class="ttdoc">This header deals with the high-level simulation producing procedure.</div></div>
-<div class="ttc" id="avisualization_8cpp_html_ad4524d49f72641463825ca7dbc81a5c2"><div class="ttname"><a href="visualization_8cpp.html#ad4524d49f72641463825ca7dbc81a5c2">singlePlot</a></div><div class="ttdeci">void singlePlot(std::vector&lt; float &gt; vector, std::string path, std::string name)</div><div class="ttdef"><b>Definition:</b> <a href="visualization_8cpp_source.html#l00016">visualization.cpp:16</a></div></div>
-<div class="ttc" id="avisualization_8cpp_html_adb5170ffe30dd0fa0da37a5f38ed0080"><div class="ttname"><a href="visualization_8cpp.html#adb5170ffe30dd0fa0da37a5f38ed0080">getDataFromSimulation</a></div><div class="ttdeci">std::vector&lt; float &gt; getDataFromSimulation(std::vector&lt; std::array&lt; float, 13 &gt; &gt; vector, char type)</div><div class="ttdef"><b>Definition:</b> <a href="visualization_8cpp_source.html#l00053">visualization.cpp:53</a></div></div>
-<div class="ttc" id="avisualization_8hpp_html"><div class="ttname"><a href="visualization_8hpp.html">visualization.hpp</a></div><div class="ttdoc">this header deals visualize the simulation data.</div></div>
+<div class="ttc" id="amain_app_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="main_app_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="main_app_8cpp_source.html#l00004">mainApp.cpp:4</a></div></div>
+<div class="ttc" id="aupdate_equations_8cpp_html_ae73a0de34b5ff6ca50e2c4424ae53cf2"><div class="ttname"><a href="update_equations_8cpp.html#ae73a0de34b5ff6ca50e2c4424ae53cf2">droneSimulation</a></div><div class="ttdeci">std::vector&lt; std::array&lt; float, 13 &gt; &gt; droneSimulation(float T, arma::vec4 rottors_speed_initial, std::function&lt; arma::vec4(arma::vec3, std::array&lt; float, 13 &gt;, std::array&lt; float, 13 &gt;, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt;, float *)&gt; controller, arma::vec3 referance, std::array&lt; std::array&lt; float, 3 &gt;, 6 &gt; controllers_coefficients, int tuning_controller)</div><div class="ttdef"><b>Definition:</b> <a href="update_equations_8cpp_source.html#l00052">updateEquations.cpp:52</a></div></div>
+<div class="ttc" id="avisualization_8cpp_html_ab535ce2ab35ef69e24b7c22b191e6ccf"><div class="ttname"><a href="visualization_8cpp.html#ab535ce2ab35ef69e24b7c22b191e6ccf">singlePlot</a></div><div class="ttdeci">void singlePlot(std::vector&lt; float &gt; myVector, std::string myPath, std::string myName)</div><div class="ttdef"><b>Definition:</b> <a href="visualization_8cpp_source.html#l00006">visualization.cpp:6</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

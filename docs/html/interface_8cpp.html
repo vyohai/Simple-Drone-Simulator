@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;2.0</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;3.0</span>
    </div>
   </td>
  </tr>
@@ -78,16 +78,7 @@ $(function() {
   <div class="headertitle"><div class="title">interface.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;string&gt;</code><br />
-<code>#include &lt;array&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;filesystem&gt;</code><br />
-<code>#include &lt;direct.h&gt;</code><br />
-<code>#include &lt;armadillo&gt;</code><br />
-<code>#include &quot;<a class="el" href="config_8hpp_source.html">../config.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="frames_conversion_8hpp_source.html">../dynamics/framesConversion/framesConversion.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="forces_and_moments_8hpp_source.html">../dynamics/forcesAndMoments/forcesAndMoments.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="controller_tuner_8hpp_source.html">../controllerTuner/controllerTuner.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="interface_8hpp_source.html">interface.hpp</a>&quot;</code><br />
 </div>
 <p><a href="interface_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -103,8 +94,48 @@ Functions</h2></td></tr>
 <tr class="separator:a66fe93f7f3d8024a0acd112dfc9d829c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6a59845de4b8c473e52f08938c46cb2"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8cpp.html#aa6a59845de4b8c473e52f08938c46cb2">tuneAltitudeController</a> (float referance)</td></tr>
 <tr class="separator:aa6a59845de4b8c473e52f08938c46cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac34a2a18df97a4a6d1e5a90b20680149"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8cpp.html#ac34a2a18df97a4a6d1e5a90b20680149">getDataFromSimulation</a> (std::vector&lt; std::array&lt; float, 13 &gt; &gt; fullVector, char myType)</td></tr>
+<tr class="separator:ac34a2a18df97a4a6d1e5a90b20680149"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ac34a2a18df97a4a6d1e5a90b20680149" name="ac34a2a18df97a4a6d1e5a90b20680149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac34a2a18df97a4a6d1e5a90b20680149">&#9670;&#160;</a></span>getDataFromSimulation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; float &gt; getDataFromSimulation </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::array&lt; float, 13 &gt; &gt;&#160;</td>
+          <td class="paramname"><em>fullVector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>myType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This method returns a single state for all times. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fullVector(std::vector&lt;std::array&lt;float,13&gt;&gt;)</td><td>- the whole simulation data. </td></tr>
+    <tr><td class="paramname">myType(char)-'x'/'y'/'z'/'r'/'p'/'h',represents:x_position/y_position/z_position/roll/pitch/yaw.</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an std::vector&lt;float&gt; represen single state for all simulation time. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00112">112</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
+
+</div>
+</div>
 <a id="ae9612b275826b964cb5b3e53e2d52a8f" name="ae9612b275826b964cb5b3e53e2d52a8f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae9612b275826b964cb5b3e53e2d52a8f">&#9670;&#160;</a></span>getSimulationDuration()</h2>
 
@@ -121,7 +152,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This method get a wanted duration for the simulation from the user. </p><dl class="section return"><dt>Returns</dt><dd>an float represent the simulation duration in seconds. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00027">27</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00016">16</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
 
 </div>
 </div>
@@ -141,7 +172,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This method get a name for the simulation from the user, and creates a directory in /simulations/ with that name. </p><dl class="section return"><dt>Returns</dt><dd>an std::string with the simulation name. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00014">14</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00003">3</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
 
 </div>
 </div>
@@ -161,7 +192,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This method gets the wanted initial rottors-speed-velocity. </p><dl class="section return"><dt>Returns</dt><dd>an arma::vec4 represent the initial rottors-speed-velocity. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00037">37</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00026">26</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
 
 </div>
 </div>
@@ -198,7 +229,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00055">55</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00044">44</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
 
 </div>
 </div>
@@ -225,7 +256,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>an std::array&lt;float,3&gt; represent (Kp, Ki, Kd). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00069">69</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interface_8cpp_source.html#l00058">58</a> of file <a class="el" href="interface_8cpp_source.html">interface.cpp</a>.</p>
 
 </div>
 </div>

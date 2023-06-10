@@ -8,8 +8,15 @@
 */
 
 
-#include <string>
+#ifndef FRAMES_CONVERSION
+#define FRAMES_CONVERSION
+
+
+#include <cmath>
+
 #include <armadillo>
+
+#include "../../config.hpp"
 
 /** 
 * This method will return a single axis rotation matrix. 
@@ -65,3 +72,5 @@ arma::vec3 quaternionToEuler(arma::vec4 Q);
 * @return a arma::vec4 initial quaternion.
 */
 arma::vec4 initialQuaternion(arma::vec3 Euler);
+
+#endif

@@ -1,9 +1,4 @@
-#include <string>
-#include <iostream>
-#include <armadillo>
-
-#include "../../config.hpp"
-#include "../../dynamics/framesConversion/framesConversion.hpp"
+#include "forcesAndMoments.hpp"
 
 
 float rottorThrust(float omega)

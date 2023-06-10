@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;2.0</span>
+   <div id="projectname">Simple-Drone-Simulator<span id="projectnumber">&#160;3.0</span>
    </div>
   </td>
  </tr>
@@ -81,18 +81,19 @@ $(function() {
 
 <p>this header deals visualize the simulation data.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;string&gt;</code><br />
+<div class="textblock"><code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;array&gt;</code><br />
+<code>#include &lt;filesystem&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;armadillo&gt;</code><br />
-<code>#include &lt;sciplot/sciplot.hpp&gt;</code><br />
+<code>#include &quot;<a class="el" href="config_8hpp_source.html">../config.hpp</a>&quot;</code><br />
 </div>
 <p><a href="visualization_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:adb5170ffe30dd0fa0da37a5f38ed0080"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="visualization_8hpp.html#adb5170ffe30dd0fa0da37a5f38ed0080">getDataFromSimulation</a> (std::vector&lt; std::array&lt; float, 13 &gt; &gt; vector, char type)</td></tr>
-<tr class="separator:adb5170ffe30dd0fa0da37a5f38ed0080"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4524d49f72641463825ca7dbc81a5c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="visualization_8hpp.html#ad4524d49f72641463825ca7dbc81a5c2">singlePlot</a> (std::vector&lt; float &gt; vector, std::string path, std::string name)</td></tr>
-<tr class="separator:ad4524d49f72641463825ca7dbc81a5c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab535ce2ab35ef69e24b7c22b191e6ccf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="visualization_8hpp.html#ab535ce2ab35ef69e24b7c22b191e6ccf">singlePlot</a> (std::vector&lt; float &gt; myVector, std::string myPath, std::string myName)</td></tr>
+<tr class="separator:ab535ce2ab35ef69e24b7c22b191e6ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>this header deals visualize the simulation data. </p>
@@ -101,46 +102,8 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="visualization_8hpp_source.html">visualization.hpp</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="adb5170ffe30dd0fa0da37a5f38ed0080" name="adb5170ffe30dd0fa0da37a5f38ed0080"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb5170ffe30dd0fa0da37a5f38ed0080">&#9670;&#160;</a></span>getDataFromSimulation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; float &gt; getDataFromSimulation </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; std::array&lt; float, 13 &gt; &gt;&#160;</td>
-          <td class="paramname"><em>vector</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>This method returns a single state for all times. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">vector(std::vector&lt;std::array&lt;float,13&gt;&gt;)</td><td>- the whole simulation data. </td></tr>
-    <tr><td class="paramname">type(char)-'x'/'y'/'z'/'r'/'p'/'h',represents:x_position/y_position/z_position/roll/pitch/yaw.</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>an std::vector&lt;float&gt; represen single state for all simulation time. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="visualization_8cpp_source.html#l00053">53</a> of file <a class="el" href="visualization_8cpp_source.html">visualization.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ad4524d49f72641463825ca7dbc81a5c2" name="ad4524d49f72641463825ca7dbc81a5c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4524d49f72641463825ca7dbc81a5c2">&#9670;&#160;</a></span>singlePlot()</h2>
+<a id="ab535ce2ab35ef69e24b7c22b191e6ccf" name="ab535ce2ab35ef69e24b7c22b191e6ccf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab535ce2ab35ef69e24b7c22b191e6ccf">&#9670;&#160;</a></span>singlePlot()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -149,19 +112,19 @@ Functions</h2></td></tr>
           <td class="memname">void singlePlot </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; float &gt;&#160;</td>
-          <td class="paramname"><em>vector</em>, </td>
+          <td class="paramname"><em>myVector</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
+          <td class="paramname"><em>myPath</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>name</em>&#160;</td>
+          <td class="paramname"><em>myName</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -172,14 +135,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This method produces a plot for some state and save it in the 'path' loacation. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vector(std::vector&lt;float&gt;</td><td>vector) - the time vector to plot. </td></tr>
-    <tr><td class="paramname">path(std::string)</td><td>- wgere to save the figure. </td></tr>
-    <tr><td class="paramname">name(std::string)</td><td>- the name to save the plot. </td></tr>
+    <tr><td class="paramname">myVector(std::vector&lt;float&gt;</td><td>vector) - the time vector to plot. </td></tr>
+    <tr><td class="paramname">myPath(std::string)</td><td>- wgere to save the figure. </td></tr>
+    <tr><td class="paramname">myName(std::string)</td><td>- the name to save the plot. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="visualization_8cpp_source.html#l00016">16</a> of file <a class="el" href="visualization_8cpp_source.html">visualization.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="visualization_8cpp_source.html#l00006">6</a> of file <a class="el" href="visualization_8cpp_source.html">visualization.cpp</a>.</p>
 
 </div>
 </div>

@@ -7,10 +7,26 @@
 * @date 20/5/2023
 */
 
+#ifndef UPDATE_EQUATIONS
+#define UPDATE_EQUATIONS
+
 
 #include <string>
 #include <vector>
+#include <iostream>
+#include <cmath>
+#include <array>
+
 #include <armadillo>
+
+#include "../config.hpp"
+#include "../dynamics/framesConversion/framesConversion.hpp"
+#include "../dynamics/forcesAndMoments/forcesAndMoments.hpp"
+#include "../sensors/sensors.hpp"
+#include "../visualization/visualization.hpp"
+#include "../interface/interface.hpp"
+
+
 
 /** 
 * This method will update the drone state based on the previous state. 
@@ -36,6 +52,7 @@ float * altitude_error_integral)>)
  a function gets states(current and previos), referance and controllers coefficiets at some time and relevant state error integral and produces a control output(rottors_speeds).
 * @param referanc(arma::vec3) - referance position.
 * @param controllers_coefficients(std::array<std::array<float,3>,6>) - PID coefficients for all 6 controllers, default to all 0.
+* @param tuning_controller(int) - detrmine if the call is a part of a automatic controller tuning.
 * @return std::vector<std::array<float,13>> represent 13 states(std::vector<float,13>) for each poit in time.
 */
 std::vector<std::array<float,13>> droneSimulation(float T, arma::vec4 rottors_speed_initial, std::function<arma::vec4(arma::vec3,\
@@ -45,7 +62,8 @@ std::vector<std::array<float,13>> droneSimulation(float T, arma::vec4 rottors_sp
                                                                     {0,0,0},\
                                                                     {0,0,0},\
                                                                     {0,0,0},\
-                                                                    {0,0,0}}});
+                                                                    {0,0,0}}},
+                                                                    int tuning_controller=1);
 
 
 /** 
@@ -63,3 +81,5 @@ arma::vec4 updateOrientation(arma::vec4 quaternion_before, arma::vec3 angular_ra
 * @return arma::vec3 with either euler angles or position.
 */
 arma::vec3 convertStateVectorForController(std::array<float,13> state_vector, char type);
+
+#endif
